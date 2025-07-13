@@ -5,7 +5,6 @@
 		title?: string;
 	}
 
-
 	let { title }: Props = $props();
 
 </script>

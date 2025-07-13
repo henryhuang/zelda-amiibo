@@ -88,6 +88,7 @@
       "toy": "link-ocarina-of-time-1.jpeg",
       "box": "link-ocarina-of-time-2.jpeg"
     },
+    "collected": true,
     "collectDate": "2025.07.03",
     "price": 53.14
   },
@@ -100,6 +101,7 @@
       "toy": "link-skyward-sword-1.jpeg",
       "box": "link-skyward-sword-2.jpeg"
     },
+    "collected": true,
     "collectDate": "2025.07.03",
     "price": 67.83
   },
@@ -111,6 +113,7 @@
       "toy": "link-tears-of-the-kingdom-1.jpeg",
       "box": "link-tears-of-the-kingdom-2.jpeg"
     },
+    "collected": true,
     "collectDate": "2025.06.27",
     "price": 104
   },
@@ -285,6 +288,7 @@
       "toy": "zelda-tears-of-the-kingdom-1.jpeg",
       "box": "zelda-tears-of-the-kingdom-2.jpeg"
     },
+    "collected": true,
     "collectDate": "2025.06.27",
     "price": 104
   },
