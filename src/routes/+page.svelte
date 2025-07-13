@@ -11,7 +11,7 @@
 	const priceTotal = collected.reduce((sum, a) => sum + a.price, 0);
 	const progress = fixTwoDecimals(collectedSize / totalSize * 100);
 
-	let showCollectedOnly = $state(false);
+	let showCollectedOnly = $state(true);
 	let displayAmiibos = $derived.by(() => {
 		return rawAmiibos
 			.filter(a => !showCollectedOnly || Boolean(a.collectDate))
