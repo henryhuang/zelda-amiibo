@@ -1,27 +1,35 @@
 <script lang="ts">
 
 	import { Badge, Card, P } from 'flowbite-svelte';
-	import { Image } from "@unpic/svelte";
-	import {CONFIG} from "$lib/config";
+	import { CONFIG } from '$lib/config';
 
 	interface Props {
 		amiibo: Amiibo;
+		showCollectedOnly: boolean;
 	}
 
-	const { amiibo = $bindable() }: Props = $props();
+	const { amiibo = $bindable(), showCollectedOnly = $bindable() }: Props = $props();
 	const { AMIIBO_IMG_ENDPOINT } = CONFIG;
 
-	let src: string = `${AMIIBO_IMG_ENDPOINT}/${amiibo.collected ? amiibo.images.box : amiibo.images.toy}`;
+	let imageUrl: string = $derived.by(() => {
+		return `${AMIIBO_IMG_ENDPOINT}/${amiibo.collected ? amiibo.images.box : amiibo.images.toy}`;
+	});
 
 </script>
 
 <Card class={amiibo.collected ? "border-green-500" : ""}
 >
-	<Image
-		src={src}
-		alt={amiibo.name}
-		loading="lazy"
-	/>
+	{#if !showCollectedOnly || amiibo.collected}
+		<div
+			class="w-full"
+			style="
+			width: 100%;
+			aspect-ratio: 16/9;
+    	background-image: url({imageUrl});
+    	background-repeat: no-repeat;
+    	background-size: cover;"
+		></div>
+	{/if}
 	<div class="m-6">
 		<h5 class="mb-2 text-2xl tracking-tight text-gray-900 dark:text-white">
 			{amiibo.name}

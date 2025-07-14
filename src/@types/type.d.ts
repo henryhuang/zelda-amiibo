@@ -48,3 +48,8 @@ interface Amiibo {
 	collectDate?: string;
 	price?: number;
 }
+
+interface AmiiboSearchCriteria {
+	showCollectedOnly: boolean;
+	newestFirst: boolean;
+}

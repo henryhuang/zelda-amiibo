@@ -12,14 +12,18 @@
 	const priceTotal = collected.reduce((sum, a) => sum + (a.price || 0), 0);
 	const progress = fixTwoDecimals(collectedSize / totalSize * 100);
 
-	let showCollectedOnly = $state(false);
+	let searchCriteria: AmiiboSearchCriteria = $state({
+		showCollectedOnly: false,
+		newestFirst: true
+	});
 	let displayAmiibos = $derived.by(() => {
 		return amiibos
-			.filter(a => !showCollectedOnly || a.collected)
+			.filter(a => !searchCriteria.showCollectedOnly || a.collected)
 	});
-	let cardPros: { amiibo: Amiibo }[] = $derived.by(() => {
+	let cardPros: { amiibo: Amiibo, showCollectedOnly: boolean }[] = $derived.by(() => {
 		return displayAmiibos.map(amiibo => ({
-			amiibo
+			amiibo,
+			showCollectedOnly: searchCriteria.showCollectedOnly
 		}))
 	})
 
@@ -31,7 +35,7 @@
 	<div class="grid grid-cols-2">
 		<P size="xl" weight="normal">已花费 {fixTwoDecimals(priceTotal)}</P>
 		<div class="text-right">
-			<Checkbox bind:checked={showCollectedOnly}>只显示已收集</Checkbox>
+			<Checkbox bind:checked={searchCriteria.showCollectedOnly}>只显示已收集</Checkbox>
 		</div>
 	</div>
 </div>
