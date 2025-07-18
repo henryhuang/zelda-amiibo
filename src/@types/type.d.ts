@@ -52,4 +52,5 @@ interface Amiibo {
 interface AmiiboSearchCriteria {
 	showCollectedOnly: boolean;
 	newestFirst: boolean;
+	series: string;
 }

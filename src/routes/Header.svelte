@@ -16,5 +16,4 @@
 			{ title ? ` ${title}` : "CNHALO.com"}
 		</span>
 	</NavBrand>
-	<NavHamburger />
 </Navbar>
