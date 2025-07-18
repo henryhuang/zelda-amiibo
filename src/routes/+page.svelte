@@ -17,8 +17,12 @@
 		newestFirst: true
 	});
 	let displayAmiibos = $derived.by(() => {
-		return amiibos
-			.filter(a => !searchCriteria.showCollectedOnly || a.collected)
+		let temp = amiibos
+			.filter(a => !searchCriteria.showCollectedOnly || a.collected);
+		if (searchCriteria.showCollectedOnly) {
+			temp = temp.sort((a, b) => Date.parse(a.releaseDate) - Date.parse(b.releaseDate));
+		}
+		return temp;
 	});
 	let cardPros: { amiibo: Amiibo, showCollectedOnly: boolean }[] = $derived.by(() => {
 		return displayAmiibos.map(amiibo => ({

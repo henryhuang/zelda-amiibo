@@ -1,8 +1,8 @@
 [
   {
     "id": "bokoblin",
-    "name": "Bokoblin",
-    "series": "The Legend of Zelda: Breath of the Wild",
+    "name": "波克布林",
+    "series": "塞尔达传说：旷野之息",
     "releaseDate": "2017.03.07",
     "images": {
       "toy": "bokoblin-1.jpeg",
@@ -11,8 +11,8 @@
   },
   {
     "id": "daruk",
-    "name": "Daruk",
-    "series": "The Legend of Zelda: Breath of the Wild",
+    "name": "达尔克尔",
+    "series": "塞尔达传说：旷野之息",
     "releaseDate": "2017.11.10",
     "images": {
       "toy": "daruk-1.jpeg",
@@ -21,8 +21,8 @@
   },
   {
     "id": "ganondorf",
-    "name": "Ganondorf",
-    "series": "Super Smash Bros.",
+    "name": "加侬多夫",
+    "series": "超级大乱斗",
     "releaseDate": "2015.09.11",
     "images": {
       "toy": "ganondorf-1.jpeg",
@@ -31,8 +31,8 @@
   },
   {
     "id": "ganondorf-tears-of-the-kingdom",
-    "name": "Ganondorf (Tears of the Kingdom)",
-    "series": "The Legend of Zelda: Tears of the Kingdom",
+    "name": "加侬多夫（王国之泪）",
+    "series": "塞尔达传说：王国之泪",
     "releaseDate": "2023.11.03",
     "images": {
       "toy": "ganondorf-tears-of-the-kingdom-1.jpeg",
@@ -41,8 +41,8 @@
   },
   {
     "id": "guardian",
-    "name": "Guardian",
-    "series": "The Legend of Zelda: Breath of the Wild",
+    "name": "守护者",
+    "series": "塞尔达传说：旷野之息",
     "releaseDate": "2017.03.03",
     "images": {
       "toy": "guardian-1.jpeg",
@@ -51,8 +51,8 @@
   },
   {
     "id": "link",
-    "name": "Link",
-    "series": "Super Smash Bros.",
+    "name": "林克",
+    "series": "超级大乱斗",
     "releaseDate": "2014.11.20",
     "images": {
       "toy": "link-1.jpeg",
@@ -64,8 +64,8 @@
   },
   {
     "id": "link-links-awakening",
-    "name": "Link (Link's Awakening)",
-    "series": "The Legend of Zelda: Link’s Awakening",
+    "name": "林克（林克的觉醒）",
+    "series": "塞尔达传说：林克的觉醒",
     "releaseDate": "2019.09.20",
     "images": {
       "toy": "link-links-awakening-1.jpeg",
@@ -74,8 +74,8 @@
   },
   {
     "id": "link-majoras-mask",
-    "name": "Link (Majora's Mask)",
-    "series": "The Legend of Zelda: Majora's Mask",
+    "name": "林克（魔吉拉的面具）",
+    "series": "塞尔达传说",
     "releaseDate": "2017.06.23",
     "images": {
       "toy": "link-majoras-mask-1.jpeg",
@@ -84,8 +84,8 @@
   },
   {
     "id": "link-ocarina-of-time",
-    "name": "Link (Ocarina of Time)",
-    "series": "The Legend of Zelda: Ocarina of Time",
+    "name": "林克（时之笛）",
+    "series": "塞尔达传说30周年系列",
     "releaseDate": "2016.12.02",
     "images": {
       "toy": "link-ocarina-of-time-1.jpeg",
@@ -97,8 +97,8 @@
   },
   {
     "id": "link-skyward-sword",
-    "name": "Link (Skyward Sword)",
-    "series": "The Legend of Zelda: Skyward Sword",
+    "name": "林克（天空之剑）",
+    "series": "塞尔达传说",
     "releaseDate": "2017.06.23",
     "images": {
       "toy": "link-skyward-sword-1.jpeg",
@@ -109,8 +109,9 @@
     "price": 67.83
   },
   {
-    "name": "Link (Tears of the Kingdom)",
-    "series": "The Legend of Zelda: Tears of the Kingdom",
+    "id": "link-tears-of-the-kingdom",
+    "name": "林克（王国之泪）",
+    "series": "塞尔达传说：王国之泪",
     "releaseDate": "2023.05.12",
     "images": {
       "toy": "link-tears-of-the-kingdom-1.jpeg",
@@ -121,8 +122,9 @@
     "price": 104
   },
   {
-    "name": "Link (The Legend of Zelda)",
-    "series": "The Legend of Zelda",
+    "id": "link-the-legend-of-zelda",
+    "name": "初始林克",
+    "series": "塞尔达传说30周年系列",
     "releaseDate": "2016.12.02",
     "images": {
       "toy": "link-the-legend-of-zelda-1.jpeg",
@@ -131,8 +133,8 @@
   },
   {
     "id": "link-twilight-princess",
-    "name": "Link (Twilight Princess)",
-    "series": "The Legend of Zelda: Twilight Princess",
+    "name": "林克（暮光公主）",
+    "series": "塞尔达传说",
     "releaseDate": "2017.06.23",
     "images": {
       "toy": "link-twilight-princess-1.jpeg",
@@ -140,8 +142,9 @@
     }
   },
   {
-    "name": "Link (Archer)",
-    "series": "The Legend of Zelda: Breath of the Wild",
+    "id": "link-archer",
+    "name": "林克（弓箭手）",
+    "series": "塞尔达传说：旷野之息",
     "releaseDate": "2017.03.03",
     "images": {
       "toy": "link-archer-1.jpeg",
@@ -149,8 +152,9 @@
     }
   },
   {
-    "name": "Link (Rider)",
-    "series": "The Legend of Zelda: Breath of the Wild",
+    "id": "link-rider",
+    "name": "林克（骑士）",
+    "series": "塞尔达传说：旷野之息",
     "releaseDate": "2017.03.03",
     "images": {
       "toy": "link-rider-1.jpeg",
@@ -158,8 +162,9 @@
     }
   },
   {
-    "name": "Mipha",
-    "series": "The Legend of Zelda: Breath of the Wild",
+    "id": "mipha",
+    "name": "米法",
+    "series": "塞尔达传说：旷野之息",
     "releaseDate": "2017.11.10",
     "images": {
       "toy": "mipha-1.jpeg",
@@ -167,8 +172,9 @@
     }
   },
   {
-    "name": "Revali",
-    "series": "The Legend of Zelda: Breath of the Wild",
+    "id": "revali",
+    "name": "力巴尔",
+    "series": "塞尔达传说：旷野之息",
     "releaseDate": "2017.11.10",
     "images": {
       "toy": "revali-1.jpeg",
@@ -176,8 +182,9 @@
     }
   },
   {
-    "name": "Riju",
-    "series": "The Legend of Zelda: Tears of the Kingdom",
+    "id": "riju",
+    "name": "露珠",
+    "series": "塞尔达传说：王国之泪",
     "releaseDate": "2025.06.05",
     "images": {
       "toy": "riju-1.jpeg",
@@ -185,8 +192,9 @@
     }
   },
   {
-    "name": "Sheik",
-    "series": "Super Smash Bros.",
+    "id": "sheik",
+    "name": "希克",
+    "series": "超级大乱斗系列",
     "releaseDate": "2015.02.01",
     "images": {
       "toy": "sheik-1.jpeg",
@@ -194,8 +202,9 @@
     }
   },
   {
-    "name": "Sidon",
-    "series": "The Legend of Zelda: Tears of the Kingdom",
+    "id": "sidon",
+    "name": "希多",
+    "series": "塞尔达传说：王国之泪",
     "releaseDate": "2025.06.05",
     "images": {
       "toy": "sidon-1.jpeg",
@@ -203,8 +212,9 @@
     }
   },
   {
-    "name": "Toon Link",
-    "series": "The Legend of Zelda: The Wind Waker",
+    "id": "toon-link",
+    "name": "卡通林克",
+    "series": "超级大乱斗系列",
     "releaseDate": "2015.02.01",
     "images": {
       "toy": "toon-link-1.jpeg",
@@ -212,8 +222,9 @@
     }
   },
   {
-    "name": "Toon Link (The Wind Waker)",
-    "series": "The Legend of Zelda: The Wind Waker",
+    "id": "toon-link-the-wind-waker",
+    "name": "卡通林克（风之杖）",
+    "series": "塞尔达传说",
     "releaseDate": "2016.12.02",
     "images": {
       "toy": "toon-link-the-wind-waker-1.jpeg",
@@ -221,8 +232,9 @@
     }
   },
   {
-    "name": "Tulin",
-    "series": "The Legend of Zelda: Tears of the Kingdom",
+    "id": "tulin",
+    "name": "丘栗",
+    "series": "塞尔达传说：王国之泪",
     "releaseDate": "2025.06.05",
     "images": {
       "toy": "tulin-1.jpeg",
@@ -230,8 +242,9 @@
     }
   },
   {
-    "name": "Urbosa",
-    "series": "The Legend of Zelda: Breath of the Wild",
+    "id": "urbosa",
+    "name": "乌尔波扎",
+    "series": "塞尔达传说：旷野之息",
     "releaseDate": "2017.11.10",
     "images": {
       "toy": "urbosa-1.jpeg",
@@ -239,8 +252,9 @@
     }
   },
   {
-    "name": "Wolf Link",
-    "series": "The Legend of Zelda: Twilight Princess",
+    "id": "wolf-link",
+    "name": "狼林克（黄昏公主）",
+    "series": "塞尔达传说",
     "releaseDate": "2016.03.04",
     "images": {
       "toy": "wolf-link-1.jpeg",
@@ -248,8 +262,9 @@
     }
   },
   {
-    "name": "Young Link",
-    "series": "Super Smash Bros.",
+    "id": "young-link",
+    "name": "幼年林克",
+    "series": "超级大乱斗系列",
     "releaseDate": "2019.04.11",
     "images": {
       "toy": "young-link-1.jpeg",
@@ -257,8 +272,9 @@
     }
   },
   {
-    "name": "Yunobo",
-    "series": "The Legend of Zelda: Tears of the Kingdom",
+    "id": "yunobo",
+    "name": "阿沅",
+    "series": "塞尔达传说：王国之泪",
     "releaseDate": "2025.06.05",
     "images": {
       "toy": "yunobo-1.jpeg",
@@ -266,8 +282,9 @@
     }
   },
   {
-    "name": "Zelda",
-    "series": "Super Smash Bros.",
+    "id": "zelda",
+    "name": "塞尔达",
+    "series": "超级大乱斗系列",
     "releaseDate": "2014.12.01",
     "images": {
       "toy": "zelda-1.jpeg",
@@ -275,8 +292,9 @@
     }
   },
   {
-    "name": "Zelda (Breath of the Wild)",
-    "series": "The Legend of Zelda: Breath of the Wild",
+    "id": "zelda-breath-of-the-wild",
+    "name": "塞尔达（旷野之息）",
+    "series": "塞尔达传说：旷野之息",
     "releaseDate": "2017.03.03",
     "images": {
       "toy": "zelda-breath-of-the-wild-1.jpeg",
@@ -284,8 +302,9 @@
     }
   },
   {
-    "name": "Zelda (Tears of the Kingdom)",
-    "series": "The Legend of Zelda: Tears of the Kingdom",
+    "id": "zelda-tears-of-the-kingdom",
+    "name": "塞尔达（王国之泪）",
+    "series": "塞尔达传说：王国之泪",
     "releaseDate": "2023.11.03",
     "images": {
       "toy": "zelda-tears-of-the-kingdom-1.jpeg",
@@ -296,8 +315,8 @@
     "price": 104
   },
   {
-    "name": "Zelda (The Wind Waker)",
-    "series": "The Legend of Zelda: The Wind Waker",
+    "name": "塞尔达（风之杖）",
+    "series": "塞尔达传说",
     "releaseDate": "2016.12.02",
     "images": {
       "toy": "zelda-the-wind-waker-1.jpeg",
@@ -305,8 +324,8 @@
     }
   },
   {
-    "name": "Zelda and Loftwing",
-    "series": "The Legend of Zelda: The Wind Waker",
+    "name": "塞尔达与洛夫特飞鸟",
+    "series": "塞尔达传说",
     "releaseDate": "2021.07.16",
     "images": {
       "toy": "zelda-and-loftwing-1.jpeg",
