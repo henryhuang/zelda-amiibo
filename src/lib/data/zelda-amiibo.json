@@ -57,7 +57,10 @@
     "images": {
       "toy": "link-1.jpeg",
       "box": "link-2.jpeg"
-    }
+    },
+    "collected": true,
+    "collectDate": "2025.07.17",
+    "price": 60
   },
   {
     "id": "link-links-awakening",
