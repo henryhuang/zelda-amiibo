@@ -46,7 +46,9 @@
 </div>
 <div class="mb-3">
 	<div class="grid lg:grid-cols-2 grid-cols-1">
-		<Checkbox class="mt-1" bind:checked={searchCriteria.showCollectedOnly}>只显示已收集</Checkbox>
+		<Checkbox class="mt-1" bind:checked={searchCriteria.showCollectedOnly}>
+			只显示已收集
+		</Checkbox>
 		<div class="grid-col">
 			<Select
 				placeholder="选择系列"

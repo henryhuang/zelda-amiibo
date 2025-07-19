@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Navbar, NavBrand, NavHamburger } from 'flowbite-svelte';
+	import { Navbar, NavBrand } from 'flowbite-svelte';
 
 	interface Props {
 		title?: string;

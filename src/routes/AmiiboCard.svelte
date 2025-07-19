@@ -1,6 +1,6 @@
 <script lang="ts">
 
-	import { Badge, Card, P } from 'flowbite-svelte';
+	import { Card, P } from 'flowbite-svelte';
 	import { CONFIG } from '$lib/config';
 
 	interface Props {
@@ -19,17 +19,17 @@
 
 <Card class={amiibo.collected ? "border-green-500" : ""}
 >
-	{#if !showCollectedOnly || amiibo.collected}
-		<div
-			class="w-full"
-			style="
-			width: 100%;
-			aspect-ratio: 16/9;
-    	background-image: url({imageUrl});
-    	background-repeat: no-repeat;
-    	background-size: cover;"
-		></div>
-	{/if}
+	<div
+		class="w-full mt-5"
+		style="
+				width: 100%;
+				aspect-ratio: 16/9;
+				background-image: url({imageUrl});
+				background-repeat: no-repeat;
+				background-size: cover;
+				border-radius: 8px
+			"
+	></div>
 	<div class="m-6">
 		<h5 class="mb-2 text-lg tracking-tight text-gray-900 dark:text-white">
 			{amiibo.name}
