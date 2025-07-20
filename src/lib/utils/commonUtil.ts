@@ -22,6 +22,6 @@ export const formatDate = (rawStr?: string) => {
 	if(!rawStr) {
 		return "";
 	}
-	const date = new Date(rawStr);
+	const date = new Date(Date.parse(rawStr));
 	return `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`;
 }
