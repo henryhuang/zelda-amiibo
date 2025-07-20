@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const buildSwipingCards = (baseAmount: number, accounts: Account[]) => {
 	const swipingCards: SwipingCard[] = [];
 	let index = 1;
@@ -22,6 +24,6 @@ export const formatDate = (rawStr?: string) => {
 	if(!rawStr) {
 		return "";
 	}
-	const date = new Date(Date.parse(rawStr));
-	return `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`;
+	const m = moment(rawStr, "YYYY.MM.DD");
+	return `${m.format("YYYY年M月D日")}`;
 }
