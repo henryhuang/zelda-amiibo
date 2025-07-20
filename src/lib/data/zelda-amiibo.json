@@ -7,7 +7,8 @@
     "images": {
       "toy": "bokoblin-1.jpeg",
       "box": "bokoblin-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/bokoblin-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "daruk",
@@ -17,7 +18,8 @@
     "images": {
       "toy": "daruk-1.jpeg",
       "box": "daruk-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/daruk-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "ganondorf",
@@ -27,7 +29,8 @@
     "images": {
       "toy": "ganondorf-1.jpeg",
       "box": "ganondorf-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/ganondorf-amiibo-super-smash-bros-series/"
   },
   {
     "id": "ganondorf-tears-of-the-kingdom",
@@ -37,7 +40,8 @@
     "images": {
       "toy": "ganondorf-tears-of-the-kingdom-1.jpeg",
       "box": "ganondorf-tears-of-the-kingdom-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/ganondorf-tears-of-the-kingdom-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "guardian",
@@ -47,7 +51,8 @@
     "images": {
       "toy": "guardian-1.jpeg",
       "box": "guardian-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/guardian-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "link",
@@ -60,7 +65,8 @@
     },
     "collected": true,
     "collectDate": "2025.07.17",
-    "price": 60
+    "price": 60,
+    "detail": "https://www.nintendo.com/us/amiibo/detail/link-amiibo-super-smash-bros-series/"
   },
   {
     "id": "link-links-awakening",
@@ -70,7 +76,8 @@
     "images": {
       "toy": "link-links-awakening-1.jpeg",
       "box": "link-links-awakening-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/link-amiibo-the-legend-of-zelda-links-awakening-series/"
   },
   {
     "id": "link-majoras-mask",
@@ -80,7 +87,8 @@
     "images": {
       "toy": "link-majoras-mask-1.jpeg",
       "box": "link-majoras-mask-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/link-majoras-mask-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "link-ocarina-of-time",
@@ -93,7 +101,8 @@
     },
     "collected": true,
     "collectDate": "2025.07.03",
-    "price": 53.14
+    "price": 53.14,
+    "detail": "https://www.nintendo.com/us/amiibo/detail/link-ocarina-of-time-amiibo-30th-anniversary-series/"
   },
   {
     "id": "link-skyward-sword",
@@ -106,7 +115,8 @@
     },
     "collected": true,
     "collectDate": "2025.07.03",
-    "price": 67.83
+    "price": 67.83,
+    "detail": "https://www.nintendo.com/us/amiibo/detail/link-skyward-sword-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "link-tears-of-the-kingdom",
@@ -119,7 +129,8 @@
     },
     "collected": true,
     "collectDate": "2025.06.27",
-    "price": 104
+    "price": 104,
+    "detail": "https://www.nintendo.com/us/amiibo/detail/link-tears-of-the-kingdom-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "link-the-legend-of-zelda",
@@ -129,17 +140,19 @@
     "images": {
       "toy": "link-the-legend-of-zelda-1.jpeg",
       "box": "link-the-legend-of-zelda-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/link-the-legend-of-zelda-amiibo-30th-anniversary-series/"
   },
   {
     "id": "link-twilight-princess",
-    "name": "林克（暮光公主）",
+    "name": "林克（黄昏公主）",
     "series": "塞尔达传说",
     "releaseDate": "2017.06.23",
     "images": {
       "toy": "link-twilight-princess-1.jpeg",
       "box": "link-twilight-princess-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/store/products/amiibo-link-twilight-princess-legend-of-zelda-104390/"
   },
   {
     "id": "link-archer",
@@ -149,7 +162,8 @@
     "images": {
       "toy": "link-archer-1.jpeg",
       "box": "link-archer-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/link-archer-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "link-rider",
@@ -159,7 +173,8 @@
     "images": {
       "toy": "link-rider-1.jpeg",
       "box": "link-rider-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/link-rider-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "mipha",
@@ -169,7 +184,8 @@
     "images": {
       "toy": "mipha-1.jpeg",
       "box": "mipha-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/mipha-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "revali",
@@ -179,7 +195,8 @@
     "images": {
       "toy": "revali-1.jpeg",
       "box": "revali-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/revali-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "riju",
@@ -189,7 +206,8 @@
     "images": {
       "toy": "riju-1.jpeg",
       "box": "riju-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/riju-the-legend-of-zelda-tears-of-the-kingdom-series/"
   },
   {
     "id": "sheik",
@@ -199,7 +217,8 @@
     "images": {
       "toy": "sheik-1.jpeg",
       "box": "sheik-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/sheik-amiibo-super-smash-bros-series/"
   },
   {
     "id": "sidon",
@@ -209,7 +228,8 @@
     "images": {
       "toy": "sidon-1.jpeg",
       "box": "sidon-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/sidon-the-legend-of-zelda-tears-of-the-kingdom-series/"
   },
   {
     "id": "toon-link",
@@ -219,17 +239,19 @@
     "images": {
       "toy": "toon-link-1.jpeg",
       "box": "toon-link-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/toon-link-amiibo-super-smash-bros-series/"
   },
   {
     "id": "toon-link-the-wind-waker",
     "name": "卡通林克（风之杖）",
-    "series": "塞尔达传说",
+    "series": "塞尔达传说30周年系列",
     "releaseDate": "2016.12.02",
     "images": {
       "toy": "toon-link-the-wind-waker-1.jpeg",
       "box": "toon-link-the-wind-waker-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/toon-link-the-wind-waker-amiibo-30th-anniversary-series/"
   },
   {
     "id": "tulin",
@@ -239,7 +261,8 @@
     "images": {
       "toy": "tulin-1.jpeg",
       "box": "tulin-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/tulin-the-legend-of-zelda-tears-of-the-kingdom-series/"
   },
   {
     "id": "urbosa",
@@ -249,7 +272,8 @@
     "images": {
       "toy": "urbosa-1.jpeg",
       "box": "urbosa-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/urbosa-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "wolf-link",
@@ -259,7 +283,8 @@
     "images": {
       "toy": "wolf-link-1.jpeg",
       "box": "wolf-link-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/wolf-link-amiibo/"
   },
   {
     "id": "young-link",
@@ -269,7 +294,8 @@
     "images": {
       "toy": "young-link-1.jpeg",
       "box": "young-link-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/young-link-amiibo-super-smash-bros-series/"
   },
   {
     "id": "yunobo",
@@ -279,7 +305,8 @@
     "images": {
       "toy": "yunobo-1.jpeg",
       "box": "yunobo-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/yunobo-the-legend-of-zelda-tears-of-the-kingdom-series/"
   },
   {
     "id": "zelda",
@@ -289,7 +316,8 @@
     "images": {
       "toy": "zelda-1.jpeg",
       "box": "zelda-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/zelda-amiibo-super-smash-bros-series/"
   },
   {
     "id": "zelda-breath-of-the-wild",
@@ -299,7 +327,8 @@
     "images": {
       "toy": "zelda-breath-of-the-wild-1.jpeg",
       "box": "zelda-breath-of-the-wild-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/zelda-amiibo-the-legend-of-zelda-series/"
   },
   {
     "id": "zelda-tears-of-the-kingdom",
@@ -312,24 +341,29 @@
     },
     "collected": true,
     "collectDate": "2025.06.27",
-    "price": 104
+    "price": 104,
+    "detail": "https://www.nintendo.com/us/amiibo/detail/link-tears-of-the-kingdom-amiibo-the-legend-of-zelda-series/"
   },
   {
+    "id": "zelda-the-wind-waker",
     "name": "塞尔达（风之杖）",
-    "series": "塞尔达传说",
+    "series": "塞尔达传说30周年系列",
     "releaseDate": "2016.12.02",
     "images": {
       "toy": "zelda-the-wind-waker-1.jpeg",
       "box": "zelda-the-wind-waker-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/toon-zelda-the-wind-waker-amiibo-30th-anniversary-series/"
   },
   {
+    "id": "zelda-and-loftwing",
     "name": "塞尔达与洛夫特飞鸟",
     "series": "塞尔达传说",
     "releaseDate": "2021.07.16",
     "images": {
       "toy": "zelda-and-loftwing-1.jpeg",
       "box": "zelda-and-loftwing-2.jpeg"
-    }
+    },
+    "detail": "https://www.nintendo.com/us/amiibo/detail/zelda-and-loftwing-amiibo-the-legend-of-zelda-series/"
   }
 ]

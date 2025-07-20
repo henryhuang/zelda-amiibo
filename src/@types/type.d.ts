@@ -47,6 +47,7 @@ interface Amiibo {
 	collected?: boolean;
 	collectDate?: string;
 	price?: number;
+	detail: string;
 }
 
 interface AmiiboSearchCriteria {

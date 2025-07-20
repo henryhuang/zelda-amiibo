@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { P, Progressbar, Checkbox, Select } from 'flowbite-svelte';
+	import { Progressbar, Checkbox, Select, Label } from 'flowbite-svelte';
 	import AmiiboCard from './AmiiboCard.svelte';
 	import { fixTwoDecimals } from '$lib/utils/commonUtil';
 
@@ -46,9 +46,10 @@
 </div>
 <div class="mb-3">
 	<div class="grid lg:grid-cols-2 grid-cols-1">
-		<Checkbox class="mt-1" bind:checked={searchCriteria.showCollectedOnly}>
+		<Label class="mt-4 flex items-center font-bold italic">
+			<Checkbox divClass="me-1" bind:checked={searchCriteria.showCollectedOnly} />
 			只显示已收集
-		</Checkbox>
+		</Label>
 		<div class="grid-col">
 			<Select
 				placeholder="选择系列"
@@ -63,6 +64,6 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
 	{#each cardPros as C, index(index)}
-		<AmiiboCard {...cardPros[index]}/>
+		<AmiiboCard {...cardPros[index]} />
 	{/each}
 </div>
