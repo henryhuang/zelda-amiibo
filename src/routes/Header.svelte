@@ -1,11 +1,20 @@
 <script lang="ts">
-	import { Navbar, NavBrand } from 'flowbite-svelte';
+	import { Navbar, NavBrand, NavHamburger, NavLi, NavUl } from 'flowbite-svelte';
+	import { onDestroy } from "svelte";
+	import { collectedInfo } from '../store';
+	import { downloadBackup } from '$lib/utils/commonUtil';
 
 	interface Props {
 		title?: string;
 	}
 
 	let { title }: Props = $props();
+	let myCollectedInfo: CollectedInfo;
+	const unsubscribe = collectedInfo.subscribe((value: CollectedInfo) => {
+		myCollectedInfo = value;
+	})
+
+	onDestroy(unsubscribe);
 
 </script>
 
@@ -16,4 +25,14 @@
 			{ title ? ` ${title}` : "CNHALO.com"}
 		</span>
 	</NavBrand>
+	<NavHamburger />
+	<NavUl>
+		<NavLi class="cursor-pointer" onclick={() => {
+			if (myCollectedInfo) {
+				downloadBackup(myCollectedInfo)
+			}
+		}}>
+			备份
+		</NavLi>
+	</NavUl>
 </Navbar>

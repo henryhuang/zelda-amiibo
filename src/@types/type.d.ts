@@ -55,3 +55,10 @@ interface AmiiboSearchCriteria {
 	newestFirst: boolean;
 	series: string;
 }
+
+interface CollectedInfo {
+	progressRate: number;
+	collectedNum: number;
+	totalNum: number;
+	cost: number;
+}

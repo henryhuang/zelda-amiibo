@@ -2,6 +2,7 @@
 	import { Progressbar, Checkbox, Select, Label } from 'flowbite-svelte';
 	import AmiiboCard from './AmiiboCard.svelte';
 	import { fixTwoDecimals } from '$lib/utils/commonUtil';
+	import { collectedInfo } from '../store';
 
 	const { data } = $props();
 
@@ -9,8 +10,16 @@
 	const totalSize = amiibos.length;
 	const collected = amiibos.filter(a => a.collected);
 	const collectedSize = collected.length;
-	const priceTotal = collected.reduce((sum, a) => sum + (a.price || 0), 0);
+	const priceTotal = fixTwoDecimals(collected.reduce((sum, a) => sum + (a.price || 0), 0));
 	const progress = fixTwoDecimals(collectedSize / totalSize * 100);
+
+	$collectedInfo = {
+		progressRate: progress,
+		collectedNum: collectedSize,
+		totalNum: totalSize,
+		cost: priceTotal,
+	}
+
 	const seriesOptions = [{
 		value: "ALL",
 		name: "所有系列"
@@ -42,7 +51,7 @@
 
 </script>
 <div class="mb-3">
-	<Progressbar progress={progress} color="green" size="h-4" labelOutside={`收集进度 ${collectedSize}/${totalSize}，已花费 ${fixTwoDecimals(priceTotal)}`} />
+	<Progressbar progress={progress} color="green" size="h-4" labelOutside={`收集进度 ${collectedSize}/${totalSize}，已花费 ${priceTotal}`} />
 </div>
 <div class="mb-3">
 	<div class="grid lg:grid-cols-2 grid-cols-1">
