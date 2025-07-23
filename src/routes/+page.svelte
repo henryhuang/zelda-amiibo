@@ -3,6 +3,7 @@
 	import AmiiboCard from './AmiiboCard.svelte';
 	import { fixTwoDecimals } from '$lib/utils/commonUtil';
 	import { collectedInfo } from '../store';
+	import { DevidedBy } from '$lib/utils/AmiiboDisplayDividedBy';
 
 	const { data } = $props();
 
@@ -33,15 +34,9 @@
 		newestFirst: true,
 		series: "ALL"
 	});
-	let displayAmiibos = $derived.by(() => {
-		let temp = amiibos
-			.filter(a => !searchCriteria.showCollectedOnly || a.collected)
-			.filter(a => searchCriteria.series === "ALL" || a.series === searchCriteria.series);
-		if (searchCriteria.showCollectedOnly) {
-			temp = temp.sort((a, b) => Date.parse(a.releaseDate) - Date.parse(b.releaseDate));
-		}
-		return temp;
-	});
+
+	let displayAmiibos = $derived.by(() => DevidedBy(amiibos, searchCriteria));
+
 	let cardPros: { amiibo: Amiibo, showCollectedOnly: boolean }[] = $derived.by(() => {
 		return displayAmiibos.map(amiibo => ({
 			amiibo,
