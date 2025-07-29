@@ -41,9 +41,11 @@
       "toy": "ganondorf-tears-of-the-kingdom-1.jpeg",
       "box": "ganondorf-tears-of-the-kingdom-2.jpeg"
     },
-    "collected": true,
-    "collectDate": "2025.07.23",
-    "price": 76.03,
+    "collectedInfo": {
+      "collected": true,
+      "collectDate": "2025.07.23",
+      "price": 76.03
+    },
     "detail": "https://www.nintendo.com/us/amiibo/detail/ganondorf-tears-of-the-kingdom-amiibo-the-legend-of-zelda-series/"
   },
   {
@@ -66,9 +68,11 @@
       "toy": "link-1.jpeg",
       "box": "link-2.jpeg"
     },
-    "collected": true,
-    "collectDate": "2025.07.17",
-    "price": 60,
+    "collectedInfo": {
+      "collected": true,
+      "collectDate": "2025.07.17",
+      "price": 60
+    },
     "detail": "https://www.nintendo.com/us/amiibo/detail/link-amiibo-super-smash-bros-series/"
   },
   {
@@ -102,9 +106,11 @@
       "toy": "link-ocarina-of-time-1.jpeg",
       "box": "link-ocarina-of-time-2.jpeg"
     },
-    "collected": true,
-    "collectDate": "2025.07.03",
-    "price": 53.14,
+    "collectedInfo": {
+      "collected": true,
+      "collectDate": "2025.07.03",
+      "price": 53.14
+    },
     "detail": "https://www.nintendo.com/us/amiibo/detail/link-ocarina-of-time-amiibo-30th-anniversary-series/"
   },
   {
@@ -116,9 +122,11 @@
       "toy": "link-skyward-sword-1.jpeg",
       "box": "link-skyward-sword-2.jpeg"
     },
-    "collected": true,
-    "collectDate": "2025.07.03",
-    "price": 67.83,
+    "collectedInfo": {
+      "collected": true,
+      "collectDate": "2025.07.03",
+      "price": 67.83
+    },
     "detail": "https://www.nintendo.com/us/amiibo/detail/link-skyward-sword-amiibo-the-legend-of-zelda-series/"
   },
   {
@@ -130,9 +138,11 @@
       "toy": "link-tears-of-the-kingdom-1.jpeg",
       "box": "link-tears-of-the-kingdom-2.jpeg"
     },
-    "collected": true,
-    "collectDate": "2025.06.27",
-    "price": 104,
+    "collectedInfo": {
+      "collected": true,
+      "collectDate": "2025.06.27",
+      "price": 104
+    },
     "detail": "https://www.nintendo.com/us/amiibo/detail/link-tears-of-the-kingdom-amiibo-the-legend-of-zelda-series/"
   },
   {
@@ -165,6 +175,11 @@
     "images": {
       "toy": "link-archer-1.jpeg",
       "box": "link-archer-2.jpeg"
+    },
+    "collectedInfo": {
+      "collected": true,
+      "collectDate": "2025.07.29",
+      "price": 80.75
     },
     "detail": "https://www.nintendo.com/us/amiibo/detail/link-archer-amiibo-the-legend-of-zelda-series/"
   },
@@ -342,9 +357,11 @@
       "toy": "zelda-tears-of-the-kingdom-1.jpeg",
       "box": "zelda-tears-of-the-kingdom-2.jpeg"
     },
-    "collected": true,
-    "collectDate": "2025.06.27",
-    "price": 104,
+    "collectedInfo": {
+      "collected": true,
+      "collectDate": "2025.06.27",
+      "price": 104
+    },
     "detail": "https://www.nintendo.com/us/amiibo/detail/link-tears-of-the-kingdom-amiibo-the-legend-of-zelda-series/"
   },
   {

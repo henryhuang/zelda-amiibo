@@ -13,10 +13,10 @@
 	const { AMIIBO_IMG_ENDPOINT } = CONFIG;
 
 	let imageUrl: string = $derived.by(() => {
-		return `${AMIIBO_IMG_ENDPOINT}/${amiibo.collected ? amiibo.images.box : amiibo.images.toy}`;
+		return `${AMIIBO_IMG_ENDPOINT}/${amiibo.collectedInfo ? amiibo.images.box : amiibo.images.toy}`;
 	});
 
-	const cardStyles = $derived("border-1 border-solid" + (amiibo.collected ? " border-green-500" : ""));
+	const cardStyles = $derived("border-1 border-solid" + (amiibo.collectedInfo ? " border-green-500" : ""));
 
 </script>
 
@@ -48,9 +48,9 @@
 		<P class="mb-1 font-normal text-gray-500" size="xs">
 			发布日 {formatDate(amiibo.releaseDate)}
 		</P>
-		{#if amiibo.collected}
+		{#if amiibo.collectedInfo}
 			<P class="font-normal text-green-700" size="xs">
-				收集日 {formatDate(amiibo.collectDate)}, 花费 {amiibo.price}
+				收集日 {formatDate(amiibo.collectedInfo.collectDate)}, 花费 {amiibo.collectedInfo.price}
 			</P>
 		{/if}
 	</div>

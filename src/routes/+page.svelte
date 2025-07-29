@@ -9,9 +9,9 @@
 
 	const { amiibos, series } = data;
 	const totalSize = amiibos.length;
-	const collected = amiibos.filter(a => a.collected);
+	const collected = amiibos.filter(a => Boolean(a.collectedInfo));
 	const collectedSize = collected.length;
-	const priceTotal = fixTwoDecimals(collected.reduce((sum, a) => sum + (a.price || 0), 0));
+	const priceTotal = fixTwoDecimals(collected.reduce((sum, a) => sum + (a.collectedInfo?.price || 0), 0));
 	const progress = fixTwoDecimals(collectedSize / totalSize * 100);
 
 	$collectedInfo = {
