@@ -1,6 +1,6 @@
 export const load = () => {
 	return {
-		title: "塞尔达 Amiibo 收集",
+		title: "塞尔达 Amiibo",
 		menus: {
 			backup: false,
 			collecting: true,

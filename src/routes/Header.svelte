@@ -19,11 +19,15 @@
 
 </script>
 
+<svelte:head>
+	<title> {title ? `${title}` : "塞尔达 Amiibo"} </title>
+</svelte:head>
+
 <Navbar>
 	<NavBrand href="/">
 		<img src="/images/logo_200.png" class="me-3 h-6 sm:h-9" alt="Flowbite Logo" />
 		<span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-			{ title ? ` ${title}` : "CNHALO.com"}
+			{ title ? `${title}` : "塞尔达 Amiibo" }
 		</span>
 	</NavBrand>
 	<NavHamburger />
@@ -40,7 +44,7 @@
 		{/if}
 		{#if menus?.gallery}
 			<NavLi href="/gallery">
-				相册
+				展示
 			</NavLi>
 		{/if}
 		{#if menus?.backup}
