@@ -29,3 +29,20 @@ interface CollectedInfo {
 	totalNum: number;
 	cost: number;
 }
+
+interface MenuSetting {
+	backup: boolean,
+	collecting: boolean,
+	progress: boolean,
+	gallery: boolean
+}
+
+interface Image {
+	src: string,
+	alt: string
+}
+
+interface Gallery {
+	toys: Image[],
+	boxes: Image[]
+}

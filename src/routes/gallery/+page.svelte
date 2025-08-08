@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { Gallery } from 'flowbite-svelte';
-
-	const { data } = $props();
-
+	import { gallery } from '../../store';
 </script>
 
-<Gallery items={data.toys} class="grid-cols-2 gap-4 md:grid-cols-3"></Gallery>
+<Gallery items={$gallery.toys} class="grid-cols-2 gap-4 md:grid-cols-3"></Gallery>
