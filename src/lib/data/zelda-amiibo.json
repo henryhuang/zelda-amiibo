@@ -165,7 +165,12 @@
       "toy": "link-twilight-princess-1.jpeg",
       "box": "link-twilight-princess-2.jpeg"
     },
-    "detail": "https://www.nintendo.com/us/store/products/amiibo-link-twilight-princess-legend-of-zelda-104390/"
+    "detail": "https://www.nintendo.com/us/store/products/amiibo-link-twilight-princess-legend-of-zelda-104390/",
+    "collectedInfo": {
+      "collected": true,
+      "collectDate": "2025.08.09",
+      "price": 58.91
+    }
   },
   {
     "id": "link-archer",
@@ -383,6 +388,11 @@
     "images": {
       "toy": "zelda-and-loftwing-1.jpeg",
       "box": "zelda-and-loftwing-2.jpeg"
+    },
+    "collectedInfo": {
+      "collected": true,
+      "collectDate": "2025.08.06",
+      "price": 82.45
     },
     "detail": "https://www.nintendo.com/us/amiibo/detail/zelda-and-loftwing-amiibo-the-legend-of-zelda-series/"
   }
