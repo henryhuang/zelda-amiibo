@@ -5,18 +5,26 @@ const { AMIIBO_IMG_ENDPOINT } = CONFIG;
 
 export const load = () => {
 	const amiibos = loadAmiibos();
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-expect-error
-	const series: string[] = amiibos.reduce((acc, amiibo) => {
-		const ss = acc as string[];
-		if (!ss.includes(amiibo.series)) {
-			ss.push(amiibo.series);
+	const seriesInfoMap: {[name: string]: SeriesCollectingInfo} = {};
+	amiibos.forEach((amiibo) => {
+		const series = amiibo.series;
+		let infoMap = seriesInfoMap[series];
+		if (!infoMap) {
+			infoMap = {
+				name: series,
+				total: 0,
+				collected: 0
+			};
+			seriesInfoMap[series] = infoMap;
 		}
-		return ss;
-	}, []);
+		Object.assign(infoMap, {
+			total: infoMap.total + 1,
+			collected: infoMap.collected + (amiibo.collectedInfo?.collected ?  1 : 0),
+		})
+	})
 	return {
 		amiibos,
-		series,
+		series: Object.values(seriesInfoMap),
 		imgEndpoint: `${AMIIBO_IMG_ENDPOINT}`
 	}
 }

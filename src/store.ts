@@ -9,7 +9,7 @@ export const collectedInfo = writable<CollectedInfo>({
 
 export const amiibos = writable<Amiibo[]>([]);
 
-export const series = writable<string[]>([]);
+export const series = writable<SeriesCollectingInfo[]>([]);
 
 export const gallery = writable<Gallery>({
 	toys: [],
@@ -19,7 +19,7 @@ export const gallery = writable<Gallery>({
 export const initStore = (
 	collectedInfoInited: CollectedInfo,
 	amiibosInited: Amiibo[],
-	seriesInited: string[],
+	seriesInited: SeriesCollectingInfo[],
 	imgEndpoint: string
 ) => {
 	collectedInfo.set(collectedInfoInited);

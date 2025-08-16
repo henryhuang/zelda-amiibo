@@ -8,8 +8,8 @@
 		value: "ALL",
 		name: "所有系列"
 	}, ...$series.map(s => ({
-		value: s,
-		name: s
+		value: s.name,
+		name: `${s.name} (${s.collected}/${s.total})`
 	}))];
 
 	let searchCriteria: AmiiboSearchCriteria = $state({

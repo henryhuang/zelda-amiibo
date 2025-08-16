@@ -46,3 +46,9 @@ interface Gallery {
 	toys: Image[],
 	boxes: Image[]
 }
+
+interface SeriesCollectingInfo {
+	name: string;
+	collected: number;
+	total: number;
+}
