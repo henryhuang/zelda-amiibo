@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { Footer, FooterCopyright } from 'flowbite-svelte';
 	import { page } from '$app/state';
 	import '../app.css';
 	import Header from './Header.svelte';
 	import { fixTwoDecimals } from '$lib/utils/commonUtil';
 	import { initStore } from '../store';
+	import Footer from './Footer.svelte';
 
 	const { data, children } = $props();
 
@@ -33,7 +33,5 @@
 		{@render children()}
 	</main>
 
-	<Footer>
-		<FooterCopyright href="https://cnhalo.com" by="cnhalo.com™" year={new Date().getFullYear()} />
-	</Footer>
+	<Footer />
 </div>
