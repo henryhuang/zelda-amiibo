@@ -39,7 +39,8 @@ interface MenuSetting {
 
 interface Image {
 	src: string,
-	alt: string
+	alt: string,
+	collected?: boolean,
 }
 
 interface Gallery {

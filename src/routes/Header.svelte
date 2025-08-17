@@ -34,7 +34,7 @@
 	<NavUl>
 		{#if menus?.progress}
 			<NavLi href="/">
-				进度
+				概览
 			</NavLi>
 		{/if}
 		{#if menus?.collecting}
@@ -42,11 +42,11 @@
 				收集
 			</NavLi>
 		{/if}
-		{#if menus?.gallery}
-			<NavLi href="/gallery">
-				展示
-			</NavLi>
-		{/if}
+		<!--{#if menus?.gallery}-->
+		<!--	<NavLi href="/gallery">-->
+		<!--		展示-->
+		<!--	</NavLi>-->
+		<!--{/if}-->
 		{#if menus?.backup}
 			<NavLi class="cursor-pointer" onclick={() => {
 				if (myCollectedInfo) {

@@ -27,11 +27,13 @@ export const initStore = (
 	series.set(seriesInited);
 	const toys = amiibosInited.map(amiibo => ({
 		alt: amiibo.name,
-		src: `${imgEndpoint}/${amiibo.images.toy}`
+		src: `${imgEndpoint}/${amiibo.images.toy}`,
+		collected: amiibo?.collectedInfo?.collected
 	}));
 	const boxes = amiibosInited.map(amiibo => ({
 		alt: amiibo.name,
-		src: `${imgEndpoint}/${amiibo.images.box}`
+		src: `${imgEndpoint}/${amiibo.images.box}`,
+		collected: amiibo?.collectedInfo?.collected
 	}));
 	gallery.set({
 		toys,
