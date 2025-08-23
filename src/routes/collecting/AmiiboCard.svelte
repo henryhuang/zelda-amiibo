@@ -20,7 +20,9 @@
 
 </script>
 
-<Card class={cardStyles}
+<Card
+	class={cardStyles}
+	id={amiibo.id}
 >
 	<div
 		class="w-full mt-5"

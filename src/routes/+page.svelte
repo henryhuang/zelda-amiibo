@@ -20,5 +20,5 @@
 			}
 	}}
 >
-	<GalleryShow />
 </div>
+<GalleryShow />

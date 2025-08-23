@@ -38,6 +38,7 @@ interface MenuSetting {
 }
 
 interface Image {
+	id: string;
 	src: string,
 	alt: string,
 	collected?: boolean,
