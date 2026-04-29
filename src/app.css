@@ -1,39 +1,970 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin 'flowbite/plugin';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-primary-50: #fff5f2;
-    --color-primary-100: #fff1ee;
-    --color-primary-200: #ffe4de;
-    --color-primary-300: #ffd5cc;
-    --color-primary-400: #ffbcad;
-    --color-primary-500: #fe795d;
-    --color-primary-600: #ef562f;
-    --color-primary-700: #eb4f27;
-    --color-primary-800: #cc4522;
-    --color-primary-900: #a5371b;
+	--color-primary-50: #fff5f2;
+	--color-primary-100: #fff1ee;
+	--color-primary-200: #ffe4de;
+	--color-primary-300: #ffd5cc;
+	--color-primary-400: #ffbcad;
+	--color-primary-500: #fe795d;
+	--color-primary-600: #ef562f;
+	--color-primary-700: #eb4f27;
+	--color-primary-800: #cc4522;
+	--color-primary-900: #a5371b;
 
-    --color-secondary-50: #f0f9ff;
-    --color-secondary-100: #e0f2fe;
-    --color-secondary-200: #bae6fd;
-    --color-secondary-300: #7dd3fc;
-    --color-secondary-400: #38bdf8;
-    --color-secondary-500: #0ea5e9;
-    --color-secondary-600: #0284c7;
-    --color-secondary-700: #0369a1;
-    --color-secondary-800: #075985;
-    --color-secondary-900: #0c4a6e;
+	--color-secondary-50: #f0f9ff;
+	--color-secondary-100: #e0f2fe;
+	--color-secondary-200: #bae6fd;
+	--color-secondary-300: #7dd3fc;
+	--color-secondary-400: #38bdf8;
+	--color-secondary-500: #0ea5e9;
+	--color-secondary-600: #0284c7;
+	--color-secondary-700: #0369a1;
+	--color-secondary-800: #075985;
+	--color-secondary-900: #0c4a6e;
 }
 
 @source "../node_modules/flowbite-svelte/dist";
 @source "../node_modules/flowbite-svelte-icons/dist";
 
 @layer base {
-    /* disable chrome cancel button */
-    input[type="search"]::-webkit-search-cancel-button {
-        display: none;
-    }
+	* {
+		box-sizing: border-box;
+	}
+
+	body {
+		margin: 0;
+		background: #eee8da;
+		color: #273a35;
+		font-family: 'Times New Roman', 'Noto Serif SC', ui-serif, Georgia, Cambria, serif;
+	}
+
+	button,
+	input,
+	select {
+		font: inherit;
+	}
+
+	input[type='search']::-webkit-search-cancel-button {
+		display: none;
+	}
+}
+
+.museum-page {
+	position: relative;
+	min-height: 100vh;
+	overflow: hidden;
+	background:
+		radial-gradient(circle at 12% 8%, rgba(96, 182, 170, 0.18), transparent 24%),
+		radial-gradient(circle at 88% 6%, rgba(148, 205, 230, 0.24), transparent 28%),
+		linear-gradient(180deg, #f8f4e9 0%, #eee6d5 100%);
+}
+
+.museum-page::before,
+.museum-page::after {
+	content: '';
+	position: fixed;
+	z-index: 0;
+	pointer-events: none;
+}
+
+.museum-page::before {
+	inset: 0;
+	background:
+		linear-gradient(rgba(255, 255, 255, 0.58), rgba(255, 252, 243, 0.78)),
+		url('/images/totk-sky-hero.png') top center / min(1952px, 124vw) auto no-repeat;
+	opacity: 0.98;
+}
+
+.museum-page::after {
+	right: -110px;
+	bottom: -120px;
+	width: 360px;
+	height: 360px;
+	border: 1px solid rgba(171, 143, 82, 0.18);
+	border-radius: 999px;
+	box-shadow:
+		inset 0 0 0 34px rgba(42, 142, 120, 0.04),
+		inset 0 0 0 78px rgba(171, 143, 82, 0.045),
+		0 0 0 18px rgba(255, 255, 255, 0.28);
+}
+
+.museum-header,
+.museum-main,
+.museum-footer {
+	position: relative;
+	z-index: 1;
+}
+
+.museum-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: min(1840px, calc(100vw - 56px));
+	margin: 0 auto;
+	padding: 26px 0 18px;
+	gap: 28px;
+}
+
+.museum-brand {
+	display: flex;
+	align-items: center;
+	min-width: 310px;
+	gap: 18px;
+	color: #2b8174;
+	text-decoration: none;
+}
+
+.museum-brand img {
+	width: 82px;
+	height: 82px;
+	border-radius: 999px;
+	object-fit: cover;
+	mix-blend-mode: multiply;
+	filter: drop-shadow(0 8px 18px rgba(33, 121, 105, 0.16));
+}
+
+.museum-brand strong {
+	display: block;
+	color: #2b8174;
+	font-size: clamp(26px, 2.25vw, 42px);
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: 0;
+}
+
+.museum-brand small {
+	display: block;
+	margin-top: 9px;
+	color: #65756f;
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: 0;
+}
+
+.museum-nav {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.museum-nav button {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 54px;
+	gap: 10px;
+	padding: 0 22px;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	background: transparent;
+	color: #56615d;
+	font-weight: 800;
+	text-decoration: none;
+	cursor: pointer;
+	transition:
+		background 0.18s ease,
+		border-color 0.18s ease,
+		color 0.18s ease,
+		transform 0.18s ease;
+}
+
+.museum-nav button span {
+	color: #b08d52;
+	font-size: 20px;
+}
+
+.museum-nav button:hover {
+	border-color: rgba(43, 129, 116, 0.13);
+	background: rgba(255, 255, 255, 0.72);
+	color: #2b8174;
+	transform: translateY(-1px);
+}
+
+.museum-main {
+	width: min(1840px, calc(100vw - 56px));
+	margin: 0 auto;
+}
+
+.museum-hero {
+	position: relative;
+	display: grid;
+	min-height: 300px;
+	grid-template-columns: minmax(420px, 0.92fr) minmax(520px, 0.78fr);
+	align-items: center;
+	gap: clamp(32px, 6vw, 120px);
+	overflow: hidden;
+	padding: clamp(42px, 5vw, 76px) clamp(64px, 9vw, 190px);
+	border: 1px solid rgba(190, 169, 119, 0.5);
+	border-radius: 10px 10px 0 0;
+	background:
+		linear-gradient(
+			90deg,
+			rgba(255, 252, 242, 0.88),
+			rgba(255, 252, 242, 0.18) 38%,
+			rgba(255, 252, 242, 0.6) 72%,
+			rgba(255, 252, 242, 0.18)
+		),
+		url('/images/totk-sky-hero.png') center 45% / cover no-repeat;
+	box-shadow:
+		inset 0 0 0 1px rgba(255, 255, 255, 0.42),
+		0 18px 46px rgba(104, 91, 55, 0.14);
+}
+
+.museum-hero::before {
+	content: '';
+	position: absolute;
+	top: 34px;
+	left: 34px;
+	width: 180px;
+	height: 180px;
+	border: 1px solid rgba(48, 139, 122, 0.13);
+	border-radius: 999px;
+	box-shadow:
+		inset 0 0 0 22px rgba(48, 139, 122, 0.035),
+		inset 0 0 0 50px rgba(177, 146, 83, 0.035);
+	pointer-events: none;
+}
+
+.museum-hero-copy,
+.museum-progress-card {
+	position: relative;
+	z-index: 1;
+}
+
+.museum-eyebrow {
+	margin: 0;
+	color: #2b8174;
+	font-size: clamp(28px, 2.55vw, 46px);
+	font-variant: small-caps;
+	font-weight: 900;
+	letter-spacing: 0.02em;
+	text-shadow: 0 2px 0 rgba(255, 255, 255, 0.58);
+}
+
+.museum-hero-rule {
+	position: relative;
+	width: min(420px, 100%);
+	height: 22px;
+	margin-top: 14px;
+}
+
+.museum-hero-rule::before,
+.museum-hero-rule::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	height: 1px;
+	background: linear-gradient(90deg, rgba(43, 129, 116, 0.72), rgba(177, 146, 83, 0.34));
+	transform: translateY(-50%);
+}
+
+.museum-hero-rule::before {
+	left: 0;
+	width: 44%;
+}
+
+.museum-hero-rule::after {
+	right: 0;
+	width: 44%;
+}
+
+.museum-hero-rule {
+	background:
+		radial-gradient(circle at 50% 50%, rgba(43, 129, 116, 0.88) 0 3px, transparent 4px),
+		linear-gradient(45deg, transparent 45%, rgba(177, 146, 83, 0.8) 45% 55%, transparent 55%)
+			center / 18px 18px no-repeat;
+}
+
+.museum-hero-text {
+	max-width: 560px;
+	margin: 18px 0 0;
+	color: #586a65;
+	font-size: clamp(17px, 1.15vw, 21px);
+	font-weight: 650;
+	line-height: 2;
+}
+
+.museum-progress-card {
+	justify-self: end;
+	width: min(560px, 100%);
+	padding: 32px 58px 30px;
+	border: 1px solid rgba(190, 169, 119, 0.56);
+	border-radius: 42px;
+	background:
+		linear-gradient(180deg, rgba(255, 253, 247, 0.92), rgba(249, 244, 233, 0.9)),
+		repeating-linear-gradient(135deg, rgba(177, 146, 83, 0.055) 0 1px, transparent 1px 9px),
+		radial-gradient(circle at 16% 50%, rgba(43, 129, 116, 0.08), transparent 24%);
+	box-shadow:
+		inset 0 0 0 1px rgba(255, 255, 255, 0.78),
+		inset 0 0 0 10px rgba(255, 255, 255, 0.18),
+		0 14px 32px rgba(85, 73, 43, 0.18);
+	text-align: center;
+}
+
+.museum-progress-card::before,
+.museum-progress-card::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	width: 72px;
+	height: 72px;
+	border: 1px solid rgba(190, 169, 119, 0.5);
+	border-radius: 999px;
+	background:
+		radial-gradient(circle, rgba(43, 129, 116, 0.25) 0 5px, transparent 6px),
+		radial-gradient(circle, rgba(255, 252, 244, 0.96) 0 16px, transparent 17px),
+		repeating-radial-gradient(circle, rgba(177, 146, 83, 0.45) 0 1px, transparent 1px 8px),
+		rgba(255, 252, 244, 0.86);
+	box-shadow:
+		0 0 0 6px rgba(255, 252, 244, 0.58),
+		inset 0 0 0 9px rgba(43, 129, 116, 0.045);
+	transform: translateY(-50%);
+}
+
+.museum-progress-card::before {
+	left: -42px;
+}
+
+.museum-progress-card::after {
+	right: -42px;
+}
+
+.museum-progress-card span {
+	display: block;
+	color: #6e5e40;
+	font-weight: 800;
+}
+
+.museum-progress-card strong {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	gap: 12px;
+	margin-top: 10px;
+	font-size: clamp(28px, 3vw, 48px);
+	font-weight: 900;
+	line-height: 1;
+}
+
+.museum-progress-card b {
+	color: #2b8174;
+	font-style: normal;
+}
+
+.museum-progress-card i {
+	color: #a7864a;
+	font-size: 1.35em;
+	font-style: normal;
+	font-weight: 900;
+}
+
+.museum-progress-card small {
+	color: #5d5140;
+	font-size: 0.62em;
+	font-weight: 700;
+}
+
+.museum-progress-card em {
+	display: block;
+	margin-top: 12px;
+	color: #5d5140;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+}
+
+.museum-progress-track {
+	position: relative;
+	height: 14px;
+	margin-top: 24px;
+	border: 1px solid rgba(150, 126, 78, 0.42);
+	border-radius: 999px;
+	background: rgba(236, 229, 212, 0.92);
+	box-shadow:
+		inset 0 1px 3px rgba(98, 83, 50, 0.16),
+		0 1px 0 rgba(255, 255, 255, 0.8);
+	overflow: visible;
+}
+
+.museum-progress-track::after {
+	content: '△';
+	position: absolute;
+	top: 50%;
+	left: var(--progress);
+	z-index: 2;
+	display: grid;
+	width: 30px;
+	height: 30px;
+	place-items: center;
+	border-radius: 999px;
+	color: #a7864a;
+	font-size: 24px;
+	font-weight: 900;
+	line-height: 1;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+	transform: translate(-50%, -50%);
+}
+
+.museum-progress-fill {
+	height: 100%;
+	border-radius: inherit;
+	background: linear-gradient(90deg, #32917e, #68b384);
+	box-shadow: 0 0 16px rgba(43, 129, 116, 0.38);
+}
+
+.museum-panel {
+	position: relative;
+	margin-bottom: 0;
+	padding: 0 clamp(22px, 3.8vw, 76px) 52px;
+	border: 1px solid rgba(190, 169, 119, 0.52);
+	border-top: 0;
+	border-radius: 0 0 26px 26px;
+	background:
+		linear-gradient(180deg, rgba(255, 253, 247, 0.9), rgba(250, 245, 234, 0.94)),
+		radial-gradient(circle at 5% 94%, rgba(43, 129, 116, 0.08), transparent 20%);
+	box-shadow:
+		inset 0 0 0 1px rgba(255, 255, 255, 0.52),
+		0 18px 50px rgba(107, 93, 57, 0.13);
+}
+
+.museum-panel::before {
+	content: '';
+	position: absolute;
+	inset: 66px 26px 30px;
+	border: 1px solid rgba(190, 169, 119, 0.42);
+	border-radius: 8px;
+	pointer-events: none;
+}
+
+.museum-stats {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	border-bottom: 1px solid rgba(190, 169, 119, 0.34);
+}
+
+.museum-stats div {
+	display: flex;
+	min-height: 76px;
+	align-items: center;
+	justify-content: center;
+	gap: 18px;
+	color: #74694f;
+}
+
+.museum-stats img {
+	width: 34px;
+	height: 34px;
+	object-fit: contain;
+	filter: drop-shadow(0 3px 5px rgba(91, 75, 41, 0.16));
+}
+
+.museum-stats div + div {
+	border-left: 1px solid rgba(190, 169, 119, 0.32);
+}
+
+.museum-stats span {
+	font-size: 16px;
+	font-weight: 800;
+}
+
+.museum-stats strong {
+	color: #2b8174;
+	font-size: 22px;
+	font-weight: 900;
+}
+
+.museum-toolbar {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(560px, 0.78fr);
+	align-items: start;
+	gap: 22px;
+	padding: 26px 34px 24px;
+}
+
+.museum-filter-row,
+.museum-controls {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	flex-wrap: wrap;
+	min-width: 0;
+}
+
+.museum-filter-row button,
+.museum-view-switch button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 40px;
+	border: 1px solid rgba(190, 169, 119, 0.34);
+	border-radius: 999px;
+	background: rgba(255, 252, 244, 0.74);
+	color: #5c625d;
+	font-weight: 850;
+	cursor: pointer;
+	transition:
+		background 0.18s ease,
+		color 0.18s ease,
+		transform 0.18s ease,
+		box-shadow 0.18s ease;
+}
+
+.museum-filter-row button {
+	gap: 9px;
+	padding: 0 20px;
+	white-space: nowrap;
+}
+
+.museum-filter-row small {
+	display: inline-flex;
+	min-width: 26px;
+	justify-content: center;
+	border-radius: 999px;
+	background: rgba(43, 129, 116, 0.12);
+	color: inherit;
+	padding: 1px 8px;
+	font-size: 13px;
+}
+
+.museum-filter-row button:hover,
+.museum-filter-row .active,
+.museum-view-switch button:hover,
+.museum-view-switch .active {
+	background: linear-gradient(180deg, #43a68c, #2e8a76);
+	color: #fff;
+	box-shadow: 0 8px 18px rgba(43, 129, 116, 0.22);
+	transform: translateY(-1px);
+}
+
+.museum-controls {
+	display: grid;
+	grid-template-columns: minmax(280px, 1fr) 180px auto;
+	justify-content: end;
+	align-items: center;
+	flex-wrap: initial;
+}
+
+.museum-controls label {
+	display: grid;
+	color: #897858;
+	font-size: 12px;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+.museum-controls label > span {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}
+
+.museum-controls select,
+.museum-controls input {
+	width: 100%;
+	height: 48px;
+	min-width: 160px;
+	border: 1px solid rgba(190, 169, 119, 0.34);
+	border-radius: 999px;
+	background: rgba(255, 252, 244, 0.74);
+	color: #4d5651;
+	padding: 0 18px;
+	outline: 0;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.museum-search {
+	min-width: 0;
+}
+
+.museum-controls select:focus,
+.museum-controls input:focus {
+	border-color: rgba(43, 129, 116, 0.58);
+	box-shadow:
+		0 0 0 3px rgba(43, 129, 116, 0.12),
+		inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.museum-view-switch {
+	display: inline-flex;
+	gap: 8px;
+	align-self: center;
+}
+
+.museum-view-switch button {
+	width: 56px;
+	height: 48px;
+	border-radius: 10px;
+	font-size: 18px;
+}
+
+.museum-card-grid,
+.museum-card-list {
+	position: relative;
+	z-index: 1;
+	padding: 0 34px 34px;
+}
+
+.museum-card-grid {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(132px, 1fr));
+	gap: 22px;
+}
+
+.museum-card-list {
+	display: grid;
+	gap: 14px;
+}
+
+.museum-card {
+	position: relative;
+	min-width: 0;
+	border: 1px solid rgba(190, 169, 119, 0.4);
+	border-radius: 8px;
+	background:
+		linear-gradient(180deg, rgba(255, 253, 248, 0.96), rgba(248, 243, 232, 0.88)),
+		radial-gradient(circle at 50% 10%, rgba(43, 129, 116, 0.07), transparent 34%);
+	box-shadow:
+		inset 0 0 0 1px rgba(255, 255, 255, 0.56),
+		0 9px 22px rgba(92, 79, 45, 0.08);
+	transition:
+		border-color 0.18s ease,
+		box-shadow 0.18s ease,
+		transform 0.18s ease;
+}
+
+.museum-card::before,
+.museum-card::after {
+	content: '';
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	border-color: rgba(190, 169, 119, 0.42);
+	pointer-events: none;
+}
+
+.museum-card::before {
+	top: 8px;
+	left: 8px;
+	border-top: 1px solid;
+	border-left: 1px solid;
+}
+
+.museum-card::after {
+	right: 8px;
+	bottom: 8px;
+	border-right: 1px solid;
+	border-bottom: 1px solid;
+}
+
+.museum-card:hover {
+	border-color: rgba(43, 129, 116, 0.5);
+	box-shadow:
+		inset 0 0 0 1px rgba(255, 255, 255, 0.62),
+		0 16px 32px rgba(64, 92, 82, 0.14);
+	transform: translateY(-3px);
+}
+
+.museum-card a {
+	display: grid;
+	min-height: 244px;
+	color: inherit;
+	text-align: center;
+	text-decoration: none;
+}
+
+.museum-card-mark {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	z-index: 1;
+	display: inline-flex;
+	width: 26px;
+	height: 26px;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid rgba(190, 169, 119, 0.44);
+	border-radius: 999px;
+	background: rgba(255, 253, 248, 0.88);
+	color: #b59a61;
+	font-weight: 900;
+}
+
+.museum-card.collected .museum-card-mark {
+	border-color: transparent;
+	background: #348a72;
+	color: #fff;
+}
+
+.museum-card-image {
+	display: flex;
+	height: 154px;
+	align-items: end;
+	justify-content: center;
+	padding: 26px 18px 8px;
+}
+
+.museum-card-image img {
+	max-width: 100%;
+	max-height: 138px;
+	object-fit: contain;
+	filter: grayscale(1) saturate(0.26) opacity(0.34) drop-shadow(0 12px 14px rgba(80, 73, 54, 0.14));
+	transition:
+		filter 0.18s ease,
+		transform 0.18s ease;
+}
+
+.museum-card.collected .museum-card-image img {
+	filter: drop-shadow(0 16px 16px rgba(69, 57, 28, 0.18));
+}
+
+.museum-card:hover .museum-card-image img {
+	transform: translateY(-4px) scale(1.03);
+}
+
+.museum-card-body {
+	display: grid;
+	align-content: start;
+	gap: 6px;
+	padding: 4px 18px 22px;
+}
+
+.museum-card h2 {
+	margin: 0;
+	color: #203d38;
+	font-size: 18px;
+	font-weight: 900;
+	line-height: 1.25;
+}
+
+.museum-card p {
+	margin: 0;
+	color: #7c735f;
+	font-size: 13px;
+	font-weight: 750;
+	line-height: 1.45;
+}
+
+.museum-card span,
+.museum-card em {
+	color: #95886b;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 700;
+}
+
+.museum-card.collected h2 {
+	color: #195f52;
+}
+
+.museum-card-list .museum-card a {
+	grid-template-columns: 132px 1fr;
+	min-height: 130px;
+	text-align: left;
+}
+
+.museum-card-list .museum-card-image {
+	height: 130px;
+	padding: 16px 18px;
+	align-items: center;
+}
+
+.museum-card-list .museum-card-image img {
+	max-height: 104px;
+}
+
+.museum-card-list .museum-card-body {
+	align-content: center;
+	padding: 18px 58px 18px 0;
+}
+
+.museum-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: min(1840px, calc(100vw - 56px));
+	min-height: 88px;
+	margin: 0 auto;
+	color: #746d5d;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.museum-footer a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.museum-footer div {
+	color: rgba(171, 143, 82, 0.42);
+	font-size: 42px;
+	line-height: 1;
+}
+
+@media (max-width: 1280px) {
+	.museum-card-grid {
+		grid-template-columns: repeat(4, minmax(132px, 1fr));
+	}
+
+	.museum-toolbar {
+		grid-template-columns: 1fr;
+	}
+
+	.museum-controls {
+		grid-template-columns: minmax(260px, 1fr) 180px auto;
+		justify-content: stretch;
+	}
+}
+
+@media (max-width: 900px) {
+	.museum-header,
+	.museum-main,
+	.museum-footer {
+		width: min(100vw - 28px, 760px);
+	}
+
+	.museum-header {
+		align-items: flex-start;
+		flex-direction: column;
+		padding-top: 18px;
+	}
+
+	.museum-brand {
+		min-width: 0;
+	}
+
+	.museum-brand img {
+		width: 64px;
+		height: 64px;
+	}
+
+	.museum-brand strong {
+		font-size: 27px;
+	}
+
+	.museum-brand small {
+		font-size: 13px;
+	}
+
+	.museum-nav {
+		width: 100%;
+		justify-content: flex-start;
+		gap: 8px;
+	}
+
+	.museum-nav button {
+		min-height: 44px;
+		padding: 0 14px;
+	}
+
+	.museum-hero {
+		grid-template-columns: 1fr;
+		min-height: 390px;
+		padding: 28px 22px;
+	}
+
+	.museum-progress-card {
+		justify-self: start;
+		padding: 24px;
+	}
+
+	.museum-stats {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.museum-stats div:nth-child(odd) {
+		border-left: 0;
+	}
+
+	.museum-toolbar,
+	.museum-card-grid,
+	.museum-card-list {
+		padding-right: 16px;
+		padding-left: 16px;
+	}
+
+	.museum-filter-row {
+		display: grid;
+		width: 100%;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 12px;
+	}
+
+	.museum-filter-row button {
+		width: 100%;
+		padding: 0 12px;
+		font-size: 15px;
+	}
+
+	.museum-controls label,
+	.museum-controls input,
+	.museum-controls select {
+		width: 100%;
+	}
+
+	.museum-controls {
+		width: 100%;
+		grid-template-columns: 1fr 1fr auto;
+	}
+
+	.museum-search {
+		grid-column: 1 / -1;
+	}
+
+	.museum-card-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 14px;
+	}
+
+	.museum-card a {
+		min-height: 222px;
+	}
+
+	.museum-card-image {
+		height: 138px;
+		padding: 24px 12px 6px;
+	}
+
+	.museum-card-image img {
+		max-height: 116px;
+	}
+}
+
+@media (max-width: 560px) {
+	.museum-page::before {
+		background:
+			linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 252, 243, 0.86)),
+			url('/images/totk-sky-hero.png') top center / auto 430px no-repeat;
+	}
+
+	.museum-card-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.museum-card-list .museum-card a {
+		grid-template-columns: 104px 1fr;
+	}
+
+	.museum-card-list .museum-card-image {
+		height: 118px;
+		padding: 14px;
+	}
+
+	.museum-card-list .museum-card-body {
+		padding-right: 40px;
+	}
 }
