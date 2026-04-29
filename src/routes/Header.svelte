@@ -1,60 +1,45 @@
 <script lang="ts">
-	import { Navbar, NavBrand, NavHamburger, NavLi, NavUl } from 'flowbite-svelte';
 	import { onDestroy } from 'svelte';
 	import { collectedInfo } from '../store';
 	import { downloadBackup } from '$lib/utils/commonUtil';
 
 	interface Props {
 		title?: string;
-		menus?: MenuSetting;
 	}
 
-	let { title, menus }: Props = $props();
+	let { title }: Props = $props();
 	let myCollectedInfo: CollectedInfo;
 	const unsubscribe = collectedInfo.subscribe((value: CollectedInfo) => {
 		myCollectedInfo = value;
 	});
 
 	onDestroy(unsubscribe);
-
 </script>
 
 <svelte:head>
-	<title> {title ? `${title}` : "塞尔达 Amiibo"} </title>
+	<title>{title ? `${title}` : '塞尔达 Amiibo 收藏馆'}</title>
 </svelte:head>
 
-<Navbar>
-	<NavBrand href="/">
-		<img src="/images/logo_200.png" class="me-3 h-6 sm:h-9" alt="Flowbite Logo" />
-		<span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-			{ title ? `${title}` : "塞尔达 Amiibo" }
+<header class="museum-header">
+	<a class="museum-brand" href="/">
+		<img src="/images/totk-crest.png" alt="塞尔达 Amiibo 收藏馆" />
+		<span>
+			<strong>塞尔达 Amiibo 收藏馆</strong>
+			<small>探索海拉鲁，收集每一份冒险的记忆</small>
 		</span>
-	</NavBrand>
-	<NavHamburger />
-	<NavUl>
-		{#if menus?.progress}
-			<NavLi href="/">
-				概览
-			</NavLi>
-		{/if}
-		{#if menus?.collecting}
-			<NavLi href="/collecting">
-				收集
-			</NavLi>
-		{/if}
-		<!--{#if menus?.gallery}-->
-		<!--	<NavLi href="/gallery">-->
-		<!--		展示-->
-		<!--	</NavLi>-->
-		<!--{/if}-->
-		{#if menus?.backup}
-			<NavLi class="cursor-pointer" onclick={() => {
+	</a>
+
+	<nav class="museum-nav" aria-label="主导航">
+		<button
+			type="button"
+			onclick={() => {
 				if (myCollectedInfo) {
-					downloadBackup(myCollectedInfo)
+					downloadBackup(myCollectedInfo);
 				}
-			}}>
-				备份
-			</NavLi>
-		{/if}
-	</NavUl>
-</Navbar>
+			}}
+		>
+			<span>▥</span>
+			备份
+		</button>
+	</nav>
+</header>

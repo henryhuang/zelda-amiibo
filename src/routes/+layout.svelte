@@ -10,26 +10,29 @@
 
 	const { amiibos, series, imgEndpoint } = data;
 	const totalSize = amiibos.length;
-	const collected = amiibos.filter(a => Boolean(a.collectedInfo));
+	const collected = amiibos.filter((a) => Boolean(a.collectedInfo));
 	const collectedSize = collected.length;
-	const priceTotal = fixTwoDecimals(collected.reduce((sum, a) => sum + (a.collectedInfo?.price || 0), 0));
-	const progress = fixTwoDecimals(collectedSize / totalSize * 100);
+	const priceTotal = fixTwoDecimals(
+		collected.reduce((sum, a) => sum + (a.collectedInfo?.price || 0), 0)
+	);
+	const progress = fixTwoDecimals((collectedSize / totalSize) * 100);
 
 	const collectedInfo = {
 		progressRate: progress,
 		collectedNum: collectedSize,
 		totalNum: totalSize,
-		cost: priceTotal,
-	}
+		cost: priceTotal
+	};
 
 	initStore(collectedInfo, amiibos, series, imgEndpoint);
 
+	const routeClass = $derived(`museum-page route-${page.url.pathname === '/' ? 'home' : 'inner'}`);
 </script>
 
-<div class="flex flex-col h-screen justify-between">
-	<Header title={page.data?.title} menus={page.data?.menus} />
+<div class={routeClass}>
+	<Header title={page.data?.title} />
 
-	<main class="container mx-auto px-4">
+	<main class="museum-main">
 		{@render children()}
 	</main>
 

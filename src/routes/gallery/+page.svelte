@@ -1,5 +1,5 @@
 <script lang="ts">
-	import GalleryShow from '../components/GalleryShow.svelte';
+	import AmiiboMuseum from '../components/AmiiboMuseum.svelte';
 </script>
 
-<GalleryShow />
+<AmiiboMuseum initialView="grid" />
