@@ -224,7 +224,7 @@
 	overflow: hidden;
 	padding: 68px clamp(64px, 9vw, 190px) 72px;
 	border: 1px solid rgba(184, 154, 94, 0.38);
-	border-radius: 10px 10px 0 0;
+	border-radius: 10px;
 	background:
 		linear-gradient(
 			90deg,
@@ -599,11 +599,11 @@
 
 .museum-panel {
 	position: relative;
+	margin-top: 18px;
 	margin-bottom: 0;
-	padding: 0 clamp(22px, 3.8vw, 76px) 60px;
+	padding: 24px clamp(22px, 3.8vw, 76px) 60px;
 	border: 1px solid rgba(184, 154, 94, 0.36);
-	border-top: 0;
-	border-radius: 0 0 26px 26px;
+	border-radius: 26px;
 	background:
 		linear-gradient(180deg, rgba(255, 253, 247, 0.88), rgba(250, 246, 236, 0.96)),
 		radial-gradient(circle at 5% 94%, rgba(47, 159, 120, 0.07), transparent 20%);
@@ -615,7 +615,7 @@
 .museum-panel::before {
 	content: '';
 	position: absolute;
-	inset: 78px 26px 34px;
+	inset: 24px 26px 34px;
 	border: 1px solid rgba(184, 154, 94, 0.28);
 	border-radius: 8px;
 	pointer-events: none;
@@ -739,6 +739,7 @@
 
 .museum-controls label {
 	display: grid;
+	min-width: 0;
 	color: #897858;
 	font-size: 12px;
 	font-weight: 900;
@@ -1081,7 +1082,7 @@
 
 	.museum-nav {
 		width: 100%;
-		justify-content: flex-start;
+		justify-content: flex-end;
 		gap: 8px;
 	}
 
@@ -1158,15 +1159,30 @@
 	.museum-controls input,
 	.museum-controls select {
 		width: 100%;
+		min-width: 0;
 	}
 
 	.museum-controls {
 		width: 100%;
-		grid-template-columns: 1fr 1fr auto;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 	}
 
 	.museum-search {
 		grid-column: 1 / -1;
+	}
+
+	.museum-view-switch {
+		display: grid;
+		width: 100%;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 12px;
+	}
+
+	.museum-view-switch button {
+		min-width: 0;
+		width: 100%;
+		height: 58px;
+		border-radius: 16px;
 	}
 
 	.museum-card-grid {
@@ -1195,12 +1211,35 @@
 			url('/images/totk-sky-hero.png') top center / auto 430px no-repeat;
 	}
 
+	.museum-panel::before {
+		display: none;
+	}
+
 	.museum-stats {
-		margin: 0;
+		margin: 18px 4px 24px;
+		overflow: hidden;
+		border: 1px solid rgba(184, 154, 94, 0.28);
+		border-radius: 18px;
+		background:
+			linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 251, 242, 0.22)),
+			rgba(255, 255, 255, 0.18);
 	}
 
 	.museum-stats div {
-		gap: 8px;
+		flex-direction: column;
+		min-height: 150px;
+		gap: 10px;
+		min-width: 0;
+		padding: 18px 6px;
+		text-align: center;
+	}
+
+	.museum-stats div:nth-child(odd) {
+		border-left: 0;
+	}
+
+	.museum-stats div:nth-child(n + 3) {
+		border-top: 0;
 	}
 
 	.museum-stats img {
@@ -1214,7 +1253,10 @@
 	}
 
 	.museum-stats strong {
-		font-size: 24px;
+		max-width: 100%;
+		font-size: 22px;
+		line-height: 1;
+		white-space: nowrap;
 	}
 
 	.museum-card-grid {
