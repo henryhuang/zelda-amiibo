@@ -306,12 +306,12 @@
 	width: min(700px, 100%);
 	margin-top: 32px;
 	padding: 22px 18px 20px;
-	border: 1px dashed rgba(49, 113, 201, 0.42);
+	border: 1px dashed rgba(184, 154, 94, 0.44);
 	background:
-		linear-gradient(rgba(49, 113, 201, 0.18) 1px, transparent 1px) 0 0 / 76px 52px,
-		linear-gradient(90deg, rgba(49, 113, 201, 0.16) 1px, transparent 1px) 0 0 / 76px 52px,
-		linear-gradient(180deg, transparent 23%, rgba(49, 113, 201, 0.42) 23% calc(23% + 1px), transparent calc(23% + 1px)),
-		linear-gradient(180deg, transparent 70%, rgba(49, 113, 201, 0.4) 70% calc(70% + 1px), transparent calc(70% + 1px)),
+		linear-gradient(rgba(184, 154, 94, 0.18) 1px, transparent 1px) 0 0 / 76px 52px,
+		linear-gradient(90deg, rgba(184, 154, 94, 0.15) 1px, transparent 1px) 0 0 / 76px 52px,
+		linear-gradient(180deg, transparent 23%, rgba(184, 154, 94, 0.44) 23% calc(23% + 1px), transparent calc(23% + 1px)),
+		linear-gradient(180deg, transparent 70%, rgba(184, 154, 94, 0.4) 70% calc(70% + 1px), transparent calc(70% + 1px)),
 		rgba(255, 255, 255, 0.12);
 	box-shadow:
 		inset 0 0 0 1px rgba(255, 255, 255, 0.22),
@@ -328,19 +328,19 @@
 .museum-wordmark-grid::before {
 	inset: -16px 28px auto 28px;
 	height: 16px;
-	border-top: 1px solid rgba(49, 113, 201, 0.76);
+	border-top: 1px solid rgba(184, 154, 94, 0.76);
 	background:
-		linear-gradient(135deg, transparent 48%, rgba(49, 113, 201, 0.76) 50%, transparent 52%) left top / 12px 12px no-repeat,
-		linear-gradient(45deg, transparent 48%, rgba(49, 113, 201, 0.76) 50%, transparent 52%) right top / 12px 12px no-repeat;
+		linear-gradient(135deg, transparent 48%, rgba(184, 154, 94, 0.76) 50%, transparent 52%) left top / 12px 12px no-repeat,
+		linear-gradient(45deg, transparent 48%, rgba(184, 154, 94, 0.76) 50%, transparent 52%) right top / 12px 12px no-repeat;
 }
 
 .museum-wordmark-grid::after {
 	inset: 12px auto 12px -14px;
 	width: 14px;
-	border-left: 1px solid rgba(49, 113, 201, 0.64);
+	border-left: 1px solid rgba(184, 154, 94, 0.64);
 	background:
-		linear-gradient(45deg, transparent 48%, rgba(49, 113, 201, 0.64) 50%, transparent 52%) left top / 11px 11px no-repeat,
-		linear-gradient(135deg, transparent 48%, rgba(49, 113, 201, 0.64) 50%, transparent 52%) left bottom / 11px 11px no-repeat;
+		linear-gradient(45deg, transparent 48%, rgba(184, 154, 94, 0.64) 50%, transparent 52%) left top / 11px 11px no-repeat,
+		linear-gradient(135deg, transparent 48%, rgba(184, 154, 94, 0.64) 50%, transparent 52%) left bottom / 11px 11px no-repeat;
 }
 
 .museum-wordmark-grid h1 {
@@ -363,11 +363,13 @@
 .wordmark-label {
 	position: absolute;
 	z-index: 1;
-	color: rgba(49, 82, 170, 0.82);
-	font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-	font-size: 13px;
-	font-weight: 700;
-	letter-spacing: 0.04em;
+	color: rgba(151, 116, 50, 0.88);
+	font-family: 'Bradley Hand', 'Comic Sans MS', 'Kaiti SC', 'STKaiti', 'Times New Roman', cursive;
+	font-size: 14px;
+	font-style: italic;
+	font-weight: 800;
+	letter-spacing: 0.03em;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
 	pointer-events: none;
 }
 
@@ -375,7 +377,7 @@
 	top: -30px;
 	left: 50%;
 	padding: 0 8px;
-	background: rgba(255, 253, 247, 0.72);
+	background: rgba(255, 253, 247, 0.78);
 	transform: translateX(-50%);
 }
 
@@ -398,7 +400,7 @@
 .wordmark-circle {
 	position: absolute;
 	z-index: 0;
-	border: 1px dashed rgba(49, 113, 201, 0.5);
+	border: 1px dashed rgba(184, 154, 94, 0.48);
 	border-radius: 999px;
 	pointer-events: none;
 }
@@ -409,7 +411,7 @@
 	inset: 50% auto auto 50%;
 	width: 220%;
 	height: 1px;
-	background: rgba(49, 113, 201, 0.35);
+	background: rgba(184, 154, 94, 0.34);
 	transform: translate(-50%, -50%) rotate(42deg);
 	transform-origin: center;
 }
@@ -1098,10 +1100,10 @@
 		padding: 14px 0 12px;
 		border-inline: 0;
 		background:
-			linear-gradient(rgba(49, 113, 201, 0.14) 1px, transparent 1px) 0 0 / 54px 42px,
-			linear-gradient(90deg, rgba(49, 113, 201, 0.12) 1px, transparent 1px) 0 0 / 54px 42px,
-			linear-gradient(180deg, transparent 23%, rgba(49, 113, 201, 0.3) 23% calc(23% + 1px), transparent calc(23% + 1px)),
-			linear-gradient(180deg, transparent 72%, rgba(49, 113, 201, 0.28) 72% calc(72% + 1px), transparent calc(72% + 1px));
+			linear-gradient(rgba(184, 154, 94, 0.14) 1px, transparent 1px) 0 0 / 54px 42px,
+			linear-gradient(90deg, rgba(184, 154, 94, 0.12) 1px, transparent 1px) 0 0 / 54px 42px,
+			linear-gradient(180deg, transparent 23%, rgba(184, 154, 94, 0.3) 23% calc(23% + 1px), transparent calc(23% + 1px)),
+			linear-gradient(180deg, transparent 72%, rgba(184, 154, 94, 0.28) 72% calc(72% + 1px), transparent calc(72% + 1px));
 	}
 
 	.wordmark-measure.side,
