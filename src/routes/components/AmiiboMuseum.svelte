@@ -21,9 +21,12 @@
 	const totalCount = $derived($collectedInfo.totalNum);
 	const missingCount = $derived(Math.max(totalCount - collectedCount, 0));
 	const seriesCount = $derived($series.length);
-	const earliestYear = $derived.by(() => {
-		const years = $amiibos.map((amiibo) => Number(amiibo.releaseDate.slice(0, 4))).filter(Boolean);
-		return years.length ? Math.min(...years) : '';
+	const latestCollectedDate = $derived.by(() => {
+		const dates = $amiibos
+			.map((amiibo) => amiibo.collectedInfo?.collectDate)
+			.filter((date): date is string => Boolean(date))
+			.sort((a, b) => Date.parse(b.replaceAll('.', '-')) - Date.parse(a.replaceAll('.', '-')));
+		return dates[0] ?? '';
 	});
 
 	const isChampion = (amiibo: Amiibo) =>
@@ -162,8 +165,8 @@
 		</div>
 		<div>
 			<img src="/images/stat-earliest.png" alt="" aria-hidden="true" />
-			<span>最早发布</span>
-			<strong>{earliestYear}</strong>
+			<span>最后收集</span>
+			<strong>{latestCollectedDate}</strong>
 		</div>
 	</div>
 

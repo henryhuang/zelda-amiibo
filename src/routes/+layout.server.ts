@@ -1,12 +1,12 @@
-import { loadAmiibos } from '$lib/data/loader';
+import { loadRemoteFirstAmiibos } from '$lib/data/loader';
 import { CONFIG } from '$lib/config';
 
 export const prerender = true;
 
 const { AMIIBO_IMG_ENDPOINT } = CONFIG;
 
-export const load = () => {
-	const amiibos = loadAmiibos();
+export const load = async ({ fetch }) => {
+	const amiibos = await loadRemoteFirstAmiibos(fetch);
 	const seriesInfoMap: {[name: string]: SeriesCollectingInfo} = {};
 	amiibos.forEach((amiibo) => {
 		const series = amiibo.series;
