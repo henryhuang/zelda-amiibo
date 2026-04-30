@@ -8,12 +8,23 @@
 		initialView?: 'grid' | 'list';
 	}
 
+	interface ProgressBackdropItem {
+		amiibo: Amiibo;
+		size: string;
+		offsetX: string;
+		offsetY: string;
+		rotation: string;
+		scale: number;
+		opacity: number;
+	}
+
 	let { initialStatus = 'all', initialView = 'grid' }: Props = $props();
 
 	let activeFilter = $state<string>(initialStatus);
 	let query = $state('');
 	let sortBy = $state('release-desc');
 	let viewMode = $state(initialView);
+	let progressBackdropItems = $state<ProgressBackdropItem[]>([]);
 
 	const { AMIIBO_IMG_ENDPOINT } = CONFIG;
 
@@ -21,6 +32,9 @@
 	const totalCount = $derived($collectedInfo.totalNum);
 	const missingCount = $derived(Math.max(totalCount - collectedCount, 0));
 	const seriesCount = $derived($series.length);
+	const collectedAmiibos = $derived($amiibos.filter((amiibo) => amiibo.collectedInfo?.collected));
+	const backdropColumns = $derived(Math.max(1, Math.ceil(Math.sqrt(collectedAmiibos.length || 1))));
+	const backdropRows = $derived(Math.max(1, Math.ceil((collectedAmiibos.length || 1) / backdropColumns)));
 	const latestCollectedDate = $derived.by(() => {
 		const dates = $amiibos
 			.map((amiibo) => amiibo.collectedInfo?.collectDate)
@@ -115,6 +129,33 @@
 	});
 
 	const imgUrl = (amiibo: Amiibo) => `${AMIIBO_IMG_ENDPOINT}/${amiibo.images.toy}`;
+
+	const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min;
+
+	const shuffle = <T,>(items: T[]): T[] => {
+		const shuffled = [...items];
+		for (let index = shuffled.length - 1; index > 0; index -= 1) {
+			const swapIndex = Math.floor(Math.random() * (index + 1));
+			[shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+		}
+		return shuffled;
+	};
+
+	const randomizeProgressBackdrop = (items: Amiibo[]) => {
+		progressBackdropItems = shuffle(items).map((amiibo) => ({
+			amiibo,
+			size: `${randomBetween(118, 172).toFixed(1)}px`,
+			offsetX: `${randomBetween(-18, 18).toFixed(1)}%`,
+			offsetY: `${randomBetween(-16, 16).toFixed(1)}%`,
+			rotation: `${randomBetween(-10, 10).toFixed(1)}deg`,
+			scale: Number(randomBetween(0.96, 1.24).toFixed(2)),
+			opacity: Number(randomBetween(0.7, 1).toFixed(2))
+		}));
+	};
+
+	$effect(() => {
+		randomizeProgressBackdrop(collectedAmiibos);
+	});
 </script>
 
 <section class="museum-hero">
@@ -137,6 +178,19 @@
 	</div>
 
 	<div class="museum-progress-card" aria-label="收藏进度">
+		<div
+			class="museum-progress-backdrop"
+			style={`--backdrop-columns: ${backdropColumns}; --backdrop-rows: ${backdropRows}`}
+			aria-hidden="true"
+		>
+			{#each progressBackdropItems as item (item.amiibo.id)}
+				<img
+					src={imgUrl(item.amiibo)}
+					alt=""
+					style={`--backdrop-size: ${item.size}; --backdrop-x: ${item.offsetX}; --backdrop-y: ${item.offsetY}; --backdrop-rotation: ${item.rotation}; --backdrop-scale: ${item.scale}; --backdrop-opacity: ${item.opacity}`}
+				/>
+			{/each}
+		</div>
 		<span>收藏进度</span>
 		<strong><b>已收集</b> <i>{collectedCount}</i> <small>/ {totalCount}</small></strong>
 		<div class="museum-progress-track" style={`--progress: ${$collectedInfo.progressRate}%`}>
