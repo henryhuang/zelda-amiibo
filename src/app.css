@@ -615,7 +615,7 @@
 .museum-panel::before {
 	content: '';
 	position: absolute;
-	inset: 78px 26px 34px;
+	inset: 24px 26px 34px;
 	border: 1px solid rgba(184, 154, 94, 0.28);
 	border-radius: 8px;
 	pointer-events: none;
