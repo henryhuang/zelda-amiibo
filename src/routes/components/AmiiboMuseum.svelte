@@ -117,6 +117,15 @@
 <section class="museum-hero">
 	<div class="museum-hero-copy">
 		<p class="museum-eyebrow">Zelda Amiibo Collection</p>
+		<div class="museum-wordmark-grid">
+			<span class="wordmark-measure top">10X</span>
+			<span class="wordmark-measure side">7X</span>
+			<span class="wordmark-label baseline">BASE</span>
+			<span class="wordmark-label capline">CAP</span>
+			<span class="wordmark-circle circle-a"></span>
+			<span class="wordmark-circle circle-b"></span>
+			<h1>ZELDA AMIIBO COLLECTION</h1>
+		</div>
 		<div class="museum-hero-rule" aria-hidden="true"></div>
 		<p class="museum-hero-text">
 			从林克的冒险伙伴，到传说中的英雄与魔物，<br />
@@ -193,7 +202,7 @@
 					title="网格"
 					onclick={() => (viewMode = 'grid')}
 				>
-					▦
+					<img src="/images/ui/view-grid.png" alt="" aria-hidden="true" />
 				</button>
 				<button
 					class:active={viewMode === 'list'}
