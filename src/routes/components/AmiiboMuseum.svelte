@@ -159,25 +159,9 @@
 </script>
 
 <section class="museum-hero">
-	<div class="museum-hero-copy">
-		<p class="museum-eyebrow">Zelda Amiibo Collection</p>
-		<div class="museum-wordmark-grid">
-			<span class="wordmark-measure top">10X</span>
-			<span class="wordmark-measure side">7X</span>
-			<span class="wordmark-label baseline">BASE</span>
-			<span class="wordmark-label capline">CAP</span>
-			<span class="wordmark-circle circle-a"></span>
-			<span class="wordmark-circle circle-b"></span>
-			<h1>ZELDA AMIIBO COLLECTION</h1>
-		</div>
-		<div class="museum-hero-rule" aria-hidden="true"></div>
-		<p class="museum-hero-text">
-			从林克的冒险伙伴，到传说中的英雄与魔物，<br />
-			收集所有塞尔达系列 Amiibo，点亮你的海拉鲁图鉴。
-		</p>
-	</div>
+	<div class="museum-hero-copy"></div>
 
-	<div class="museum-progress-card" aria-label="收藏进度">
+	<div class="museum-progress-card" aria-label="收藏进度" role="button" tabindex="0" onclick={() => document.getElementById('museum-panel')?.scrollIntoView({ behavior: 'smooth' })} onkeydown={(e) => { if (e.key === 'Enter') { document.getElementById('museum-panel')?.scrollIntoView({ behavior: 'smooth' }); } }}>
 		<div
 			class="museum-progress-backdrop"
 			style={`--backdrop-columns: ${backdropColumns}; --backdrop-rows: ${backdropRows}`}
@@ -200,7 +184,7 @@
 	</div>
 </section>
 
-<section class="museum-panel" aria-label="Amiibo 收藏馆">
+<section class="museum-panel" id="museum-panel" aria-label="Amiibo 收藏馆">
 	<div class="museum-stats">
 		<div>
 			<img src="/images/stat-collected.png" alt="" aria-hidden="true" />

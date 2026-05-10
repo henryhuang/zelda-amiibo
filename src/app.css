@@ -218,9 +218,7 @@
 	position: relative;
 	display: grid;
 	min-height: 360px;
-	grid-template-columns: minmax(420px, 0.92fr) minmax(520px, 0.78fr);
-	align-items: center;
-	gap: clamp(32px, 6vw, 120px);
+	place-items: center;
 	overflow: hidden;
 	padding: 68px clamp(64px, 9vw, 190px) 72px;
 	border: 1px solid rgba(184, 154, 94, 0.38);
@@ -475,7 +473,7 @@
 
 .museum-progress-card {
 	position: relative;
-	justify-self: end;
+	cursor: pointer;
 	width: min(560px, 100%);
 	padding: 34px 58px 32px;
 	border: 1px solid rgba(184, 154, 94, 0.42);
@@ -1170,7 +1168,6 @@
 	}
 
 	.museum-progress-card {
-		justify-self: start;
 		padding: 24px;
 	}
 
