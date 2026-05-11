@@ -23,10 +23,7 @@
 <header class="museum-header">
 	<a class="museum-brand" href="/">
 		<img src="/images/totk-crest.png" alt="塞尔达 Amiibo 收藏馆" />
-		<span>
-			<strong>塞尔达 Amiibo 收藏馆</strong>
-			<small>探索海拉鲁，收集每一份冒险的记忆</small>
-		</span>
+		<strong>塞尔达 Amiibo 收藏馆</strong>
 	</a>
 
 	<nav class="museum-nav" aria-label="主导航">
