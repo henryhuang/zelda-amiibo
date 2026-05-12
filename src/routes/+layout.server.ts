@@ -1,4 +1,4 @@
-import { loadRemoteFirstAmiibos } from '$lib/data/loader';
+import { loadAmiibosWithFallback } from '$lib/data/loader';
 import { CONFIG } from '$lib/config';
 
 export const prerender = true;
@@ -6,7 +6,7 @@ export const prerender = true;
 const { AMIIBO_IMG_ENDPOINT } = CONFIG;
 
 export const load = async ({ fetch }) => {
-	const amiibos = await loadRemoteFirstAmiibos(fetch);
+	const amiibos = await loadAmiibosWithFallback(fetch);
 	const seriesInfoMap: {[name: string]: SeriesCollectingInfo} = {};
 	amiibos.forEach((amiibo) => {
 		const series = amiibo.series;
