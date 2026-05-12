@@ -29,12 +29,22 @@ const isAmiiboList = (value: unknown): value is Amiibo[] => {
 };
 
 export const loadAmiibos = (): Amiibo[] => {
-	return sortAmiibos(zeldaAmiibos as Amiibo[]);
+	const parsed = zeldaAmiibos as unknown;
+	if (!isAmiiboList(parsed)) {
+		throw new Error('Bundled amiibo data has an invalid shape');
+	}
+	return sortAmiibos(parsed);
 };
 
-export const loadRemoteFirstAmiibos = async (
+export const loadAmiibosWithFallback = async (
 	fetcher: typeof fetch = fetch
 ): Promise<Amiibo[]> => {
+	try {
+		return loadAmiibos();
+	} catch {
+		console.warn('Falling back to remote amiibo data.');
+	}
+
 	const abortController = new AbortController();
 	const timeout = setTimeout(() => abortController.abort(), REMOTE_AMIIBO_TIMEOUT_MS);
 
@@ -52,9 +62,6 @@ export const loadRemoteFirstAmiibos = async (
 		}
 
 		return sortAmiibos(remoteAmiibos);
-	} catch (error) {
-		console.warn('Falling back to bundled amiibo data.', error);
-		return loadAmiibos();
 	} finally {
 		clearTimeout(timeout);
 	}

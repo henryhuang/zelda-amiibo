@@ -31,7 +31,11 @@
 	const collectedCount = $derived($collectedInfo.collectedNum);
 	const totalCount = $derived($collectedInfo.totalNum);
 	const missingCount = $derived(Math.max(totalCount - collectedCount, 0));
-	const seriesCount = $derived($series.length);
+	const todayStr = $derived.by(() => {
+		const d = new Date();
+		return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
+	});
+	const pendingCount = $derived($amiibos.filter(amiibo => amiibo.releaseDate > todayStr).length);
 	const collectedAmiibos = $derived($amiibos.filter((amiibo) => amiibo.collectedInfo?.collected));
 	const backdropColumns = $derived(Math.max(1, Math.ceil(Math.sqrt(collectedAmiibos.length || 1))));
 	const backdropRows = $derived(Math.max(1, Math.ceil((collectedAmiibos.length || 1) / backdropColumns)));
@@ -198,8 +202,8 @@
 		</div>
 		<div>
 			<img src="/images/stat-series.png" alt="" aria-hidden="true" />
-			<span>系列作品</span>
-			<strong>{seriesCount}</strong>
+			<span>待发布</span>
+			<strong>{pendingCount}</strong>
 		</div>
 		<div>
 			<img src="/images/stat-earliest.png" alt="" aria-hidden="true" />
