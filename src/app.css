@@ -746,21 +746,23 @@
 }
 
 .museum-filter-row button {
-	gap: 9px;
-	padding: 0 19px;
+	gap: 6px;
+	padding: 0 12px;
+	min-height: 32px;
+	font-size: 13px;
 	white-space: nowrap;
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
 }
 
 .museum-filter-row small {
 	display: inline-flex;
-	min-width: 26px;
+	min-width: 22px;
 	justify-content: center;
 	border-radius: 999px;
 	background: rgba(47, 159, 120, 0.1);
 	color: inherit;
-	padding: 1px 8px;
-	font-size: 13px;
+	padding: 1px 6px;
+	font-size: 11px;
 }
 
 .museum-filter-row button:hover,
@@ -855,7 +857,7 @@
 
 .museum-card-grid {
 	display: grid;
-	grid-template-columns: repeat(6, minmax(132px, 1fr));
+	grid-template-columns: repeat(5, minmax(132px, 1fr));
 	gap: 24px;
 }
 
@@ -867,6 +869,7 @@
 .museum-card {
 	position: relative;
 	min-width: 0;
+	cursor: pointer;
 	border: 1px solid rgba(184, 154, 94, 0.3);
 	border-radius: 10px;
 	background:
@@ -932,12 +935,78 @@
 		0 20px 38px rgba(47, 159, 120, 0.18);
 }
 
-.museum-card a {
+.museum-card {
+	perspective: 1000px;
+}
+
+.museum-card-inner {
+	position: relative;
+	transition: transform 0.5s ease;
+	transform-style: preserve-3d;
+}
+
+.museum-card.flipped .museum-card-inner {
+	transform: rotateY(180deg);
+}
+
+.museum-card-front,
+.museum-card-back {
+	backface-visibility: hidden;
+}
+
+.museum-card-front {
 	display: grid;
 	min-height: 282px;
 	color: inherit;
 	text-align: center;
 	text-decoration: none;
+}
+
+.museum-card-back {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	padding: 28px 20px 24px;
+	border-radius: inherit;
+	text-align: center;
+	transform: rotateY(180deg);
+	overflow: hidden;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(251, 246, 235, 0.95));
+}
+
+.museum-card-back p {
+	margin: 0;
+	color: #4d5a55;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 1.7;
+	overflow-y: auto;
+}
+
+.museum-detail-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 8px 18px;
+	border: 1px solid rgba(184, 154, 94, 0.38);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.82);
+	color: var(--totk-green-deep);
+	font-size: 13px;
+	font-weight: 800;
+	text-decoration: none;
+	transition: background 0.18s ease, transform 0.18s ease;
+	white-space: nowrap;
+}
+
+.museum-detail-link:hover {
+	background: linear-gradient(180deg, #43a68c, #2e8a76);
+	color: #fff;
+	transform: translateY(-1px);
 }
 
 .museum-card-mark {
@@ -1032,10 +1101,22 @@
 	color: var(--totk-green-deep);
 }
 
-.museum-card-list .museum-card a {
+.museum-card-list .museum-card-front {
 	grid-template-columns: 132px 1fr;
 	min-height: 130px;
 	text-align: left;
+}
+
+.museum-card-list .museum-card-inner {
+	min-height: 130px;
+}
+
+.museum-card-list .museum-card-back {
+	padding: 18px 22px;
+}
+
+.museum-card-list .museum-card-back p {
+	font-size: 12px;
 }
 
 .museum-card-list .museum-card-image {
@@ -1082,7 +1163,7 @@
 
 @media (max-width: 1280px) {
 	.museum-card-grid {
-		grid-template-columns: repeat(4, minmax(132px, 1fr));
+		grid-template-columns: repeat(3, minmax(132px, 1fr));
 	}
 
 	.museum-toolbar {

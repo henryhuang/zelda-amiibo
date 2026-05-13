@@ -2,7 +2,9 @@
 	{
 		"id": "bokoblin",
 		"name": "波克布林",
-		"series": "塞尔达传说：旷野之息",
+		"nameEn": "Bokoblin",
+		"series": "Breath of the Wild",
+		"description": "海拉鲁大陆上常见的怪物之一。它们成群活动，使用简易武器，是林克冒险中最常遇到的敌人。",
 		"releaseDate": "2017.03.07",
 		"images": {
 			"toy": "bokoblin-1.jpeg",
@@ -13,7 +15,9 @@
 	{
 		"id": "daruk",
 		"name": "达尔克尔",
-		"series": "塞尔达传说：旷野之息",
+		"nameEn": "Daruk",
+		"series": "Breath of the Wild",
+		"description": "鼓隆族英杰，豪爽而可靠，拥有强大的守护力量。他曾驾驶神兽瓦·鲁达尼亚对抗灾厄。",
 		"releaseDate": "2017.11.10",
 		"images": {
 			"toy": "daruk-1.jpeg",
@@ -24,7 +28,9 @@
 	{
 		"id": "ganondorf",
 		"name": "加侬多夫",
-		"series": "超级大乱斗",
+		"nameEn": "Ganondorf",
+		"series": "Super Smash Bros.",
+		"description": "格鲁德族出身的强大魔王，拥有压倒性的力量，是海拉鲁历史中反复出现的黑暗威胁。",
 		"releaseDate": "2015.09.11",
 		"images": {
 			"toy": "ganondorf-1.jpeg",
@@ -34,8 +40,10 @@
 	},
 	{
 		"id": "ganondorf-tears-of-the-kingdom",
-		"name": "加侬多夫（王国之泪）",
-		"series": "塞尔达传说：王国之泪",
+		"name": "加侬多夫｜王国之泪",
+		"nameEn": "Ganondorf - Tears of the Kingdom",
+		"series": "Tears of the Kingdom",
+		"description": "《王国之泪》中的加侬多夫形象。来自海拉鲁建国时代，拥有强大的野心与力量，是故事中最重要的黑暗存在。",
 		"releaseDate": "2023.11.03",
 		"images": {
 			"toy": "ganondorf-tears-of-the-kingdom-1.jpeg",
@@ -51,7 +59,9 @@
 	{
 		"id": "guardian",
 		"name": "守护者",
-		"series": "塞尔达传说：旷野之息",
+		"nameEn": "Guardian",
+		"series": "Breath of the Wild",
+		"description": "古代希卡族技术制造的机械兵器。原本用于守护海拉鲁，灾厄之后却成为令人畏惧的危险敌人。",
 		"releaseDate": "2017.03.03",
 		"images": {
 			"toy": "guardian-1.jpeg",
@@ -62,7 +72,9 @@
 	{
 		"id": "link",
 		"name": "林克",
-		"series": "超级大乱斗",
+		"nameEn": "Link",
+		"series": "Super Smash Bros.",
+		"description": "来自《塞尔达传说》系列的勇者。手持大师之剑与盾牌，是海拉鲁命运中反复出现的核心英雄。",
 		"releaseDate": "2014.11.20",
 		"images": {
 			"toy": "link-1.jpeg",
@@ -77,8 +89,10 @@
 	},
 	{
 		"id": "link-links-awakening",
-		"name": "林克（林克的觉醒）",
-		"series": "塞尔达传说：林克的觉醒",
+		"name": "林克｜织梦岛",
+		"nameEn": "Link - Link's Awakening",
+		"series": "The Legend of Zelda",
+		"description": "来自《织梦岛》重制版的可爱黏土风林克造型。梦幻、童话般的风格让它在收藏中很有辨识度。",
 		"releaseDate": "2019.09.20",
 		"images": {
 			"toy": "link-links-awakening-1.jpeg",
@@ -88,8 +102,10 @@
 	},
 	{
 		"id": "link-majoras-mask",
-		"name": "林克（魔吉拉的面具）",
-		"series": "塞尔达传说",
+		"name": "林克｜姆吉拉的假面",
+		"nameEn": "Link - Majora's Mask",
+		"series": "The Legend of Zelda",
+		"description": "来自《姆吉拉的假面》的林克形象。围绕神秘面具与三日倒计时展开，是系列中氛围独特的一作。",
 		"releaseDate": "2017.06.23",
 		"images": {
 			"toy": "link-majoras-mask-1.jpeg",
@@ -99,8 +115,10 @@
 	},
 	{
 		"id": "link-ocarina-of-time",
-		"name": "林克（时之笛）",
-		"series": "塞尔达传说30周年系列",
+		"name": "林克｜时之笛",
+		"nameEn": "Link - Ocarina of Time",
+		"series": "30th Anniversary",
+		"description": "来自《时之笛》的成年林克形象。作为时间的勇者，他在两个时代之间穿梭，对抗加侬多夫。",
 		"releaseDate": "2016.12.02",
 		"images": {
 			"toy": "link-ocarina-of-time-1.jpeg",
@@ -115,8 +133,10 @@
 	},
 	{
 		"id": "link-skyward-sword",
-		"name": "林克（天空之剑）",
-		"series": "塞尔达传说",
+		"name": "林克｜天空之剑",
+		"nameEn": "Link - Skyward Sword",
+		"series": "The Legend of Zelda",
+		"description": "来自《天空之剑》的林克形象。故事发生在系列传说的早期，讲述大师之剑与勇者起源。",
 		"releaseDate": "2017.06.23",
 		"images": {
 			"toy": "link-skyward-sword-1.jpeg",
@@ -131,8 +151,10 @@
 	},
 	{
 		"id": "link-tears-of-the-kingdom",
-		"name": "林克（王国之泪）",
-		"series": "塞尔达传说：王国之泪",
+		"name": "林克｜王国之泪",
+		"nameEn": "Link - Tears of the Kingdom",
+		"series": "Tears of the Kingdom",
+		"description": "《王国之泪》中的林克形象。使用该 amiibo 可在支持游戏中获得武器、材料，以及滑翔帆特殊布料等奖励，具体以游戏内实际效果为准。",
 		"releaseDate": "2023.05.12",
 		"images": {
 			"toy": "link-tears-of-the-kingdom-1.jpeg",
@@ -147,8 +169,10 @@
 	},
 	{
 		"id": "link-the-legend-of-zelda",
-		"name": "初始林克",
-		"series": "塞尔达传说30周年系列",
+		"name": "林克｜初代塞尔达",
+		"nameEn": "Link - The Legend of Zelda",
+		"series": "30th Anniversary",
+		"description": "纪念初代《塞尔达传说》的经典林克造型，还原早期像素时代的勇者形象，具有浓厚复古收藏感。",
 		"releaseDate": "2016.12.02",
 		"images": {
 			"toy": "link-the-legend-of-zelda-1.jpeg",
@@ -158,24 +182,28 @@
 	},
 	{
 		"id": "link-twilight-princess",
-		"name": "林克（黄昏公主）",
-		"series": "塞尔达传说",
+		"name": "林克｜黄昏公主",
+		"nameEn": "Link - Twilight Princess",
+		"series": "The Legend of Zelda",
+		"description": "来自《黄昏公主》的林克形象。带有更成熟、写实的勇者气质，与黄昏世界的命运紧密相连。",
 		"releaseDate": "2017.06.23",
 		"images": {
 			"toy": "link-twilight-princess-1.jpeg",
 			"box": "link-twilight-princess-2.jpeg"
 		},
-		"detail": "https://www.nintendo.com/us/store/products/amiibo-link-twilight-princess-legend-of-zelda-104390/",
 		"collectedInfo": {
 			"collected": true,
 			"collectDate": "2025.08.09",
 			"price": 58.91
-		}
+		},
+		"detail": "https://www.nintendo.com/us/store/products/amiibo-link-twilight-princess-legend-of-zelda-104390/"
 	},
 	{
 		"id": "link-archer",
-		"name": "林克（弓箭手）",
-		"series": "塞尔达传说：旷野之息",
+		"name": "林克｜弓箭",
+		"nameEn": "Link - Archer",
+		"series": "Breath of the Wild",
+		"description": "来自《旷野之息》的林克弓箭造型，展现他在广阔海拉鲁中狩猎、探索与战斗的冒险者姿态。",
 		"releaseDate": "2017.03.03",
 		"images": {
 			"toy": "link-archer-1.jpeg",
@@ -190,8 +218,10 @@
 	},
 	{
 		"id": "link-rider",
-		"name": "林克（骑士）",
-		"series": "塞尔达传说：旷野之息",
+		"name": "林克｜骑乘",
+		"nameEn": "Link - Rider",
+		"series": "Breath of the Wild",
+		"description": "来自《旷野之息》的骑乘林克形象。象征玩家在开放世界中骑马穿越海拉鲁大陆的自由探索。",
 		"releaseDate": "2017.03.03",
 		"images": {
 			"toy": "link-rider-1.jpeg",
@@ -202,7 +232,9 @@
 	{
 		"id": "mipha",
 		"name": "米法",
-		"series": "塞尔达传说：旷野之息",
+		"nameEn": "Mipha",
+		"series": "Breath of the Wild",
+		"description": "卓拉族英杰，温柔而坚强，拥有治愈他人的力量。她曾驾驶神兽瓦·露塔迎战灾厄。",
 		"releaseDate": "2017.11.10",
 		"images": {
 			"toy": "mipha-1.jpeg",
@@ -213,7 +245,9 @@
 	{
 		"id": "revali",
 		"name": "力巴尔",
-		"series": "塞尔达传说：旷野之息",
+		"nameEn": "Revali",
+		"series": "Breath of the Wild",
+		"description": "利特族英杰，骄傲且技艺高超，擅长空中战斗。他曾驾驶神兽瓦·梅德支援海拉鲁。",
 		"releaseDate": "2017.11.10",
 		"images": {
 			"toy": "revali-1.jpeg",
@@ -224,7 +258,9 @@
 	{
 		"id": "riju",
 		"name": "露珠",
-		"series": "塞尔达传说：王国之泪",
+		"nameEn": "Riju",
+		"series": "Tears of the Kingdom",
+		"description": "格鲁德族族长，也是《王国之泪》中的雷之贤者。她年轻却肩负族群责任，在冒险中展现出勇气与领导力。",
 		"releaseDate": "2025.06.05",
 		"images": {
 			"toy": "riju-1.jpeg",
@@ -235,7 +271,9 @@
 	{
 		"id": "sheik",
 		"name": "希克",
-		"series": "超级大乱斗系列",
+		"nameEn": "Sheik",
+		"series": "Super Smash Bros.",
+		"description": "塞尔达公主的神秘化身，以敏捷动作与忍者般的身手行动，是《时之笛》中重要的引导者。",
 		"releaseDate": "2015.02.01",
 		"images": {
 			"toy": "sheik-1.jpeg",
@@ -246,7 +284,9 @@
 	{
 		"id": "sidon",
 		"name": "希多",
-		"series": "塞尔达传说：王国之泪",
+		"nameEn": "Sidon",
+		"series": "Tears of the Kingdom",
+		"description": "卓拉族王子，也是《王国之泪》中的水之贤者。他正义、热情、充满责任感，是林克重要的伙伴之一。",
 		"releaseDate": "2025.06.05",
 		"images": {
 			"toy": "sidon-1.jpeg",
@@ -257,7 +297,9 @@
 	{
 		"id": "toon-link",
 		"name": "卡通林克",
-		"series": "超级大乱斗系列",
+		"nameEn": "Toon Link",
+		"series": "Super Smash Bros.",
+		"description": "来自卡通风格《塞尔达传说》的林克形象。小小身躯承载勇气，以剑、盾和智慧展开冒险。",
 		"releaseDate": "2015.02.01",
 		"images": {
 			"toy": "toon-link-1.jpeg",
@@ -267,8 +309,10 @@
 	},
 	{
 		"id": "toon-link-the-wind-waker",
-		"name": "卡通林克（风之杖）",
-		"series": "塞尔达传说30周年系列",
+		"name": "卡通林克｜风之杖",
+		"nameEn": "Toon Link - The Wind Waker",
+		"series": "30th Anniversary",
+		"description": "来自《风之杖》的卡通林克。乘风航行在辽阔大海之上，寻找失落的传说与新的海拉鲁命运。",
 		"releaseDate": "2016.12.02",
 		"images": {
 			"toy": "toon-link-the-wind-waker-1.jpeg",
@@ -279,7 +323,9 @@
 	{
 		"id": "tulin",
 		"name": "丘栗",
-		"series": "塞尔达传说：王国之泪",
+		"nameEn": "Tulin",
+		"series": "Tears of the Kingdom",
+		"description": "利特族少年，也是《王国之泪》中的贤者之一。他与林克并肩行动，在冒险中展现出成长、勇气与风之力量。",
 		"releaseDate": "2025.06.05",
 		"images": {
 			"toy": "tulin-1.jpeg",
@@ -290,7 +336,9 @@
 	{
 		"id": "urbosa",
 		"name": "乌尔波扎",
-		"series": "塞尔达传说：旷野之息",
+		"nameEn": "Urbosa",
+		"series": "Breath of the Wild",
+		"description": "格鲁德族英杰，沉着强大，能操纵雷电之力。她曾驾驶神兽瓦·娜波力斯守护海拉鲁。",
 		"releaseDate": "2017.11.10",
 		"images": {
 			"toy": "urbosa-1.jpeg",
@@ -300,8 +348,10 @@
 	},
 	{
 		"id": "wolf-link",
-		"name": "狼林克（黄昏公主）",
-		"series": "塞尔达传说",
+		"name": "狼林克",
+		"nameEn": "Wolf Link",
+		"series": "The Legend of Zelda",
+		"description": "来自《黄昏公主》的狼形态林克，常与米多娜一同行动，是林克被黄昏力量影响后的特殊形态。",
 		"releaseDate": "2016.03.04",
 		"images": {
 			"toy": "wolf-link-1.jpeg",
@@ -312,7 +362,9 @@
 	{
 		"id": "young-link",
 		"name": "幼年林克",
-		"series": "超级大乱斗系列",
+		"nameEn": "Young Link",
+		"series": "Super Smash Bros.",
+		"description": "年少时期的林克形象。虽然外表稚嫩，却已经背负勇者使命，踏上跨越时间的冒险。",
 		"releaseDate": "2019.04.11",
 		"images": {
 			"toy": "young-link-1.jpeg",
@@ -323,7 +375,9 @@
 	{
 		"id": "yunobo",
 		"name": "阿沅",
-		"series": "塞尔达传说：王国之泪",
+		"nameEn": "Yunobo",
+		"series": "Tears of the Kingdom",
+		"description": "鼓隆族的林克旧友，也是《王国之泪》中的火之贤者。他热情可靠，与林克一起面对鼓隆族和海拉鲁的危机。",
 		"releaseDate": "2025.06.05",
 		"images": {
 			"toy": "yunobo-1.jpeg",
@@ -339,7 +393,9 @@
 	{
 		"id": "zelda",
 		"name": "塞尔达",
-		"series": "超级大乱斗系列",
+		"nameEn": "Zelda",
+		"series": "Super Smash Bros.",
+		"description": "海拉鲁王国的公主，拥有智慧、血脉与封印黑暗的力量。她常在关键时刻引导林克对抗灾厄。",
 		"releaseDate": "2014.12.01",
 		"images": {
 			"toy": "zelda-1.jpeg",
@@ -349,8 +405,10 @@
 	},
 	{
 		"id": "zelda-breath-of-the-wild",
-		"name": "塞尔达（旷野之息）",
-		"series": "塞尔达传说：旷野之息",
+		"name": "塞尔达｜旷野之息",
+		"nameEn": "Zelda",
+		"series": "Breath of the Wild",
+		"description": "《旷野之息》中的塞尔达公主。她为阻止灾厄盖侬付出巨大代价，是海拉鲁复兴的关键人物。",
 		"releaseDate": "2017.03.03",
 		"images": {
 			"toy": "zelda-breath-of-the-wild-1.jpeg",
@@ -360,8 +418,10 @@
 	},
 	{
 		"id": "zelda-tears-of-the-kingdom",
-		"name": "塞尔达（王国之泪）",
-		"series": "塞尔达传说：王国之泪",
+		"name": "塞尔达｜王国之泪",
+		"nameEn": "Zelda - Tears of the Kingdom",
+		"series": "Tears of the Kingdom",
+		"description": "《王国之泪》中的塞尔达形象。她继承封印黑暗的力量，是海拉鲁命运中的关键人物。使用该 amiibo 可在支持游戏中获得道具或特殊奖励。",
 		"releaseDate": "2023.11.03",
 		"images": {
 			"toy": "zelda-tears-of-the-kingdom-1.jpeg",
@@ -376,8 +436,10 @@
 	},
 	{
 		"id": "zelda-the-wind-waker",
-		"name": "塞尔达（风之杖）",
-		"series": "塞尔达传说30周年系列",
+		"name": "塞尔达｜风之杖",
+		"nameEn": "Zelda - The Wind Waker",
+		"series": "30th Anniversary",
+		"description": "来自《风之杖》的塞尔达形象。她与大海、海盗和海拉鲁王国的秘密有着密切联系。",
 		"releaseDate": "2016.12.02",
 		"images": {
 			"toy": "zelda-the-wind-waker-1.jpeg",
@@ -387,8 +449,10 @@
 	},
 	{
 		"id": "zelda-and-loftwing",
-		"name": "塞尔达与洛夫特飞鸟",
-		"series": "塞尔达传说",
+		"name": "塞尔达与洛夫特鸟",
+		"nameEn": "Zelda & Loftwing",
+		"series": "The Legend of Zelda",
+		"description": "来自《天空之剑》的塞尔达与洛夫特鸟。洛夫特鸟是天空居民重要伙伴，也象征天空冒险的起点。",
 		"releaseDate": "2021.07.16",
 		"images": {
 			"toy": "zelda-and-loftwing-1.jpeg",
@@ -404,7 +468,9 @@
 	{
 		"id": "minerus-construct",
 		"name": "米涅鲁魔像",
-		"series": "塞尔达传说：王国之泪",
+		"nameEn": "Mineru's Construct",
+		"series": "Tears of the Kingdom",
+		"description": "《王国之泪》中与贤者米涅鲁相关的魔像形态 amiibo。它代表古代左纳乌技术与贤者力量，也是该系列的新款待发售 amiibo。",
 		"releaseDate": "2026.09.17",
 		"images": {
 			"toy": "minerus-construct-1.jpeg",

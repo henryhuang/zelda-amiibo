@@ -25,6 +25,16 @@
 	let sortBy = $state('release-desc');
 	let viewMode = $state(initialView);
 	let progressBackdropItems = $state<ProgressBackdropItem[]>([]);
+		let flippedCards = $state(new Map<string, boolean>());
+		
+		const toggleFlip = (id: string) => {
+		const current = flippedCards.get(id) ?? false;
+		flippedCards.set(id, !current);
+		flippedCards = new Map(flippedCards);
+		};
+
+		const isSage = (amiibo: Amiibo) =>
+			['露珠', '希多', '丘栗', '阿沅', '米涅鲁魔像'].includes(amiibo.name);
 
 	const { AMIIBO_IMG_ENDPOINT } = CONFIG;
 
@@ -58,14 +68,14 @@
 			{ key: 'collected', label: '已收集', count: collectedCount },
 			{ key: 'missing', label: '未收集', count: missingCount },
 			{
-				key: 'series:塞尔达传说：王国之泪',
+				key: 'series:Tears of the Kingdom',
 				label: '王国之泪',
-				count: countBy((amiibo) => amiibo.series === '塞尔达传说：王国之泪')
+				count: countBy((amiibo) => amiibo.series === 'Tears of the Kingdom')
 			},
 			{
-				key: 'series:塞尔达传说：旷野之息',
+				key: 'series:Breath of the Wild',
 				label: '旷野之息',
-				count: countBy((amiibo) => amiibo.series === '塞尔达传说：旷野之息')
+				count: countBy((amiibo) => amiibo.series === 'Breath of the Wild')
 			},
 			{
 				key: 'name:林克',
@@ -81,6 +91,16 @@
 				key: 'group:champions',
 				label: '英杰',
 				count: countBy(isChampion)
+			},
+			{
+				key: 'group:sages',
+				label: '贤者',
+				count: countBy(isSage)
+			},
+			{
+				key: 'series:Super Smash Bros.',
+				label: '大乱斗',
+				count: countBy((amiibo) => amiibo.series === 'Super Smash Bros.')
 			}
 		];
 	});
@@ -104,6 +124,10 @@
 
 				if (activeFilter.startsWith('name:')) {
 					return amiibo.name.includes(activeFilter.replace('name:', ''));
+				}
+
+				if (activeFilter === 'group:sages') {
+					return isSage(amiibo);
 				}
 
 				if (activeFilter === 'group:champions') {
@@ -263,25 +287,32 @@
 
 	<div class={viewMode === 'grid' ? 'museum-card-grid' : 'museum-card-list'}>
 		{#each filteredAmiibos as amiibo (amiibo.id)}
-			<article class:collected={amiibo.collectedInfo?.collected} class="museum-card" id={amiibo.id}>
-				<a href={amiibo.detail} target="_blank" rel="noreferrer" aria-label={`${amiibo.name} 详情`}>
-					<span class="museum-card-mark">{amiibo.collectedInfo?.collected ? '✓' : '◇'}</span>
-					<div class="museum-card-image">
-						<img src={imgUrl(amiibo)} alt={amiibo.name} />
+			<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
+				<article class:collected={amiibo.collectedInfo?.collected} class:flipped={flippedCards.get(amiibo.id)} class="museum-card" id={amiibo.id} onclick={() => toggleFlip(amiibo.id)} onkeydown={(e) => { if (e.key === 'Enter') toggleFlip(amiibo.id); }} role="button" tabindex="0">
+					<div class="museum-card-inner">
+						<div class="museum-card-front">
+							<span class="museum-card-mark">{amiibo.collectedInfo?.collected ? '✓' : '◇'}</span>
+							<div class="museum-card-image">
+								<img src={imgUrl(amiibo)} alt={amiibo.name} />
+							</div>
+							<div class="museum-card-body">
+								<h2>{amiibo.name}</h2>
+								{#if amiibo.nameEn}
+									<span class="museum-card-nameen">（{amiibo.nameEn}）</span>
+								{/if}
+							</div>
+						</div>
+						<div class="museum-card-back">
+							<p>{amiibo.description}</p>
+							<p>{amiibo.series}</p>
+							<span>发布日 {formatDate(amiibo.releaseDate)}</span>
+							{#if amiibo.collectedInfo}
+								<em>收集日 {formatDate(amiibo.collectedInfo.collectDate)} · ¥{amiibo.collectedInfo.price}</em>
+							{/if}
+							<a href={amiibo.detail} target="_blank" rel="noreferrer" class="museum-detail-link" onclick={(e) => e.stopPropagation()}>Amiibo 详情 ↗</a>
+						</div>
 					</div>
-					<div class="museum-card-body">
-						<h2>{amiibo.name}</h2>
-						<p>{amiibo.series}</p>
-						<span>发布日 {formatDate(amiibo.releaseDate)}</span>
-						{#if amiibo.collectedInfo}
-							<em
-								>收集日 {formatDate(amiibo.collectedInfo.collectDate)} · ¥{amiibo.collectedInfo
-									.price}</em
-							>
-						{/if}
-					</div>
-				</a>
-			</article>
+				</article>
 		{/each}
 	</div>
 </section>
