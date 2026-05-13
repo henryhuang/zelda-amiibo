@@ -287,8 +287,35 @@
 
 	<div class={viewMode === 'grid' ? 'museum-card-grid' : 'museum-card-list'}>
 		{#each filteredAmiibos as amiibo (amiibo.id)}
-			<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
-				<article class:collected={amiibo.collectedInfo?.collected} class:flipped={flippedCards.get(amiibo.id)} class="museum-card" id={amiibo.id} onclick={() => toggleFlip(amiibo.id)} onkeydown={(e) => { if (e.key === 'Enter') toggleFlip(amiibo.id); }} role="button" tabindex="0">
+			{#if viewMode === 'grid'}
+				<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
+					<article class:collected={amiibo.collectedInfo?.collected} class:flipped={flippedCards.get(amiibo.id)} class="museum-card" id={amiibo.id} onclick={() => toggleFlip(amiibo.id)} onkeydown={(e) => { if (e.key === 'Enter') toggleFlip(amiibo.id); }} role="button" tabindex="0">
+						<div class="museum-card-inner">
+							<div class="museum-card-front">
+								<span class="museum-card-mark">{amiibo.collectedInfo?.collected ? '✓' : '◇'}</span>
+								<div class="museum-card-image">
+									<img src={imgUrl(amiibo)} alt={amiibo.name} />
+								</div>
+								<div class="museum-card-body">
+									<h2>{amiibo.name}</h2>
+									{#if amiibo.nameEn}
+										<span class="museum-card-nameen">（{amiibo.nameEn}）</span>
+									{/if}
+								</div>
+							</div>
+							<div class="museum-card-back">
+								<p>{amiibo.description}</p>
+								<p>{amiibo.series}</p>
+								<span>发布日 {formatDate(amiibo.releaseDate)}</span>
+								{#if amiibo.collectedInfo}
+									<em>收集日 {formatDate(amiibo.collectedInfo.collectDate)} · ¥{amiibo.collectedInfo.price}</em>
+								{/if}
+								<a href={amiibo.detail} target="_blank" rel="noreferrer" class="museum-detail-link" onclick={(e) => e.stopPropagation()}>Amiibo 详情 ↗</a>
+							</div>
+						</div>
+					</article>
+			{:else}
+				<article class:collected={amiibo.collectedInfo?.collected} class="museum-card" id={amiibo.id}>
 					<div class="museum-card-inner">
 						<div class="museum-card-front">
 							<span class="museum-card-mark">{amiibo.collectedInfo?.collected ? '✓' : '◇'}</span>
@@ -300,19 +327,18 @@
 								{#if amiibo.nameEn}
 									<span class="museum-card-nameen">（{amiibo.nameEn}）</span>
 								{/if}
+								<p>{amiibo.description}</p>
+								<p>{amiibo.series}</p>
+								<span>发布日 {formatDate(amiibo.releaseDate)}</span>
+								{#if amiibo.collectedInfo}
+									<em>收集日 {formatDate(amiibo.collectedInfo.collectDate)} · ¥{amiibo.collectedInfo.price}</em>
+								{/if}
+								<a href={amiibo.detail} target="_blank" rel="noreferrer" class="museum-detail-link" onclick={(e) => e.stopPropagation()}>Amiibo 详情 ↗</a>
 							</div>
-						</div>
-						<div class="museum-card-back">
-							<p>{amiibo.description}</p>
-							<p>{amiibo.series}</p>
-							<span>发布日 {formatDate(amiibo.releaseDate)}</span>
-							{#if amiibo.collectedInfo}
-								<em>收集日 {formatDate(amiibo.collectedInfo.collectDate)} · ¥{amiibo.collectedInfo.price}</em>
-							{/if}
-							<a href={amiibo.detail} target="_blank" rel="noreferrer" class="museum-detail-link" onclick={(e) => e.stopPropagation()}>Amiibo 详情 ↗</a>
 						</div>
 					</div>
 				</article>
+			{/if}
 		{/each}
 	</div>
 </section>
