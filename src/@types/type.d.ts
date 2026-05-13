@@ -1,7 +1,9 @@
 interface Amiibo {
 	id: string;
 	name: string;
+	nameEn?: string;
 	series: string;
+	description?: string;
 	releaseDate: string;
 	images: {
 		toy: string;
@@ -41,6 +43,7 @@ interface Image {
 	id: string;
 	src: string,
 	alt: string,
+	nameEn?: string,
 	collected?: boolean,
 }
 
