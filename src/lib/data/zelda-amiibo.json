@@ -23,7 +23,12 @@
 			"toy": "daruk-1.jpeg",
 			"box": "daruk-2.jpeg"
 		},
-		"detail": "https://www.nintendo.com/us/amiibo/detail/daruk-amiibo-the-legend-of-zelda-series/"
+		"detail": "https://www.nintendo.com/us/amiibo/detail/daruk-amiibo-the-legend-of-zelda-series/",
+		"collectedInfo": {
+			"collected": true,
+			"collectDate": "2025.05.15",
+			"price": 69.38
+		}
 	},
 	{
 		"id": "ganondorf",
@@ -305,7 +310,12 @@
 			"toy": "toon-link-1.jpeg",
 			"box": "toon-link-2.jpeg"
 		},
-		"detail": "https://www.nintendo.com/us/amiibo/detail/toon-link-amiibo-super-smash-bros-series/"
+		"detail": "https://www.nintendo.com/us/amiibo/detail/toon-link-amiibo-super-smash-bros-series/",
+		"collectedInfo": {
+			"collected": true,
+			"collectDate": "2026.05.17",
+			"price": 52.5
+		}
 	},
 	{
 		"id": "toon-link-the-wind-waker",

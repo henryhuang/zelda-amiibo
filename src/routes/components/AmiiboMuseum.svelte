@@ -2,20 +2,11 @@
 	import { amiibos, collectedInfo, series } from '../../store';
 	import { CONFIG } from '$lib/config';
 	import { formatDate } from '$lib/utils/commonUtil';
+	import HeroHeader from './HeroHeader.svelte';
 
 	interface Props {
 		initialStatus?: 'all' | 'collected' | 'missing';
 		initialView?: 'grid' | 'list';
-	}
-
-	interface ProgressBackdropItem {
-		amiibo: Amiibo;
-		size: string;
-		offsetX: string;
-		offsetY: string;
-		rotation: string;
-		scale: number;
-		opacity: number;
 	}
 
 	let { initialStatus = 'all', initialView = 'grid' }: Props = $props();
@@ -24,7 +15,6 @@
 	let query = $state('');
 	let sortBy = $state('release-desc');
 	let viewMode = $state(initialView);
-	let progressBackdropItems = $state<ProgressBackdropItem[]>([]);
 		let flippedCards = $state(new Map<string, boolean>());
 		
 		const toggleFlip = (id: string) => {
@@ -47,8 +37,6 @@
 	});
 	const pendingCount = $derived($amiibos.filter(amiibo => amiibo.releaseDate > todayStr).length);
 	const collectedAmiibos = $derived($amiibos.filter((amiibo) => amiibo.collectedInfo?.collected));
-	const backdropColumns = $derived(Math.max(1, Math.ceil(Math.sqrt(collectedAmiibos.length || 1))));
-	const backdropRows = $derived(Math.max(1, Math.ceil((collectedAmiibos.length || 1) / backdropColumns)));
 	const latestCollectedDate = $derived.by(() => {
 		const dates = $amiibos
 			.map((amiibo) => amiibo.collectedInfo?.collectDate)
@@ -158,84 +146,22 @@
 
 	const imgUrl = (amiibo: Amiibo) => `${AMIIBO_IMG_ENDPOINT}/${amiibo.images.toy}`;
 
-	const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min;
-
-	const shuffle = <T,>(items: T[]): T[] => {
-		const shuffled = [...items];
-		for (let index = shuffled.length - 1; index > 0; index -= 1) {
-			const swapIndex = Math.floor(Math.random() * (index + 1));
-			[shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
-		}
-		return shuffled;
-	};
-
-	const randomizeProgressBackdrop = (items: Amiibo[]) => {
-		progressBackdropItems = shuffle(items).map((amiibo) => ({
-			amiibo,
-			size: `${randomBetween(118, 172).toFixed(1)}px`,
-			offsetX: `${randomBetween(-18, 18).toFixed(1)}%`,
-			offsetY: `${randomBetween(-16, 16).toFixed(1)}%`,
-			rotation: `${randomBetween(-10, 10).toFixed(1)}deg`,
-			scale: Number(randomBetween(0.96, 1.24).toFixed(2)),
-			opacity: Number(randomBetween(0.7, 1).toFixed(2))
-		}));
-	};
-
-	$effect(() => {
-		randomizeProgressBackdrop(collectedAmiibos);
-	});
 </script>
 
 <section class="museum-hero">
-	<div class="museum-hero-copy"></div>
-
-	<div class="museum-progress-card" aria-label="收藏进度" role="button" tabindex="0" onclick={() => document.getElementById('museum-panel')?.scrollIntoView({ behavior: 'smooth' })} onkeydown={(e) => { if (e.key === 'Enter') { document.getElementById('museum-panel')?.scrollIntoView({ behavior: 'smooth' }); } }}>
-		<div
-			class="museum-progress-backdrop"
-			style={`--backdrop-columns: ${backdropColumns}; --backdrop-rows: ${backdropRows}`}
-			aria-hidden="true"
-		>
-			{#each progressBackdropItems as item (item.amiibo.id)}
-				<img
-					src={imgUrl(item.amiibo)}
-					alt=""
-					style={`--backdrop-size: ${item.size}; --backdrop-x: ${item.offsetX}; --backdrop-y: ${item.offsetY}; --backdrop-rotation: ${item.rotation}; --backdrop-scale: ${item.scale}; --backdrop-opacity: ${item.opacity}`}
-				/>
-			{/each}
-		</div>
-		<span>收藏进度</span>
-		<strong><b>已收集</b> <i>{collectedCount}</i> <small>/ {totalCount}</small></strong>
-		<div class="museum-progress-track" style={`--progress: ${$collectedInfo.progressRate}%`}>
-			<div class="museum-progress-fill" style={`width: ${$collectedInfo.progressRate}%`}></div>
-		</div>
-		<em>{$collectedInfo.progressRate}%</em>
-	</div>
+	<HeroHeader
+		{totalCount}
+		{collectedCount}
+		{missingCount}
+		{pendingCount}
+		seriesCount={$series.length}
+		{latestCollectedDate}
+		progressRate={$collectedInfo.progressRate}
+		{collectedAmiibos}
+	/>
 </section>
 
 <section class="museum-panel" id="museum-panel" aria-label="Amiibo 收藏馆">
-	<div class="museum-stats">
-		<div>
-			<img src="/images/stat-collected.png" alt="" aria-hidden="true" />
-			<span>已收集</span>
-			<strong>{collectedCount}</strong>
-		</div>
-		<div>
-			<img src="/images/stat-missing.png" alt="" aria-hidden="true" />
-			<span>未收集</span>
-			<strong>{missingCount}</strong>
-		</div>
-		<div>
-			<img src="/images/stat-series.png" alt="" aria-hidden="true" />
-			<span>待发布</span>
-			<strong>{pendingCount}</strong>
-		</div>
-		<div>
-			<img src="/images/stat-earliest.png" alt="" aria-hidden="true" />
-			<span>最后收集</span>
-			<strong>{latestCollectedDate}</strong>
-		</div>
-	</div>
-
 	<div class="museum-toolbar">
 		<div class="museum-filter-row" aria-label="Amiibo 筛选">
 			{#each quickFilters as item (item.key)}
