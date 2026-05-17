@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { amiibos, collectedInfo, series } from '../../store';
 	import { CONFIG } from '$lib/config';
 	import { formatDate } from '$lib/utils/commonUtil';
@@ -11,20 +12,25 @@
 
 	let { initialStatus = 'all', initialView = 'grid' }: Props = $props();
 
+	type SortOption = 'release-desc' | 'collect-desc' | 'name' | 'series';
+
+	const mobileMediaQuery = '(max-width: 900px)';
+	const getTimestamp = (date?: string) => (date ? Date.parse(date.replaceAll('.', '-')) : 0);
+
 	let activeFilter = $state<string>(initialStatus);
 	let query = $state('');
-	let sortBy = $state('release-desc');
-	let viewMode = $state(initialView);
-		let flippedCards = $state(new Map<string, boolean>());
-		
-		const toggleFlip = (id: string) => {
+	let sortBy = $state<SortOption>('release-desc');
+	let viewMode = $state<'grid' | 'list'>(initialView);
+	let flippedCards = $state(new Map<string, boolean>());
+
+	const toggleFlip = (id: string) => {
 		const current = flippedCards.get(id) ?? false;
 		flippedCards.set(id, !current);
 		flippedCards = new Map(flippedCards);
-		};
+	};
 
-		const isSage = (amiibo: Amiibo) =>
-			['露珠', '希多', '丘栗', '阿沅', '米涅鲁魔像'].includes(amiibo.name);
+	const isSage = (amiibo: Amiibo) =>
+		['露珠', '希多', '丘栗', '阿沅', '米涅鲁魔像'].includes(amiibo.name);
 
 	const { AMIIBO_IMG_ENDPOINT } = CONFIG;
 
@@ -33,15 +39,15 @@
 	const missingCount = $derived(Math.max(totalCount - collectedCount, 0));
 	const todayStr = $derived.by(() => {
 		const d = new Date();
-		return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
+		return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
 	});
-	const pendingCount = $derived($amiibos.filter(amiibo => amiibo.releaseDate > todayStr).length);
+	const pendingCount = $derived($amiibos.filter((amiibo) => amiibo.releaseDate > todayStr).length);
 	const collectedAmiibos = $derived($amiibos.filter((amiibo) => amiibo.collectedInfo?.collected));
 	const latestCollectedDate = $derived.by(() => {
 		const dates = $amiibos
 			.map((amiibo) => amiibo.collectedInfo?.collectDate)
 			.filter((date): date is string => Boolean(date))
-			.sort((a, b) => Date.parse(b.replaceAll('.', '-')) - Date.parse(a.replaceAll('.', '-')));
+			.sort((a, b) => getTimestamp(b) - getTimestamp(a));
 		return dates[0] ?? '';
 	});
 
@@ -140,12 +146,23 @@
 					return a.series.localeCompare(b.series, 'zh-Hans-CN');
 				}
 
-				return Date.parse(b.releaseDate) - Date.parse(a.releaseDate);
+				if (sortBy === 'collect-desc') {
+					return (
+						getTimestamp(b.collectedInfo?.collectDate) - getTimestamp(a.collectedInfo?.collectDate)
+					);
+				}
+
+				return getTimestamp(b.releaseDate) - getTimestamp(a.releaseDate);
 			});
 	});
 
 	const imgUrl = (amiibo: Amiibo) => `${AMIIBO_IMG_ENDPOINT}/${amiibo.images.toy}`;
 
+	onMount(() => {
+		if (initialView === 'grid' && window.matchMedia(mobileMediaQuery).matches) {
+			viewMode = 'list';
+		}
+	});
 </script>
 
 <section class="museum-hero">
@@ -185,6 +202,7 @@
 				<span>排序</span>
 				<select bind:value={sortBy}>
 					<option value="release-desc">默认排序</option>
+					<option value="collect-desc">收集时间</option>
 					<option value="name">名称</option>
 					<option value="series">系列</option>
 				</select>
@@ -215,33 +233,57 @@
 		{#each filteredAmiibos as amiibo (amiibo.id)}
 			{#if viewMode === 'grid'}
 				<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
-					<article class:collected={amiibo.collectedInfo?.collected} class:flipped={flippedCards.get(amiibo.id)} class="museum-card" id={amiibo.id} onclick={() => toggleFlip(amiibo.id)} onkeydown={(e) => { if (e.key === 'Enter') toggleFlip(amiibo.id); }} role="button" tabindex="0">
-						<div class="museum-card-inner">
-							<div class="museum-card-front">
-								<span class="museum-card-mark">{amiibo.collectedInfo?.collected ? '✓' : '◇'}</span>
-								<div class="museum-card-image">
-									<img src={imgUrl(amiibo)} alt={amiibo.name} />
-								</div>
-								<div class="museum-card-body">
-									<h2>{amiibo.name}</h2>
-									{#if amiibo.nameEn}
-										<span class="museum-card-nameen">（{amiibo.nameEn}）</span>
-									{/if}
-								</div>
+				<article
+					class:collected={amiibo.collectedInfo?.collected}
+					class:flipped={flippedCards.get(amiibo.id)}
+					class="museum-card"
+					id={amiibo.id}
+					onclick={() => toggleFlip(amiibo.id)}
+					onkeydown={(e) => {
+						if (e.key === 'Enter') toggleFlip(amiibo.id);
+					}}
+					role="button"
+					tabindex="0"
+				>
+					<div class="museum-card-inner">
+						<div class="museum-card-front">
+							<span class="museum-card-mark">{amiibo.collectedInfo?.collected ? '✓' : '◇'}</span>
+							<div class="museum-card-image">
+								<img src={imgUrl(amiibo)} alt={amiibo.name} />
 							</div>
-							<div class="museum-card-back">
-								<p>{amiibo.description}</p>
-								<p>{amiibo.series}</p>
-								<span>发布日 {formatDate(amiibo.releaseDate)}</span>
-								{#if amiibo.collectedInfo}
-									<em>收集日 {formatDate(amiibo.collectedInfo.collectDate)} · ¥{amiibo.collectedInfo.price}</em>
+							<div class="museum-card-body">
+								<h2>{amiibo.name}</h2>
+								{#if amiibo.nameEn}
+									<span class="museum-card-nameen">（{amiibo.nameEn}）</span>
 								{/if}
-								<a href={amiibo.detail} target="_blank" rel="noreferrer" class="museum-detail-link" onclick={(e) => e.stopPropagation()}>Amiibo 详情 ↗</a>
 							</div>
 						</div>
-					</article>
+						<div class="museum-card-back">
+							<p>{amiibo.description}</p>
+							<p>{amiibo.series}</p>
+							<span>发布日 {formatDate(amiibo.releaseDate)}</span>
+							{#if amiibo.collectedInfo}
+								<em
+									>收集日 {formatDate(amiibo.collectedInfo.collectDate)} · ¥{amiibo.collectedInfo
+										.price}</em
+								>
+							{/if}
+							<a
+								href={amiibo.detail}
+								target="_blank"
+								rel="noreferrer"
+								class="museum-detail-link"
+								onclick={(e) => e.stopPropagation()}>Amiibo 详情 ↗</a
+							>
+						</div>
+					</div>
+				</article>
 			{:else}
-				<article class:collected={amiibo.collectedInfo?.collected} class="museum-card" id={amiibo.id}>
+				<article
+					class:collected={amiibo.collectedInfo?.collected}
+					class="museum-card"
+					id={amiibo.id}
+				>
 					<div class="museum-card-inner">
 						<div class="museum-card-front">
 							<span class="museum-card-mark">{amiibo.collectedInfo?.collected ? '✓' : '◇'}</span>
@@ -257,9 +299,18 @@
 								<p>{amiibo.series}</p>
 								<span>发布日 {formatDate(amiibo.releaseDate)}</span>
 								{#if amiibo.collectedInfo}
-									<em>收集日 {formatDate(amiibo.collectedInfo.collectDate)} · ¥{amiibo.collectedInfo.price}</em>
+									<em
+										>收集日 {formatDate(amiibo.collectedInfo.collectDate)} · ¥{amiibo.collectedInfo
+											.price}</em
+									>
 								{/if}
-								<a href={amiibo.detail} target="_blank" rel="noreferrer" class="museum-detail-link" onclick={(e) => e.stopPropagation()}>Amiibo 详情 ↗</a>
+								<a
+									href={amiibo.detail}
+									target="_blank"
+									rel="noreferrer"
+									class="museum-detail-link"
+									onclick={(e) => e.stopPropagation()}>Amiibo 详情 ↗</a
+								>
 							</div>
 						</div>
 					</div>
