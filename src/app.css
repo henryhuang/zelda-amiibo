@@ -642,6 +642,128 @@
 	box-shadow: 0 0 14px rgba(47, 159, 120, 0.35);
 }
 
+/* === New Hero Content Panel === */
+.hero-content {
+	position: relative;
+	width: min(700px, 100%);
+	padding: 34px 48px 30px;
+	border: 1px solid rgba(184, 154, 94, 0.42);
+	border-radius: 30px;
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 250, 239, 0.88)),
+		repeating-linear-gradient(135deg, rgba(184, 154, 94, 0.045) 0 1px, transparent 1px 10px),
+		radial-gradient(circle at 16% 50%, rgba(116, 215, 180, 0.12), transparent 26%);
+	box-shadow:
+		inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+		inset 0 0 0 9px rgba(255, 255, 255, 0.16),
+		0 22px 46px rgba(73, 63, 38, 0.16);
+	text-align: center;
+	backdrop-filter: blur(8px);
+	cursor: pointer;
+}
+
+.hero-content::before,
+.hero-content::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	width: 92px;
+	height: 92px;
+	border: 0;
+	border-radius: 999px;
+	background: url('/images/ui/progress-ornament.png') center / contain no-repeat;
+	filter: drop-shadow(0 8px 12px rgba(93, 77, 42, 0.1));
+	transform: translateY(-50%);
+}
+
+.hero-content::before {
+	left: -50px;
+}
+
+.hero-content::after {
+	right: -50px;
+}
+
+.hero-content-inner {
+	position: relative;
+	z-index: 1;
+}
+
+.hero-stats {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 12px;
+	margin-bottom: 28px;
+}
+
+.hero-stat-item {
+	text-align: center;
+}
+
+.hero-stat-label {
+	display: block;
+	color: #746745;
+	font-size: 13px;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	margin-bottom: 6px;
+}
+
+.hero-stat-value {
+	display: block;
+	color: var(--totk-gold);
+	font-size: 32px;
+	font-weight: 900;
+	line-height: 1.1;
+}
+
+.hero-stat-value.collected {
+	color: var(--totk-green-deep);
+}
+
+.hero-stat-value.date {
+	color: var(--totk-green-deep);
+}
+
+.hero-progress-track {
+	position: relative;
+	height: 10px;
+	border: 1px solid rgba(184, 154, 94, 0.28);
+	border-radius: 999px;
+	background: rgba(235, 230, 216, 0.82);
+	box-shadow:
+		inset 0 1px 3px rgba(98, 83, 50, 0.16),
+		0 1px 0 rgba(255, 255, 255, 0.8);
+	overflow: visible;
+}
+
+.hero-progress-fill {
+	height: 100%;
+	border-radius: inherit;
+	background: linear-gradient(90deg, var(--totk-green-deep), var(--totk-green-light));
+	box-shadow: 0 0 14px rgba(47, 159, 120, 0.35);
+	transition: width 0.6s ease;
+}
+
+.hero-progress-meta {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+
+.hero-progress-pct {
+	color: var(--totk-green-deep);
+	font-size: 24px;
+	font-weight: 900;
+}
+
+.hero-progress-count {
+	color: var(--totk-muted);
+	font-size: 15px;
+	font-weight: 700;
+}
+
 .museum-panel {
 	position: relative;
 	margin-top: 18px;
@@ -1269,6 +1391,15 @@
 		padding: 24px;
 	}
 
+	.hero-content {
+		padding: 28px 24px 24px;
+	}
+
+	.hero-stat-value {
+		font-size: 28px;
+	}
+
+
 	.museum-stats {
 		grid-template-columns: repeat(2, 1fr);
 	}
@@ -1420,5 +1551,32 @@
 
 	.museum-card-list .museum-card-body {
 		padding-right: 40px;
+	}
+
+	.hero-content::before,
+	.hero-content::after {
+		display: none;
+	}
+
+	.hero-content {
+		padding: 22px 18px 20px;
+	}
+
+	.hero-stats {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+		margin-bottom: 18px;
+	}
+
+	.hero-stat-value {
+		font-size: 24px;
+	}
+
+	.hero-progress-pct {
+		font-size: 20px;
+	}
+
+	.hero-progress-count {
+		font-size: 13px;
 	}
 }
