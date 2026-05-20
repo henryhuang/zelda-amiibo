@@ -24,6 +24,7 @@ src/lib/data/zelda-amiibo.json
 		"toy": "bokoblin-1.jpeg",
 		"box": "bokoblin-2.jpeg"
 	},
+	"status": "in_transit",
 	"detail": "https://www.nintendo.com/us/amiibo/detail/bokoblin-amiibo-the-legend-of-zelda-series/"
 }
 ```
@@ -37,7 +38,10 @@ src/lib/data/zelda-amiibo.json
 | `images.toy`    | 是   | Amiibo 本体图片文件名                                      |
 | `images.box`    | 是   | Amiibo 盒装图片文件名                                      |
 | `detail`        | 是   | 外部详情链接                                               |
+| `status`        | 否   | 附加状态，目前支持 `in_transit`，表示在途                  |
 | `collectedInfo` | 否   | 收藏信息，存在时表示有收藏记录                             |
+
+`status: "in_transit"` 表示 Amiibo 已经在途，但它仍然属于未收集；只有存在 `collectedInfo.collected: true` 时才计入已收集。
 
 ## 收藏信息字段
 
@@ -112,19 +116,27 @@ npm run build
 
 删除对应 Amiibo 的 `collectedInfo` 字段。
 
+### 标记为在途
+
+在未收集 Amiibo 上增加：
+
+```json
+"status": "in_transit"
+```
+
+在途 Amiibo 不应同时添加 `collectedInfo`。
+
 ## 当前系列统计
 
-当前数据包含 32 个 Amiibo，按系列分布如下：
+当前数据包含 33 个 Amiibo，按系列分布如下：
 
-| 系列                   | 数量 |
-| ---------------------- | ---: |
-| 塞尔达传说：旷野之息   |    9 |
-| 塞尔达传说：王国之泪   |    7 |
-| 塞尔达传说             |    5 |
-| 塞尔达传说30周年系列   |    4 |
-| 超级大乱斗系列         |    4 |
-| 超级大乱斗             |    2 |
-| 塞尔达传说：林克的觉醒 |    1 |
+| 系列                  | 数量 |
+| --------------------- | ---: |
+| Breath of the Wild    |    9 |
+| Super Smash Bros.     |    6 |
+| Tears of the Kingdom  |    8 |
+| The Legend of Zelda   |    6 |
+| 30th Anniversary      |    4 |
 
 ## 数据约定
 

@@ -5,6 +5,7 @@
 		totalCount: number;
 		collectedCount: number;
 		missingCount: number;
+		inTransitCount: number;
 		pendingCount: number;
 		seriesCount: number;
 		latestCollectedDate: string;
@@ -16,6 +17,7 @@
 		totalCount,
 		collectedCount,
 		missingCount,
+		inTransitCount,
 		pendingCount,
 		seriesCount,
 		latestCollectedDate,
@@ -80,8 +82,7 @@
 	</div>
 
 	<div class="hero-content-inner">
-		<!-- Stats row: 已收集 / 未收集 / 系列作品 / 最后收集 -->
-		<div class="hero-stats">
+		<div class:has-transit={inTransitCount > 0} class="hero-stats">
 			<div class="hero-stat-item">
 				<span class="hero-stat-label">已收集</span>
 				<strong class="hero-stat-value collected">{collectedCount}</strong>
@@ -90,6 +91,12 @@
 				<span class="hero-stat-label">未收集</span>
 				<strong class="hero-stat-value">{missingCount}</strong>
 			</div>
+			{#if inTransitCount > 0}
+				<div class="hero-stat-item">
+					<span class="hero-stat-label">在途</span>
+					<strong class="hero-stat-value transit">{inTransitCount}</strong>
+				</div>
+			{/if}
 			<div class="hero-stat-item">
 				<span class="hero-stat-label">待发布</span>
 				<strong class="hero-stat-value">{pendingCount}</strong>

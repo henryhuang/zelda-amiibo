@@ -696,6 +696,10 @@
 	margin-bottom: 28px;
 }
 
+.hero-stats.has-transit {
+	grid-template-columns: repeat(6, 1fr);
+}
+
 .hero-stat-item {
 	text-align: center;
 }
@@ -719,6 +723,10 @@
 
 .hero-stat-value.collected {
 	color: var(--totk-green-deep);
+}
+
+.hero-stat-value.transit {
+	color: #d8731f;
 }
 
 .hero-stat-value.date {
@@ -1057,12 +1065,31 @@
 		0 20px 38px rgba(47, 159, 120, 0.18);
 }
 
+.museum-card.in-transit {
+	border-color: rgba(216, 115, 31, 0.68);
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 235, 0.9)),
+		repeating-linear-gradient(135deg, rgba(216, 115, 31, 0.05) 0 1px, transparent 1px 11px),
+		radial-gradient(circle at 50% 8%, rgba(245, 176, 82, 0.2), transparent 38%);
+	box-shadow:
+		inset 0 0 0 1px rgba(255, 255, 255, 0.74),
+		0 12px 28px rgba(216, 115, 31, 0.13);
+}
+
+.museum-card.in-transit:hover {
+	border-color: rgba(216, 115, 31, 0.88);
+	box-shadow:
+		inset 0 0 0 1px rgba(255, 255, 255, 0.75),
+		0 20px 38px rgba(216, 115, 31, 0.2);
+}
+
 .museum-card {
 	perspective: 1000px;
 }
 
 .museum-card-inner {
 	position: relative;
+	border-radius: inherit;
 	transition: transform 0.5s ease;
 	transform-style: preserve-3d;
 }
@@ -1073,6 +1100,7 @@
 
 .museum-card-front,
 .museum-card-back {
+	border-radius: inherit;
 	backface-visibility: hidden;
 }
 
@@ -1093,7 +1121,6 @@
 	justify-content: center;
 	gap: 16px;
 	padding: 28px 20px 24px;
-	border-radius: inherit;
 	text-align: center;
 	transform: rotateY(180deg);
 	overflow-y: auto;
@@ -1156,6 +1183,19 @@
 	background: linear-gradient(180deg, var(--totk-green), var(--totk-green-deep));
 	color: #fff;
 	box-shadow: 0 8px 18px rgba(47, 159, 120, 0.28);
+}
+
+.museum-card.in-transit .museum-card-mark {
+	width: 36px;
+	height: 36px;
+	border-color: rgba(154, 88, 27, 0.42);
+	background:
+		url('/images/ui/in-transit-vehicle.svg') center / 30px 30px no-repeat,
+		linear-gradient(180deg, rgba(255, 247, 223, 0.96), rgba(244, 189, 92, 0.86));
+	color: transparent;
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.82),
+		0 9px 18px rgba(216, 115, 31, 0.24);
 }
 
 .museum-card-image {
@@ -1399,6 +1439,10 @@
 		font-size: 28px;
 	}
 
+	.hero-stats,
+	.hero-stats.has-transit {
+		grid-template-columns: repeat(3, 1fr);
+	}
 
 	.museum-stats {
 		grid-template-columns: repeat(2, 1fr);
@@ -1566,6 +1610,10 @@
 		grid-template-columns: repeat(2, 1fr);
 		gap: 16px;
 		margin-bottom: 18px;
+	}
+
+	.hero-stats.has-transit {
+		grid-template-columns: repeat(2, 1fr);
 	}
 
 	.hero-stat-value {
