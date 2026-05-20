@@ -9,6 +9,7 @@ interface Amiibo {
 		toy: string;
 		box: string;
 	},
+	status?: 'in_transit';
 	collectedInfo?: AmiiboCollectedInfo;
 	detail: string;
 }

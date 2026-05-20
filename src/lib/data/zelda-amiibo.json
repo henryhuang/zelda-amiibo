@@ -284,7 +284,8 @@
 			"toy": "sheik-1.jpeg",
 			"box": "sheik-2.jpeg"
 		},
-		"detail": "https://www.nintendo.com/us/amiibo/detail/sheik-amiibo-super-smash-bros-series/"
+		"detail": "https://www.nintendo.com/us/amiibo/detail/sheik-amiibo-super-smash-bros-series/",
+		"status": "in_transit"
 	},
 	{
 		"id": "sidon",
@@ -354,7 +355,8 @@
 			"toy": "urbosa-1.jpeg",
 			"box": "urbosa-2.jpeg"
 		},
-		"detail": "https://www.nintendo.com/us/amiibo/detail/urbosa-amiibo-the-legend-of-zelda-series/"
+		"detail": "https://www.nintendo.com/us/amiibo/detail/urbosa-amiibo-the-legend-of-zelda-series/",
+		"status": "in_transit"
 	},
 	{
 		"id": "wolf-link",

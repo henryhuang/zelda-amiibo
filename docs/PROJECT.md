@@ -4,7 +4,7 @@
 
 `zelda-amiibo` 是一个塞尔达 Amiibo 收藏展示站点。它以本地 JSON 数据为事实来源，构建静态页面展示 Amiibo 图库、收藏状态、收藏进度和花费统计。
 
-当前数据集中包含 32 个 Amiibo，其中 9 个带有收藏信息，累计花费为 687.11。
+当前数据集中包含 33 个 Amiibo，其中 12 个带有收藏信息，累计花费为 879.49。
 
 ## 页面结构
 
@@ -112,5 +112,6 @@ VITE_AMIIBO_IMG_ENDPOINT=https://your-image-host.example.com
 - 类型声明集中在 `src/@types/type.d.ts`。
 - 日期字符串约定为 `YYYY.MM.DD`，格式化依赖 `moment`。
 - `collectedInfo` 是可选字段；是否已收集主要通过该字段是否存在以及 `collectedInfo.collected` 判断。
+- `status: "in_transit"` 是未收集 Amiibo 的附加状态，用于在途筛选、橙色卡片边框和 Hero 在途数量。
 - 当前 `AmiiboSearchCriteria.newestFirst` 已定义但未在筛选函数中使用。
 - `AmiiboDisplayDividedBy.ts` 中函数名为 `DevidedBy`，保持现状可避免影响已有引用。

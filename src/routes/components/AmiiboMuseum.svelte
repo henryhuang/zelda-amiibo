@@ -6,7 +6,7 @@
 	import HeroHeader from './HeroHeader.svelte';
 
 	interface Props {
-		initialStatus?: 'all' | 'collected' | 'missing';
+		initialStatus?: 'all' | 'collected' | 'missing' | 'in_transit';
 		initialView?: 'grid' | 'list';
 	}
 
@@ -37,6 +37,7 @@
 	const collectedCount = $derived($collectedInfo.collectedNum);
 	const totalCount = $derived($collectedInfo.totalNum);
 	const missingCount = $derived(Math.max(totalCount - collectedCount, 0));
+	const inTransitCount = $derived($amiibos.filter((amiibo) => amiibo.status === 'in_transit').length);
 	const todayStr = $derived.by(() => {
 		const d = new Date();
 		return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
@@ -61,6 +62,7 @@
 			{ key: 'all', label: '全部', count: totalCount },
 			{ key: 'collected', label: '已收集', count: collectedCount },
 			{ key: 'missing', label: '未收集', count: missingCount },
+			{ key: 'in_transit', label: '在途', count: inTransitCount },
 			{
 				key: 'series:Tears of the Kingdom',
 				label: '王国之泪',
@@ -110,6 +112,10 @@
 
 				if (activeFilter === 'missing') {
 					return !amiibo.collectedInfo?.collected;
+				}
+
+				if (activeFilter === 'in_transit') {
+					return amiibo.status === 'in_transit';
 				}
 
 				if (activeFilter.startsWith('series:')) {
@@ -170,6 +176,7 @@
 		{totalCount}
 		{collectedCount}
 		{missingCount}
+		{inTransitCount}
 		{pendingCount}
 		seriesCount={$series.length}
 		{latestCollectedDate}
@@ -235,6 +242,7 @@
 				<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
 				<article
 					class:collected={amiibo.collectedInfo?.collected}
+					class:in-transit={amiibo.status === 'in_transit'}
 					class:flipped={flippedCards.get(amiibo.id)}
 					class="museum-card"
 					id={amiibo.id}
@@ -281,6 +289,7 @@
 			{:else}
 				<article
 					class:collected={amiibo.collectedInfo?.collected}
+					class:in-transit={amiibo.status === 'in_transit'}
 					class="museum-card"
 					id={amiibo.id}
 				>
