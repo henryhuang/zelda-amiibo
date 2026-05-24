@@ -29,15 +29,21 @@
 		flippedCards = new Map(flippedCards);
 	};
 
-	const isSage = (amiibo: Amiibo) =>
-		['露珠', '希多', '丘栗', '阿沅', '米涅鲁魔像'].includes(amiibo.name);
-
 	const { AMIIBO_IMG_ENDPOINT } = CONFIG;
+	const seriesLabels: Record<string, string> = {
+		'30th Anniversary': '30周年',
+		'Breath of the Wild': '旷野之息',
+		'Super Smash Bros.': '大乱斗',
+		'Tears of the Kingdom': '王国之泪',
+		'The Legend of Zelda': '塞尔达传说'
+	};
 
 	const collectedCount = $derived($collectedInfo.collectedNum);
 	const totalCount = $derived($collectedInfo.totalNum);
 	const missingCount = $derived(Math.max(totalCount - collectedCount, 0));
-	const inTransitCount = $derived($amiibos.filter((amiibo) => amiibo.status === 'in_transit').length);
+	const inTransitCount = $derived(
+		$amiibos.filter((amiibo) => amiibo.status === 'in_transit').length
+	);
 	const todayStr = $derived.by(() => {
 		const d = new Date();
 		return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
@@ -52,54 +58,23 @@
 		return dates[0] ?? '';
 	});
 
-	const isChampion = (amiibo: Amiibo) =>
-		['米法', '达尔克尔', '力巴尔', '乌尔波扎'].includes(amiibo.name);
-
-	const quickFilters = $derived.by(() => {
-		const countBy = (predicate: (amiibo: Amiibo) => boolean) => $amiibos.filter(predicate).length;
-
+	const statusFilters = $derived.by(() => {
 		return [
 			{ key: 'all', label: '全部', count: totalCount },
 			{ key: 'collected', label: '已收集', count: collectedCount },
 			{ key: 'missing', label: '未收集', count: missingCount },
-			{ key: 'in_transit', label: '在途', count: inTransitCount },
-			{
-				key: 'series:Tears of the Kingdom',
-				label: '王国之泪',
-				count: countBy((amiibo) => amiibo.series === 'Tears of the Kingdom')
-			},
-			{
-				key: 'series:Breath of the Wild',
-				label: '旷野之息',
-				count: countBy((amiibo) => amiibo.series === 'Breath of the Wild')
-			},
-			{
-				key: 'name:林克',
-				label: '林克',
-				count: countBy((amiibo) => amiibo.name.includes('林克'))
-			},
-			{
-				key: 'name:塞尔达',
-				label: '塞尔达',
-				count: countBy((amiibo) => amiibo.name.includes('塞尔达'))
-			},
-			{
-				key: 'group:champions',
-				label: '英杰',
-				count: countBy(isChampion)
-			},
-			{
-				key: 'group:sages',
-				label: '贤者',
-				count: countBy(isSage)
-			},
-			{
-				key: 'series:Super Smash Bros.',
-				label: '大乱斗',
-				count: countBy((amiibo) => amiibo.series === 'Super Smash Bros.')
-			}
+			{ key: 'in_transit', label: '在途', count: inTransitCount }
 		];
 	});
+
+	const seriesFilters = $derived.by(() =>
+		$series.map((item) => ({
+			key: `series:${item.name}`,
+			label: seriesLabels[item.name] ?? item.name,
+			count: item.total,
+			collectedPercent: item.total ? Math.round((item.collected / item.total) * 100) : 0
+		}))
+	);
 
 	const filteredAmiibos = $derived.by(() => {
 		const normalizedQuery = query.trim().toLowerCase();
@@ -120,18 +95,6 @@
 
 				if (activeFilter.startsWith('series:')) {
 					return amiibo.series === activeFilter.replace('series:', '');
-				}
-
-				if (activeFilter.startsWith('name:')) {
-					return amiibo.name.includes(activeFilter.replace('name:', ''));
-				}
-
-				if (activeFilter === 'group:sages') {
-					return isSage(amiibo);
-				}
-
-				if (activeFilter === 'group:champions') {
-					return isChampion(amiibo);
 				}
 
 				return activeFilter === 'all';
@@ -187,16 +150,33 @@
 
 <section class="museum-panel" id="museum-panel" aria-label="Amiibo 收藏馆">
 	<div class="museum-toolbar">
-		<div class="museum-filter-row" aria-label="Amiibo 筛选">
-			{#each quickFilters as item (item.key)}
-				<button
-					class:active={activeFilter === item.key}
-					type="button"
-					onclick={() => (activeFilter = item.key)}
-				>
-					{item.label} <small>{item.count}</small>
-				</button>
-			{/each}
+		<div class="museum-filter-stack" aria-label="Amiibo 筛选">
+			<div class="museum-filter-row" aria-label="按状态筛选">
+				{#each statusFilters as item (item.key)}
+					<button
+						class:active={activeFilter === item.key}
+						type="button"
+						onclick={() => (activeFilter = item.key)}
+					>
+						{item.label} <small>{item.count}</small>
+					</button>
+				{/each}
+			</div>
+
+			<div class="museum-filter-row" aria-label="按系列筛选">
+				{#each seriesFilters as item (item.key)}
+					<button
+						class:active={activeFilter === item.key}
+						type="button"
+						onclick={() => (activeFilter = item.key)}
+					>
+						{item.label} <small>{item.count}</small>
+						{#if activeFilter === item.key}
+							<span class="museum-filter-percent">({item.collectedPercent}%)</span>
+						{/if}
+					</button>
+				{/each}
+			</div>
 		</div>
 
 		<div class="museum-controls">
