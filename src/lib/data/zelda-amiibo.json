@@ -356,7 +356,11 @@
 			"box": "urbosa-2.jpeg"
 		},
 		"detail": "https://www.nintendo.com/us/amiibo/detail/urbosa-amiibo-the-legend-of-zelda-series/",
-		"status": "in_transit"
+		"collectedInfo": {
+			"collected": true,
+			"collectDate": "2026.05.25",
+			"price": 74
+		}
 	},
 	{
 		"id": "wolf-link",
