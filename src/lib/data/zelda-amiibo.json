@@ -41,7 +41,8 @@
 			"toy": "ganondorf-1.jpeg",
 			"box": "ganondorf-2.jpeg"
 		},
-		"detail": "https://www.nintendo.com/us/amiibo/detail/ganondorf-amiibo-super-smash-bros-series/"
+		"detail": "https://www.nintendo.com/us/amiibo/detail/ganondorf-amiibo-super-smash-bros-series/",
+		"status": "in_transit"
 	},
 	{
 		"id": "ganondorf-tears-of-the-kingdom",
@@ -271,7 +272,8 @@
 			"toy": "riju-1.jpeg",
 			"box": "riju-2.jpeg"
 		},
-		"detail": "https://www.nintendo.com/us/amiibo/detail/riju-the-legend-of-zelda-tears-of-the-kingdom-series/"
+		"detail": "https://www.nintendo.com/us/amiibo/detail/riju-the-legend-of-zelda-tears-of-the-kingdom-series/",
+		"status": "in_transit"
 	},
 	{
 		"id": "sheik",
@@ -285,7 +287,11 @@
 			"box": "sheik-2.jpeg"
 		},
 		"detail": "https://www.nintendo.com/us/amiibo/detail/sheik-amiibo-super-smash-bros-series/",
-		"status": "in_transit"
+		"collectedInfo": {
+			"collected": true,
+			"collectDate": "2026.05.25",
+			"price": 49.3
+		}
 	},
 	{
 		"id": "sidon",
