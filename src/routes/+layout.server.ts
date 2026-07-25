@@ -7,7 +7,7 @@ const { AMIIBO_IMG_ENDPOINT } = CONFIG;
 
 export const load = async ({ fetch }) => {
 	const amiibos = await loadAmiibosWithFallback(fetch);
-	const seriesInfoMap: {[name: string]: SeriesCollectingInfo} = {};
+	const seriesInfoMap: { [name: string]: SeriesCollectingInfo } = {};
 	amiibos.forEach((amiibo) => {
 		const series = amiibo.series;
 		let infoMap = seriesInfoMap[series];
@@ -21,12 +21,12 @@ export const load = async ({ fetch }) => {
 		}
 		Object.assign(infoMap, {
 			total: infoMap.total + 1,
-			collected: infoMap.collected + (amiibo.collectedInfo?.collected ?  1 : 0),
-		})
-	})
+			collected: infoMap.collected + (amiibo.status === 'collected' ? 1 : 0)
+		});
+	});
 	return {
 		amiibos,
 		series: Object.values(seriesInfoMap),
 		imgEndpoint: `${AMIIBO_IMG_ENDPOINT}`
-	}
-}
+	};
+};

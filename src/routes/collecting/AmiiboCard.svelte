@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	import { Card, P, A } from 'flowbite-svelte';
 	import { CONFIG } from '$lib/config';
 	import { formatDate } from '$lib/utils/commonUtil';
@@ -13,19 +12,17 @@
 	const { AMIIBO_IMG_ENDPOINT } = CONFIG;
 
 	let imageUrl: string = $derived.by(() => {
-		return `${AMIIBO_IMG_ENDPOINT}/${amiibo.collectedInfo ? amiibo.images.box : amiibo.images.toy}`;
+		return `${AMIIBO_IMG_ENDPOINT}/${amiibo.status === 'collected' ? amiibo.images.box : amiibo.images.toy}`;
 	});
 
-	const cardStyles = $derived("border-1 border-solid" + (amiibo.collectedInfo ? " border-green-500" : ""));
-
+	const cardStyles = $derived(
+		'border-1 border-solid' + (amiibo.status === 'collected' ? ' border-green-500' : '')
+	);
 </script>
 
-<Card
-	class={cardStyles}
-	id={amiibo.id}
->
+<Card class={cardStyles} id={amiibo.id}>
 	<div
-		class="w-full mt-5"
+		class="mt-5 w-full"
 		style="
 				width: 100%;
 				aspect-ratio: 16/9;
@@ -37,10 +34,7 @@
 	></div>
 	<div class="m-6">
 		<h5 class="mb-2 text-lg tracking-tight text-gray-900 dark:text-white">
-			<A class="font-medium hover:underline"
-				 href={amiibo.detail}
-				 target="_blank"
-			>
+			<A class="font-medium hover:underline" href={amiibo.detail} target="_blank">
 				{amiibo.name}
 			</A>
 		</h5>
@@ -52,7 +46,10 @@
 		</P>
 		{#if amiibo.collectedInfo}
 			<P class="font-normal text-green-700" size="xs">
-				收集日 {formatDate(amiibo.collectedInfo.collectDate)}, 花费 {amiibo.collectedInfo.price}
+				{#if amiibo.collectedInfo.collectDate}
+					收集日 {formatDate(amiibo.collectedInfo.collectDate)},
+				{/if}
+				花费 {amiibo.collectedInfo.price}
 			</P>
 		{/if}
 	</div>

@@ -15,7 +15,7 @@
 	type SortOption = 'release-desc' | 'collect-desc' | 'name' | 'series';
 
 	const mobileMediaQuery = '(max-width: 900px)';
-	const getTimestamp = (date?: string) => (date ? Date.parse(date.replaceAll('.', '-')) : 0);
+	const getTimestamp = (date?: string | null) => (date ? Date.parse(date.replaceAll('.', '-')) : 0);
 
 	let activeFilter = $state<string>(initialStatus);
 	let query = $state('');
@@ -49,9 +49,9 @@
 		return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
 	});
 	const pendingCount = $derived($amiibos.filter((amiibo) => amiibo.releaseDate > todayStr).length);
-	const collectedAmiibos = $derived($amiibos.filter((amiibo) => amiibo.collectedInfo?.collected));
+	const collectedAmiibos = $derived($amiibos.filter((amiibo) => amiibo.status === 'collected'));
 	const latestCollectedDate = $derived.by(() => {
-		const dates = $amiibos
+		const dates = collectedAmiibos
 			.map((amiibo) => amiibo.collectedInfo?.collectDate)
 			.filter((date): date is string => Boolean(date))
 			.sort((a, b) => getTimestamp(b) - getTimestamp(a));
@@ -82,11 +82,11 @@
 		return [...$amiibos]
 			.filter((amiibo) => {
 				if (activeFilter === 'collected') {
-					return amiibo.collectedInfo?.collected;
+					return amiibo.status === 'collected';
 				}
 
 				if (activeFilter === 'missing') {
-					return !amiibo.collectedInfo?.collected;
+					return amiibo.status !== 'collected';
 				}
 
 				if (activeFilter === 'in_transit') {
@@ -221,7 +221,7 @@
 			{#if viewMode === 'grid'}
 				<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
 				<article
-					class:collected={amiibo.collectedInfo?.collected}
+					class:collected={amiibo.status === 'collected'}
 					class:in-transit={amiibo.status === 'in_transit'}
 					class:flipped={flippedCards.get(amiibo.id)}
 					class="museum-card"
@@ -235,7 +235,7 @@
 				>
 					<div class="museum-card-inner">
 						<div class="museum-card-front">
-							<span class="museum-card-mark">{amiibo.collectedInfo?.collected ? '✓' : '◇'}</span>
+							<span class="museum-card-mark">{amiibo.status === 'collected' ? '✓' : '◇'}</span>
 							<div class="museum-card-image">
 								<img src={imgUrl(amiibo)} alt={amiibo.name} />
 							</div>
@@ -251,10 +251,12 @@
 							<p>{amiibo.series}</p>
 							<span>发布日 {formatDate(amiibo.releaseDate)}</span>
 							{#if amiibo.collectedInfo}
-								<em
-									>收集日 {formatDate(amiibo.collectedInfo.collectDate)} · ¥{amiibo.collectedInfo
-										.price}</em
-								>
+								<em>
+									{#if amiibo.collectedInfo.collectDate}
+										收集日 {formatDate(amiibo.collectedInfo.collectDate)} ·
+									{/if}
+									花费 ¥{amiibo.collectedInfo.price}
+								</em>
 							{/if}
 							<a
 								href={amiibo.detail}
@@ -268,14 +270,14 @@
 				</article>
 			{:else}
 				<article
-					class:collected={amiibo.collectedInfo?.collected}
+					class:collected={amiibo.status === 'collected'}
 					class:in-transit={amiibo.status === 'in_transit'}
 					class="museum-card"
 					id={amiibo.id}
 				>
 					<div class="museum-card-inner">
 						<div class="museum-card-front">
-							<span class="museum-card-mark">{amiibo.collectedInfo?.collected ? '✓' : '◇'}</span>
+							<span class="museum-card-mark">{amiibo.status === 'collected' ? '✓' : '◇'}</span>
 							<div class="museum-card-image">
 								<img src={imgUrl(amiibo)} alt={amiibo.name} />
 							</div>
@@ -288,10 +290,12 @@
 								<p>{amiibo.series}</p>
 								<span>发布日 {formatDate(amiibo.releaseDate)}</span>
 								{#if amiibo.collectedInfo}
-									<em
-										>收集日 {formatDate(amiibo.collectedInfo.collectDate)} · ¥{amiibo.collectedInfo
-											.price}</em
-									>
+									<em>
+										{#if amiibo.collectedInfo.collectDate}
+											收集日 {formatDate(amiibo.collectedInfo.collectDate)} ·
+										{/if}
+										花费 ¥{amiibo.collectedInfo.price}
+									</em>
 								{/if}
 								<a
 									href={amiibo.detail}

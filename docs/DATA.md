@@ -25,6 +25,10 @@ src/lib/data/zelda-amiibo.json
 		"box": "bokoblin-2.jpeg"
 	},
 	"status": "in_transit",
+	"collectedInfo": {
+		"collectDate": null,
+		"price": 99.9
+	},
 	"detail": "https://www.nintendo.com/us/amiibo/detail/bokoblin-amiibo-the-legend-of-zelda-series/"
 }
 ```
@@ -38,10 +42,10 @@ src/lib/data/zelda-amiibo.json
 | `images.toy`    | 是   | Amiibo 本体图片文件名                                      |
 | `images.box`    | 是   | Amiibo 盒装图片文件名                                      |
 | `detail`        | 是   | 外部详情链接                                               |
-| `status`        | 否   | 附加状态，目前支持 `in_transit`，表示在途                  |
-| `collectedInfo` | 否   | 收藏信息，存在时表示有收藏记录                             |
+| `status`        | 否   | 状态，支持 `collected`（已收集）和 `in_transit`（在途）    |
+| `collectedInfo` | 否   | 入手信息，可用于已收集或在途 Amiibo                        |
 
-`status: "in_transit"` 表示 Amiibo 已经在途，但它仍然属于未收集；只有存在 `collectedInfo.collected: true` 时才计入已收集。
+是否已收集只由 `status` 判断：`status: "collected"` 计入已收集，`status: "in_transit"` 仍属于未收集。未购买的 Amiibo 可以不设置 `status` 和 `collectedInfo`。
 
 ## 收藏信息字段
 
@@ -49,19 +53,18 @@ src/lib/data/zelda-amiibo.json
 
 ```json
 {
+	"status": "collected",
 	"collectedInfo": {
-		"collected": true,
 		"collectDate": "2026.04.29",
 		"price": 99.9
 	}
 }
 ```
 
-| 字段          | 说明                                           |
-| ------------- | ---------------------------------------------- |
-| `collected`   | 是否已收集，当前代码按 `true` 统计系列已收集数 |
-| `collectDate` | 收集日期，格式为 `YYYY.MM.DD`                  |
-| `price`       | 入手价格，用于累计花费统计                     |
+| 字段          | 说明                                                 |
+| ------------- | ---------------------------------------------------- |
+| `collectDate` | 收集日期，格式为 `YYYY.MM.DD`；尚在途时可设为 `null` |
+| `price`       | 入手价格，用于累计花费统计                           |
 
 ## 图片地址规则
 
@@ -90,7 +93,7 @@ https://static.example.com/amiibo/bokoblin-1.jpeg
 2. 在 `src/lib/data/zelda-amiibo.json` 添加一个 Amiibo 对象。
 3. 确认 `id` 唯一。
 4. 使用 `YYYY.MM.DD` 格式填写 `releaseDate`。
-5. 如已收藏，补充 `collectedInfo`。
+5. 如已收藏，设置 `status: "collected"` 并补充 `collectedInfo`。
 6. 运行检查命令：
 
 ```bash
@@ -105,8 +108,8 @@ npm run build
 给对应 Amiibo 添加：
 
 ```json
+"status": "collected",
 "collectedInfo": {
-  "collected": true,
   "collectDate": "2026.04.29",
   "price": 99.9
 }
@@ -114,33 +117,37 @@ npm run build
 
 ### 标记为未收集
 
-删除对应 Amiibo 的 `collectedInfo` 字段。
+删除对应 Amiibo 的 `status` 和 `collectedInfo` 字段。
 
 ### 标记为在途
 
 在未收集 Amiibo 上增加：
 
 ```json
-"status": "in_transit"
+"status": "in_transit",
+"collectedInfo": {
+  "collectDate": null,
+  "price": 99.9
+}
 ```
 
-在途 Amiibo 不应同时添加 `collectedInfo`。
+在途 Amiibo 可以添加 `collectedInfo` 记录价格，此时 `collectDate` 使用 `null`。价格未知时也可以省略整个 `collectedInfo`。
 
 ## 当前系列统计
 
 当前数据包含 33 个 Amiibo，按系列分布如下：
 
-| 系列                  | 数量 |
-| --------------------- | ---: |
-| Breath of the Wild    |    9 |
-| Super Smash Bros.     |    6 |
-| Tears of the Kingdom  |    8 |
-| The Legend of Zelda   |    6 |
-| 30th Anniversary      |    4 |
+| 系列                 | 数量 |
+| -------------------- | ---: |
+| Breath of the Wild   |    9 |
+| Super Smash Bros.    |    6 |
+| Tears of the Kingdom |    8 |
+| The Legend of Zelda  |    6 |
+| 30th Anniversary     |    4 |
 
 ## 数据约定
 
-- `releaseDate` 和 `collectDate` 保持 `YYYY.MM.DD`。
+- `releaseDate` 保持 `YYYY.MM.DD`；非空的 `collectDate` 也保持该格式。
 - `price` 使用数字，不要写成字符串。
 - 同一系列名称必须完全一致，否则会被统计为不同系列。
 - `id` 会用于 DOM `id` 和 URL hash，修改已有 `id` 会影响历史链接。

@@ -34,11 +34,11 @@ SvelteKit 2 with static adapter (`@sveltejs/adapter-static`), Svelte 5, Tailwind
 
 ### Pages
 
-| Route | File | Content |
-|-------|------|---------|
-| `/` | `+page.svelte` | Home — renders `AmiiboMuseum` with all filters/views |
+| Route         | File                      | Content                                                                  |
+| ------------- | ------------------------- | ------------------------------------------------------------------------ |
+| `/`           | `+page.svelte`            | Home — renders `AmiiboMuseum` with all filters/views                     |
 | `/collecting` | `collecting/+page.svelte` | Collection page — same `AmiiboMuseum` but defaults to "collected" filter |
-| `/gallery` | `gallery/+page.svelte` | Simple image gallery — reuses `GalleryShow` |
+| `/gallery`    | `gallery/+page.svelte`    | Simple image gallery — reuses `GalleryShow`                              |
 
 ### Key Components
 
@@ -50,8 +50,9 @@ SvelteKit 2 with static adapter (`@sveltejs/adapter-static`), Svelte 5, Tailwind
 ### Data Model
 
 All types in `src/@types/type.d.ts`:
-- `Amiibo` — id, name, series, releaseDate (YYYY.MM.DD), images (toy + box filenames), optional `collectedInfo`, detail URL
-- `AmiiboCollectedInfo` — collected (boolean), collectDate, price
+
+- `Amiibo` — id, name, series, releaseDate (YYYY.MM.DD), images (toy + box filenames), optional status and `collectedInfo`, detail URL
+- `AmiiboCollectedInfo` — nullable collectDate and price
 - `CollectedInfo` — progressRate, collectedNum, totalNum, cost
 - Image URLs are constructed at runtime: `${VITE_AMIIBO_IMG_ENDPOINT}/${filename}`
 
@@ -62,6 +63,7 @@ All styles live in `src/app.css` using CSS custom properties (`--totk-*`). Tailw
 ### Conventions
 
 - Date format: `YYYY.MM.DD` throughout JSON data. `moment` library used for formatting to display strings.
-- `collectedInfo` being present on an Amiibo means it's collected (boolean `collected` field).
+- `status: "collected"` means an Amiibo is collected; `status: "in_transit"` means it is in transit.
+- `collectedInfo` stores purchase details for collected or in-transit Amiibo and does not determine status.
 - Series names in JSON must match exactly for correct grouping.
 - Image files are not in repo; served from external endpoint configured via env var.

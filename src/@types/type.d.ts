@@ -8,15 +8,14 @@ interface Amiibo {
 	images: {
 		toy: string;
 		box: string;
-	},
-	status?: 'in_transit';
+	};
+	status?: 'collected' | 'in_transit';
 	collectedInfo?: AmiiboCollectedInfo;
 	detail: string;
 }
 
 interface AmiiboCollectedInfo {
-	collected: boolean;
-	collectDate: string;
+	collectDate: string | null;
 	price: number;
 }
 
@@ -34,23 +33,23 @@ interface CollectedInfo {
 }
 
 interface MenuSetting {
-	backup: boolean,
-	collecting: boolean,
-	progress: boolean,
-	gallery: boolean
+	backup: boolean;
+	collecting: boolean;
+	progress: boolean;
+	gallery: boolean;
 }
 
 interface Image {
 	id: string;
-	src: string,
-	alt: string,
-	nameEn?: string,
-	collected?: boolean,
+	src: string;
+	alt: string;
+	nameEn?: string;
+	collected?: boolean;
 }
 
 interface Gallery {
-	toys: Image[],
-	boxes: Image[]
+	toys: Image[];
+	boxes: Image[];
 }
 
 interface SeriesCollectingInfo {

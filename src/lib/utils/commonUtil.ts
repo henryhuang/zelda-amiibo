@@ -5,7 +5,7 @@ export const fixTwoDecimals = (raw: number) => {
 	return Math.round(raw * 100) / 100;
 };
 
-export const formatDate = (rawStr?: string) => {
+export const formatDate = (rawStr?: string | null) => {
 	if (!rawStr) {
 		return '';
 	}

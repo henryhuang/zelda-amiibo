@@ -24,8 +24,8 @@
 			"box": "daruk-2.jpeg"
 		},
 		"detail": "https://www.nintendo.com/us/amiibo/detail/daruk-amiibo-the-legend-of-zelda-series/",
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2026.05.15",
 			"price": 69.38
 		}
@@ -42,7 +42,11 @@
 			"box": "ganondorf-2.jpeg"
 		},
 		"detail": "https://www.nintendo.com/us/amiibo/detail/ganondorf-amiibo-super-smash-bros-series/",
-		"status": "in_transit"
+		"status": "collected",
+		"collectedInfo": {
+			"collectDate": "2026.07.25",
+			"price": 72.75
+		}
 	},
 	{
 		"id": "ganondorf-tears-of-the-kingdom",
@@ -55,8 +59,8 @@
 			"toy": "ganondorf-tears-of-the-kingdom-1.jpeg",
 			"box": "ganondorf-tears-of-the-kingdom-2.jpeg"
 		},
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2025.07.23",
 			"price": 76.03
 		},
@@ -86,8 +90,8 @@
 			"toy": "link-1.jpeg",
 			"box": "link-2.jpeg"
 		},
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2025.07.17",
 			"price": 60
 		},
@@ -130,8 +134,8 @@
 			"toy": "link-ocarina-of-time-1.jpeg",
 			"box": "link-ocarina-of-time-2.jpeg"
 		},
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2025.07.03",
 			"price": 53.14
 		},
@@ -148,8 +152,8 @@
 			"toy": "link-skyward-sword-1.jpeg",
 			"box": "link-skyward-sword-2.jpeg"
 		},
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2025.07.03",
 			"price": 67.83
 		},
@@ -166,8 +170,8 @@
 			"toy": "link-tears-of-the-kingdom-1.jpeg",
 			"box": "link-tears-of-the-kingdom-2.jpeg"
 		},
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2025.06.27",
 			"price": 104
 		},
@@ -197,8 +201,8 @@
 			"toy": "link-twilight-princess-1.jpeg",
 			"box": "link-twilight-princess-2.jpeg"
 		},
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2025.08.09",
 			"price": 58.91
 		},
@@ -215,8 +219,8 @@
 			"toy": "link-archer-1.jpeg",
 			"box": "link-archer-2.jpeg"
 		},
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2025.07.29",
 			"price": 80.75
 		},
@@ -273,7 +277,11 @@
 			"box": "riju-2.jpeg"
 		},
 		"detail": "https://www.nintendo.com/us/amiibo/detail/riju-the-legend-of-zelda-tears-of-the-kingdom-series/",
-		"status": "in_transit"
+		"status": "in_transit",
+		"collectedInfo": {
+			"collectDate": null,
+			"price": 71.25
+		}
 	},
 	{
 		"id": "sheik",
@@ -287,8 +295,8 @@
 			"box": "sheik-2.jpeg"
 		},
 		"detail": "https://www.nintendo.com/us/amiibo/detail/sheik-amiibo-super-smash-bros-series/",
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2026.05.27",
 			"price": 49.3
 		}
@@ -318,8 +326,8 @@
 			"box": "toon-link-2.jpeg"
 		},
 		"detail": "https://www.nintendo.com/us/amiibo/detail/toon-link-amiibo-super-smash-bros-series/",
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2026.05.17",
 			"price": 52.5
 		}
@@ -362,8 +370,8 @@
 			"box": "urbosa-2.jpeg"
 		},
 		"detail": "https://www.nintendo.com/us/amiibo/detail/urbosa-amiibo-the-legend-of-zelda-series/",
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2026.05.25",
 			"price": 74
 		}
@@ -405,8 +413,8 @@
 			"toy": "yunobo-1.jpeg",
 			"box": "yunobo-2.jpeg"
 		},
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2026.05.11",
 			"price": 70.5
 		},
@@ -449,8 +457,8 @@
 			"toy": "zelda-tears-of-the-kingdom-1.jpeg",
 			"box": "zelda-tears-of-the-kingdom-2.jpeg"
 		},
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2025.06.27",
 			"price": 104
 		},
@@ -480,8 +488,8 @@
 			"toy": "zelda-and-loftwing-1.jpeg",
 			"box": "zelda-and-loftwing-2.jpeg"
 		},
+		"status": "collected",
 		"collectedInfo": {
-			"collected": true,
 			"collectDate": "2025.08.06",
 			"price": 82.45
 		},

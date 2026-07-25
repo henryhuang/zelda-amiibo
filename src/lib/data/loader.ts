@@ -13,6 +13,20 @@ const isAmiibo = (value: unknown): value is Amiibo => {
 	}
 
 	const candidate = value as Partial<Amiibo>;
+	const collectedInfo = candidate.collectedInfo;
+	const hasValidStatus =
+		candidate.status === undefined ||
+		candidate.status === 'collected' ||
+		candidate.status === 'in_transit';
+	const hasValidCollectedInfo =
+		collectedInfo === undefined ||
+		(typeof collectedInfo === 'object' &&
+			collectedInfo !== null &&
+			!('collected' in collectedInfo) &&
+			(collectedInfo.collectDate === null || typeof collectedInfo.collectDate === 'string') &&
+			typeof collectedInfo.price === 'number' &&
+			Number.isFinite(collectedInfo.price));
+
 	return (
 		typeof candidate.id === 'string' &&
 		typeof candidate.name === 'string' &&
@@ -20,7 +34,9 @@ const isAmiibo = (value: unknown): value is Amiibo => {
 		typeof candidate.releaseDate === 'string' &&
 		typeof candidate.detail === 'string' &&
 		typeof candidate.images?.toy === 'string' &&
-		typeof candidate.images?.box === 'string'
+		typeof candidate.images?.box === 'string' &&
+		hasValidStatus &&
+		hasValidCollectedInfo
 	);
 };
 
@@ -36,9 +52,7 @@ export const loadAmiibos = (): Amiibo[] => {
 	return sortAmiibos(parsed);
 };
 
-export const loadAmiibosWithFallback = async (
-	fetcher: typeof fetch = fetch
-): Promise<Amiibo[]> => {
+export const loadAmiibosWithFallback = async (fetcher: typeof fetch = fetch): Promise<Amiibo[]> => {
 	try {
 		return loadAmiibos();
 	} catch {

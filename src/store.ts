@@ -25,22 +25,22 @@ export const initStore = (
 	collectedInfo.set(collectedInfoInited);
 	amiibos.set(amiibosInited);
 	series.set(seriesInited);
-	const toys = amiibosInited.map(amiibo => ({
+	const toys = amiibosInited.map((amiibo) => ({
 		id: amiibo.id,
 		alt: amiibo.name,
-			nameEn: amiibo.nameEn,
+		nameEn: amiibo.nameEn,
 		src: `${imgEndpoint}/${amiibo.images.toy}`,
-		collected: amiibo?.collectedInfo?.collected
+		collected: amiibo.status === 'collected'
 	}));
-	const boxes = amiibosInited.map(amiibo => ({
+	const boxes = amiibosInited.map((amiibo) => ({
 		id: amiibo.id,
 		alt: amiibo.name,
-			nameEn: amiibo.nameEn,
+		nameEn: amiibo.nameEn,
 		src: `${imgEndpoint}/${amiibo.images.box}`,
-		collected: amiibo?.collectedInfo?.collected
+		collected: amiibo.status === 'collected'
 	}));
 	gallery.set({
 		toys,
 		boxes
-	})
+	});
 };

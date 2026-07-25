@@ -111,7 +111,8 @@ VITE_AMIIBO_IMG_ENDPOINT=https://your-image-host.example.com
 
 - 类型声明集中在 `src/@types/type.d.ts`。
 - 日期字符串约定为 `YYYY.MM.DD`，格式化依赖 `moment`。
-- `collectedInfo` 是可选字段；是否已收集主要通过该字段是否存在以及 `collectedInfo.collected` 判断。
-- `status: "in_transit"` 是未收集 Amiibo 的附加状态，用于在途筛选、橙色卡片边框和 Hero 在途数量。
+- `status: "collected"` 是已收集状态；收集统计、筛选和样式都以该状态为准。
+- `status: "in_transit"` 表示在途，仍归入未收集；它可以带有 `collectedInfo` 记录价格，且 `collectDate` 可为 `null`。
+- `collectedInfo` 是可选的入手信息，不再承担状态判断，也不包含 `collected` 字段。
 - 当前 `AmiiboSearchCriteria.newestFirst` 已定义但未在筛选函数中使用。
 - `AmiiboDisplayDividedBy.ts` 中函数名为 `DevidedBy`，保持现状可避免影响已有引用。

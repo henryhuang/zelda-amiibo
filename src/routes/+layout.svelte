@@ -10,10 +10,10 @@
 
 	const { amiibos, series, imgEndpoint } = data;
 	const totalSize = amiibos.length;
-	const collected = amiibos.filter((a) => Boolean(a.collectedInfo));
+	const collected = amiibos.filter((a) => a.status === 'collected');
 	const collectedSize = collected.length;
 	const priceTotal = fixTwoDecimals(
-		collected.reduce((sum, a) => sum + (a.collectedInfo?.price || 0), 0)
+		amiibos.reduce((sum, a) => sum + (a.collectedInfo?.price || 0), 0)
 	);
 	const progress = fixTwoDecimals((collectedSize / totalSize) * 100);
 
