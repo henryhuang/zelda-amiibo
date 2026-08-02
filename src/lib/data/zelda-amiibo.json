@@ -277,9 +277,9 @@
 			"box": "riju-2.jpeg"
 		},
 		"detail": "https://www.nintendo.com/us/amiibo/detail/riju-the-legend-of-zelda-tears-of-the-kingdom-series/",
-		"status": "in_transit",
+		"status": "collected",
 		"collectedInfo": {
-			"collectDate": null,
+			"collectDate": "2026.08.02",
 			"price": 71.25
 		}
 	},
