@@ -172,7 +172,8 @@
 	flex-wrap: wrap;
 }
 
-.museum-nav button {
+.museum-nav button,
+.museum-nav a {
 	position: relative;
 	display: inline-flex;
 	align-items: center;
@@ -194,19 +195,417 @@
 		transform 0.18s ease;
 }
 
-.museum-nav button span {
+.museum-nav button span,
+.museum-nav a > span[aria-hidden='true'] {
 	width: 24px;
 	height: 30px;
+	display: inline-grid;
+	place-items: center;
+}
+
+.museum-nav button span {
 	background: url('/images/ui/backup-archive.png') center / contain no-repeat;
 	color: transparent;
 	font-size: 0;
 }
 
-.museum-nav button:hover {
+.museum-nav a > span[aria-hidden='true'] {
+	color: var(--totk-gold);
+	font-size: 21px;
+}
+
+.museum-nav button:hover,
+.museum-nav a:hover {
 	border-color: rgba(43, 129, 116, 0.13);
 	background: rgba(255, 255, 255, 0.72);
 	color: #2b8174;
 	transform: translateY(-1px);
+}
+
+.museum-nav-random {
+	border-color: transparent !important;
+	background: transparent !important;
+}
+
+.museum-nav-random.active .museum-nav-random-label {
+	text-decoration: underline;
+	text-decoration-color: var(--totk-green-deep);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 9px;
+}
+
+/* === Random next collection === */
+.random-page {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(300px, 0.72fr) minmax(380px, 0.9fr) minmax(260px, 0.55fr);
+	min-height: 680px;
+	align-items: center;
+	gap: clamp(32px, 5vw, 96px);
+	overflow: hidden;
+	padding: clamp(50px, 7vw, 112px) clamp(30px, 6vw, 118px);
+	border: 1px solid var(--totk-border-strong);
+	border-radius: 26px;
+	background:
+		radial-gradient(circle at 52% 48%, rgba(116, 215, 180, 0.22), transparent 25%),
+		linear-gradient(110deg, rgba(255, 253, 247, 0.96), rgba(244, 252, 248, 0.78));
+	box-shadow: var(--totk-shadow);
+}
+
+.random-page::before {
+	content: '';
+	position: absolute;
+	inset: 24px;
+	border: 1px solid rgba(184, 154, 94, 0.22);
+	border-radius: 12px;
+	background:
+		linear-gradient(rgba(184, 154, 94, 0.055) 1px, transparent 1px) 0 0 / 72px 72px,
+		linear-gradient(90deg, rgba(184, 154, 94, 0.055) 1px, transparent 1px) 0 0 / 72px 72px;
+	pointer-events: none;
+}
+
+.random-intro,
+.random-stage,
+.random-actions {
+	position: relative;
+	z-index: 1;
+}
+
+.random-eyebrow {
+	margin: 0 0 22px;
+	color: var(--totk-green-deep) !important;
+	font-size: 13px !important;
+	font-weight: 900 !important;
+	letter-spacing: 0.16em;
+}
+
+.random-intro h1 {
+	margin: 0;
+	color: #1f665a;
+	font-size: clamp(46px, 4vw, 76px);
+	font-weight: 950;
+	line-height: 1.04;
+	letter-spacing: -0.04em;
+}
+
+.random-intro > p:not(.random-eyebrow) {
+	max-width: 500px;
+	margin: 30px 0 0;
+	color: var(--totk-muted);
+	font-size: 17px;
+	font-weight: 650;
+	line-height: 1.9;
+}
+
+.random-pool-summary {
+	display: flex;
+	gap: 22px;
+	margin-top: 34px;
+	padding-top: 24px;
+	border-top: 1px solid var(--totk-border);
+	flex-wrap: wrap;
+}
+
+.random-pool-summary span {
+	color: #746e60;
+	font-size: 12px;
+	font-weight: 750;
+}
+
+.random-pool-summary strong {
+	display: block;
+	margin-bottom: 3px;
+	color: var(--totk-green-deep);
+	font-size: 25px;
+	font-weight: 950;
+}
+
+.random-stage {
+	display: grid;
+	min-height: 520px;
+	place-items: center;
+	perspective: 1200px;
+}
+
+.random-rings,
+.random-rings i {
+	position: absolute;
+	inset: 50% auto auto 50%;
+	border: 1px solid rgba(47, 159, 120, 0.18);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.random-rings {
+	width: 500px;
+	height: 500px;
+	border-style: dashed;
+}
+
+.random-rings::before,
+.random-rings::after {
+	content: '✦';
+	position: absolute;
+	left: 50%;
+	color: var(--totk-gold);
+	font-size: 22px;
+	transform: translateX(-50%);
+}
+
+.random-rings::before {
+	top: -14px;
+}
+.random-rings::after {
+	bottom: -14px;
+}
+.random-rings i:nth-child(1) {
+	width: 410px;
+	height: 410px;
+}
+.random-rings i:nth-child(2) {
+	width: 330px;
+	height: 330px;
+	border-color: rgba(184, 154, 94, 0.24);
+}
+.random-rings i:nth-child(3) {
+	width: 250px;
+	height: 250px;
+	border-style: dashed;
+}
+
+.random-stage.drawing .random-rings {
+	animation: random-spin 2.2s linear infinite;
+}
+
+.random-card {
+	position: relative;
+	display: grid;
+	width: min(350px, 82vw);
+	min-height: 490px;
+	grid-template-rows: auto 1fr auto;
+	overflow: hidden;
+	padding: 22px 24px 24px;
+	border: 1px solid rgba(184, 154, 94, 0.5);
+	border-radius: 18px;
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(249, 245, 232, 0.97)),
+		repeating-linear-gradient(135deg, rgba(184, 154, 94, 0.05) 0 1px, transparent 1px 10px);
+	box-shadow:
+		inset 0 0 0 7px rgba(255, 255, 255, 0.5),
+		0 30px 70px rgba(50, 81, 70, 0.2);
+}
+
+.random-card::after {
+	content: '';
+	position: absolute;
+	inset: 12px;
+	border: 1px solid rgba(184, 154, 94, 0.2);
+	border-radius: 11px;
+	pointer-events: none;
+}
+
+.random-stage.revealed .random-card {
+	animation: random-reveal 0.72s cubic-bezier(0.2, 0.9, 0.2, 1.15) both;
+}
+
+.random-stage.drawing .random-card {
+	animation: random-shuffle 0.18s ease-in-out infinite alternate;
+}
+
+.random-card-topline {
+	display: flex;
+	justify-content: space-between;
+	color: #8f7e5b;
+	font-size: 10px;
+	font-weight: 900;
+	letter-spacing: 0.1em;
+}
+
+.random-card-topline b {
+	color: var(--totk-green-deep);
+}
+
+.random-amiibo-image {
+	display: grid;
+	min-height: 280px;
+	place-items: center;
+	padding: 20px 8px 2px;
+}
+
+.random-amiibo-image img {
+	max-width: 100%;
+	max-height: 285px;
+	object-fit: contain;
+	filter: saturate(1.04) drop-shadow(0 22px 18px rgba(59, 55, 40, 0.22));
+}
+
+.random-stage.drawing .random-amiibo-image img {
+	filter: grayscale(0.9) opacity(0.5) blur(1px);
+}
+
+.random-card-copy {
+	position: relative;
+	z-index: 1;
+	text-align: center;
+}
+
+.random-card-copy p,
+.random-card-copy h2 {
+	margin: 0;
+}
+.random-card-copy p {
+	color: var(--totk-gold);
+	font-size: 11px;
+	font-weight: 850;
+}
+.random-card-copy h2 {
+	margin-top: 8px;
+	color: var(--totk-green-deep);
+	font-size: 27px;
+	font-weight: 950;
+	line-height: 1.15;
+}
+.random-card-copy span {
+	display: block;
+	margin-top: 7px;
+	color: #78776e;
+	font-size: 12px;
+}
+.random-card-copy small {
+	display: block;
+	margin-top: 12px;
+	color: #95886e;
+	font-size: 11px;
+}
+
+.random-card-back {
+	place-items: center;
+	align-content: center;
+	gap: 15px;
+	background:
+		radial-gradient(circle, rgba(116, 215, 180, 0.13), transparent 38%),
+		linear-gradient(145deg, #fbf8ee, #eef7f2);
+	color: var(--totk-green-deep);
+	text-align: center;
+}
+
+.random-card-back img {
+	width: 92px;
+	mix-blend-mode: multiply;
+	opacity: 0.8;
+}
+.random-card-back span,
+.random-card-back small {
+	color: #8c7c5a;
+	font-size: 10px;
+	font-weight: 850;
+	letter-spacing: 0.18em;
+}
+.random-card-back strong {
+	font-size: 86px;
+	font-weight: 400;
+	line-height: 1;
+}
+
+.random-actions {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.random-draw-button,
+.random-detail-button {
+	display: inline-flex;
+	min-height: 58px;
+	align-items: center;
+	justify-content: center;
+	gap: 11px;
+	padding: 0 25px;
+	border-radius: 999px;
+	font-weight: 900;
+	text-decoration: none;
+	cursor: pointer;
+	transition:
+		transform 0.18s ease,
+		box-shadow 0.18s ease;
+}
+
+.random-draw-button {
+	border: 1px solid #277c68;
+	background: linear-gradient(180deg, #43a68c, #267866);
+	color: #fff;
+	box-shadow: 0 14px 28px rgba(47, 159, 120, 0.25);
+}
+
+.random-draw-button span {
+	color: #f1d795;
+	font-size: 21px;
+}
+.random-draw-button:hover:not(:disabled),
+.random-detail-button:hover {
+	transform: translateY(-2px);
+}
+.random-draw-button:disabled {
+	cursor: wait;
+	opacity: 0.72;
+}
+
+.random-detail-button {
+	min-height: 48px;
+	border: 1px solid var(--totk-border-strong);
+	background: rgba(255, 255, 255, 0.7);
+	color: var(--totk-green-deep);
+	font-size: 13px;
+}
+
+.random-quest-note,
+.random-complete {
+	max-width: 290px;
+	margin: 6px 0 0;
+	color: #7c776c;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.7;
+}
+
+.random-complete {
+	color: var(--totk-green-deep);
+	font-size: 15px;
+}
+
+@keyframes random-spin {
+	to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+@keyframes random-shuffle {
+	from {
+		transform: translate3d(-3px, 0, 0) rotate(-0.5deg);
+	}
+	to {
+		transform: translate3d(3px, -2px, 0) rotate(0.5deg);
+	}
+}
+
+@keyframes random-reveal {
+	0% {
+		opacity: 0;
+		transform: translateY(20px) rotateY(80deg) scale(0.88);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.random-stage.drawing .random-rings,
+	.random-stage.drawing .random-card,
+	.random-stage.revealed .random-card {
+		animation: none;
+	}
 }
 
 .museum-main {
@@ -246,7 +645,12 @@
 	border: 1px solid rgba(184, 154, 94, 0.2);
 	border-radius: 8px;
 	background:
-		linear-gradient(90deg, rgba(255, 255, 255, 0.36), transparent 28% 70%, rgba(255, 255, 255, 0.18)),
+		linear-gradient(
+			90deg,
+			rgba(255, 255, 255, 0.36),
+			transparent 28% 70%,
+			rgba(255, 255, 255, 0.18)
+		),
 		repeating-linear-gradient(135deg, rgba(184, 154, 94, 0.04) 0 1px, transparent 1px 13px);
 	pointer-events: none;
 }
@@ -308,8 +712,18 @@
 	background:
 		linear-gradient(rgba(184, 154, 94, 0.18) 1px, transparent 1px) 0 0 / 76px 52px,
 		linear-gradient(90deg, rgba(184, 154, 94, 0.15) 1px, transparent 1px) 0 0 / 76px 52px,
-		linear-gradient(180deg, transparent 23%, rgba(184, 154, 94, 0.44) 23% calc(23% + 1px), transparent calc(23% + 1px)),
-		linear-gradient(180deg, transparent 70%, rgba(184, 154, 94, 0.4) 70% calc(70% + 1px), transparent calc(70% + 1px)),
+		linear-gradient(
+			180deg,
+			transparent 23%,
+			rgba(184, 154, 94, 0.44) 23% calc(23% + 1px),
+			transparent calc(23% + 1px)
+		),
+		linear-gradient(
+			180deg,
+			transparent 70%,
+			rgba(184, 154, 94, 0.4) 70% calc(70% + 1px),
+			transparent calc(70% + 1px)
+		),
 		rgba(255, 255, 255, 0.12);
 	box-shadow:
 		inset 0 0 0 1px rgba(255, 255, 255, 0.22),
@@ -328,8 +742,10 @@
 	height: 16px;
 	border-top: 1px solid rgba(184, 154, 94, 0.76);
 	background:
-		linear-gradient(135deg, transparent 48%, rgba(184, 154, 94, 0.76) 50%, transparent 52%) left top / 12px 12px no-repeat,
-		linear-gradient(45deg, transparent 48%, rgba(184, 154, 94, 0.76) 50%, transparent 52%) right top / 12px 12px no-repeat;
+		linear-gradient(135deg, transparent 48%, rgba(184, 154, 94, 0.76) 50%, transparent 52%) left
+			top / 12px 12px no-repeat,
+		linear-gradient(45deg, transparent 48%, rgba(184, 154, 94, 0.76) 50%, transparent 52%) right
+			top / 12px 12px no-repeat;
 }
 
 .museum-wordmark-grid::after {
@@ -337,8 +753,10 @@
 	width: 14px;
 	border-left: 1px solid rgba(184, 154, 94, 0.64);
 	background:
-		linear-gradient(45deg, transparent 48%, rgba(184, 154, 94, 0.64) 50%, transparent 52%) left top / 11px 11px no-repeat,
-		linear-gradient(135deg, transparent 48%, rgba(184, 154, 94, 0.64) 50%, transparent 52%) left bottom / 11px 11px no-repeat;
+		linear-gradient(45deg, transparent 48%, rgba(184, 154, 94, 0.64) 50%, transparent 52%) left
+			top / 11px 11px no-repeat,
+		linear-gradient(135deg, transparent 48%, rgba(184, 154, 94, 0.64) 50%, transparent 52%) left
+			bottom / 11px 11px no-repeat;
 }
 
 .museum-wordmark-grid h1 {
@@ -1159,7 +1577,9 @@
 	font-size: 13px;
 	font-weight: 800;
 	text-decoration: none;
-	transition: background 0.18s ease, transform 0.18s ease;
+	transition:
+		background 0.18s ease,
+		transform 0.18s ease;
 	white-space: nowrap;
 }
 
@@ -1335,9 +1755,13 @@
 	color: #716d62;
 	font-size: 15px;
 	font-weight: 700;
-	background:
-		linear-gradient(90deg, rgba(47, 159, 120, 0.08), transparent 24% 76%, rgba(184, 154, 94, 0.08))
-			top / 100% 1px no-repeat;
+	background: linear-gradient(
+			90deg,
+			rgba(47, 159, 120, 0.08),
+			transparent 24% 76%,
+			rgba(184, 154, 94, 0.08)
+		)
+		top / 100% 1px no-repeat;
 }
 
 .museum-footer a {
@@ -1352,6 +1776,18 @@
 }
 
 @media (max-width: 1280px) {
+	.random-page {
+		grid-template-columns: minmax(260px, 0.7fr) minmax(350px, 1fr);
+		gap: 38px;
+	}
+
+	.random-actions {
+		grid-column: 1 / -1;
+		align-items: center;
+		margin-top: -18px;
+		text-align: center;
+	}
+
 	.museum-card-grid {
 		grid-template-columns: repeat(3, minmax(132px, 1fr));
 	}
@@ -1367,6 +1803,30 @@
 }
 
 @media (max-width: 900px) {
+	.random-page {
+		grid-template-columns: 1fr;
+		gap: 22px;
+		padding: 52px 28px;
+		text-align: center;
+	}
+
+	.random-intro > p:not(.random-eyebrow) {
+		margin-inline: auto;
+	}
+
+	.random-pool-summary {
+		justify-content: center;
+	}
+
+	.random-stage {
+		min-height: 535px;
+	}
+
+	.random-actions {
+		grid-column: auto;
+		margin-top: 0;
+	}
+
 	.museum-header,
 	.museum-main,
 	.museum-footer {
@@ -1407,6 +1867,11 @@
 		padding: 0 14px;
 	}
 
+	.museum-nav a {
+		min-height: 44px;
+		padding: 0 14px;
+	}
+
 	.museum-hero {
 		grid-template-columns: 1fr;
 		min-height: 390px;
@@ -1419,8 +1884,18 @@
 		background:
 			linear-gradient(rgba(184, 154, 94, 0.14) 1px, transparent 1px) 0 0 / 54px 42px,
 			linear-gradient(90deg, rgba(184, 154, 94, 0.12) 1px, transparent 1px) 0 0 / 54px 42px,
-			linear-gradient(180deg, transparent 23%, rgba(184, 154, 94, 0.3) 23% calc(23% + 1px), transparent calc(23% + 1px)),
-			linear-gradient(180deg, transparent 72%, rgba(184, 154, 94, 0.28) 72% calc(72% + 1px), transparent calc(72% + 1px));
+			linear-gradient(
+				180deg,
+				transparent 23%,
+				rgba(184, 154, 94, 0.3) 23% calc(23% + 1px),
+				transparent calc(23% + 1px)
+			),
+			linear-gradient(
+				180deg,
+				transparent 72%,
+				rgba(184, 154, 94, 0.28) 72% calc(72% + 1px),
+				transparent calc(72% + 1px)
+			);
 	}
 
 	.wordmark-measure.side,
@@ -1537,6 +2012,60 @@
 }
 
 @media (max-width: 560px) {
+	.random-page {
+		padding: 44px 18px;
+		border-radius: 18px;
+	}
+
+	.random-page::before {
+		inset: 10px;
+	}
+
+	.random-intro h1 {
+		font-size: 42px;
+	}
+
+	.random-pool-summary {
+		gap: 16px;
+	}
+
+	.random-stage {
+		min-height: 500px;
+	}
+
+	.random-rings {
+		width: 390px;
+		height: 390px;
+	}
+
+	.random-rings i:nth-child(1) {
+		width: 330px;
+		height: 330px;
+	}
+
+	.random-rings i:nth-child(2) {
+		width: 275px;
+		height: 275px;
+	}
+
+	.random-rings i:nth-child(3) {
+		width: 210px;
+		height: 210px;
+	}
+
+	.random-card {
+		width: min(320px, 83vw);
+		min-height: 450px;
+	}
+
+	.random-amiibo-image {
+		min-height: 245px;
+	}
+
+	.random-amiibo-image img {
+		max-height: 250px;
+	}
+
 	.museum-page::before {
 		background:
 			linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 252, 243, 0.86)),

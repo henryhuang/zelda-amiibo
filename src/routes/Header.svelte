@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import { onDestroy } from 'svelte';
 	import { collectedInfo } from '../store';
 	import { downloadBackup } from '$lib/utils/commonUtil';
@@ -27,6 +28,15 @@
 	</a>
 
 	<nav class="museum-nav" aria-label="主导航">
+		<a
+			class="museum-nav-random"
+			class:active={page.url.pathname === '/random'}
+			href="/random"
+			aria-current={page.url.pathname === '/random' ? 'page' : undefined}
+		>
+			<span aria-hidden="true">✦</span>
+			<span class="museum-nav-random-label">随机下一个</span>
+		</a>
 		<button
 			type="button"
 			onclick={() => {
