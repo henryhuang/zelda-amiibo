@@ -608,6 +608,608 @@
 	}
 }
 
+/* === Amiibo game reward field guide === */
+.rewards-page {
+	min-height: 720px;
+	padding: clamp(34px, 5vw, 74px) clamp(22px, 5vw, 86px) 72px;
+	border: 1px solid var(--totk-border-strong);
+	border-radius: 26px;
+	background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(246, 244, 232, 0.86));
+	box-shadow: var(--totk-shadow);
+}
+.rewards-kicker {
+	margin: 0 0 18px;
+	color: var(--totk-green-deep);
+	font-size: 12px;
+	font-weight: 900;
+	letter-spacing: 0.16em;
+}
+.rewards-landing-copy {
+	max-width: 790px;
+	margin: 0 auto 44px;
+	text-align: center;
+}
+.rewards-landing-copy h1,
+.rewards-browser-header h1 {
+	margin: 0;
+	color: #1f665a;
+	font-size: clamp(42px, 5vw, 72px);
+	font-weight: 950;
+	line-height: 1.06;
+	letter-spacing: -0.035em;
+}
+.rewards-landing-copy > p:last-child,
+.rewards-browser-header > div > p:last-child {
+	margin: 22px 0 0;
+	color: var(--totk-muted);
+	font-size: 17px;
+	font-weight: 650;
+	line-height: 1.8;
+}
+.game-choice-grid {
+	display: grid;
+	max-width: 1160px;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 26px;
+	margin: 0 auto;
+}
+.game-choice-grid > button {
+	position: relative;
+	display: flex;
+	min-height: 390px;
+	align-items: flex-start;
+	flex-direction: column;
+	overflow: hidden;
+	padding: 42px;
+	border: 1px solid rgba(184, 154, 94, 0.36);
+	border-radius: 22px;
+	color: #fff;
+	text-align: left;
+	cursor: pointer;
+	box-shadow: 0 20px 45px rgba(48, 64, 56, 0.16);
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+}
+.game-choice-grid > button::before,
+.game-choice-grid > button::after {
+	content: '';
+	position: absolute;
+	pointer-events: none;
+}
+.game-choice-grid > button::before {
+	inset: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	border-radius: 15px;
+}
+.game-choice-grid > button::after {
+	right: -60px;
+	bottom: -90px;
+	width: 310px;
+	height: 310px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 50%;
+	box-shadow:
+		inset 0 0 0 34px rgba(255, 255, 255, 0.04),
+		inset 0 0 0 80px rgba(255, 255, 255, 0.035);
+}
+.game-choice-grid > button.totk {
+	background:
+		radial-gradient(circle at 85% 18%, rgba(158, 255, 214, 0.3), transparent 22%),
+		linear-gradient(140deg, #1c6659, #173e3b);
+}
+.game-choice-grid > button.botw {
+	background:
+		radial-gradient(circle at 82% 16%, rgba(255, 222, 142, 0.26), transparent 25%),
+		linear-gradient(140deg, #315b72, #273e57);
+}
+.game-choice-grid > button:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 28px 58px rgba(48, 64, 56, 0.24);
+}
+.game-choice-year {
+	position: absolute;
+	top: 30px;
+	right: 34px;
+	color: rgba(255, 255, 255, 0.62);
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+}
+.game-choice-mark {
+	display: grid;
+	width: 58px;
+	height: 58px;
+	place-items: center;
+	margin-bottom: 29px;
+	border: 1px solid rgba(255, 255, 255, 0.28);
+	border-radius: 50%;
+	color: #e7cd88;
+	font-size: 25px;
+}
+.game-choice-grid small {
+	color: rgba(255, 255, 255, 0.67);
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.13em;
+}
+.game-choice-grid strong {
+	margin-top: 7px;
+	font-size: clamp(38px, 3.4vw, 56px);
+	font-weight: 950;
+	line-height: 1;
+}
+.game-choice-grid em {
+	margin-top: 9px;
+	color: #e5d195;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 800;
+}
+.game-choice-grid p {
+	max-width: 390px;
+	margin: 30px 0 0;
+	color: rgba(255, 255, 255, 0.74);
+	font-size: 14px;
+	font-weight: 650;
+	line-height: 1.75;
+}
+.game-choice-action {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-top: auto;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 900;
+}
+.game-choice-action b {
+	color: #e7cd88;
+	font-size: 22px;
+}
+.rewards-scan-note {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin: 30px 0 0;
+	color: #777368;
+	font-size: 12px;
+	font-weight: 700;
+}
+.rewards-scan-note span {
+	display: grid;
+	width: 20px;
+	height: 20px;
+	place-items: center;
+	border: 1px solid var(--totk-border-strong);
+	border-radius: 50%;
+	color: var(--totk-green-deep);
+	font-style: italic;
+}
+.rewards-browser-header {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 32px;
+	margin-bottom: 38px;
+}
+.rewards-browser-header h1 {
+	font-size: clamp(38px, 4vw, 62px);
+}
+.rewards-back {
+	margin: 0 0 24px;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: #6f776f;
+	font-size: 12px;
+	font-weight: 800;
+	cursor: pointer;
+}
+.rewards-back:hover {
+	color: var(--totk-green-deep);
+}
+.game-switcher {
+	display: flex;
+	flex: 0 0 auto;
+	gap: 5px;
+	padding: 5px;
+	border: 1px solid var(--totk-border);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.65);
+}
+.game-switcher button {
+	min-height: 40px;
+	padding: 0 18px;
+	border: 0;
+	border-radius: 999px;
+	background: transparent;
+	color: #68716c;
+	font-size: 13px;
+	font-weight: 850;
+	cursor: pointer;
+}
+.game-switcher button.active {
+	background: #287c69;
+	color: #fff;
+	box-shadow: 0 7px 16px rgba(40, 124, 105, 0.2);
+}
+.rewards-browser {
+	display: grid;
+	grid-template-columns: minmax(0, 1.5fr) minmax(360px, 0.75fr);
+	align-items: start;
+	gap: 28px;
+}
+.rewards-catalog {
+	min-width: 0;
+}
+.rewards-search {
+	display: flex;
+	min-height: 56px;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 16px;
+	padding: 0 18px;
+	border: 1px solid var(--totk-border);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.8);
+}
+.rewards-search > span {
+	color: var(--totk-gold);
+	font-size: 23px;
+}
+.rewards-search input {
+	width: 100%;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	color: var(--totk-ink);
+	font-size: 14px;
+	font-weight: 700;
+}
+.rewards-search small {
+	flex: 0 0 auto;
+	color: #999080;
+	font-size: 11px;
+	font-weight: 800;
+}
+.rewards-card-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+}
+.reward-amiibo-card {
+	position: relative;
+	display: grid;
+	min-height: 126px;
+	grid-template-columns: 86px minmax(0, 1fr) 12px;
+	align-items: center;
+	gap: 13px;
+	overflow: hidden;
+	padding: 12px 15px 12px 8px;
+	border: 1px solid rgba(184, 154, 94, 0.24);
+	border-radius: 15px;
+	background: rgba(255, 255, 255, 0.72);
+	color: var(--totk-ink);
+	text-align: left;
+	cursor: pointer;
+	transition:
+		border-color 0.18s ease,
+		transform 0.18s ease,
+		background 0.18s ease;
+}
+.reward-amiibo-card:hover,
+.reward-amiibo-card.selected {
+	border-color: rgba(47, 159, 120, 0.55);
+	background: rgba(245, 255, 251, 0.9);
+	transform: translateY(-2px);
+}
+.reward-amiibo-card.selected {
+	box-shadow:
+		inset 3px 0 #2f9f78,
+		0 10px 25px rgba(47, 111, 96, 0.09);
+}
+.reward-amiibo-image {
+	display: grid;
+	width: 86px;
+	height: 98px;
+	place-items: center;
+}
+.reward-amiibo-image img {
+	max-width: 82px;
+	max-height: 94px;
+	object-fit: contain;
+	filter: drop-shadow(0 10px 8px rgba(55, 54, 42, 0.16));
+}
+.reward-amiibo-copy {
+	min-width: 0;
+}
+.reward-amiibo-copy strong,
+.reward-amiibo-copy small,
+.reward-amiibo-copy em {
+	display: block;
+}
+.reward-amiibo-copy strong {
+	overflow: hidden;
+	color: #2d655b;
+	font-size: 15px;
+	font-weight: 900;
+	line-height: 1.3;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.reward-amiibo-copy small {
+	overflow: hidden;
+	margin-top: 5px;
+	color: #85877f;
+	font-size: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.reward-amiibo-copy em {
+	width: max-content;
+	max-width: 100%;
+	margin-top: 10px;
+	padding: 4px 7px;
+	border-radius: 5px;
+	background: rgba(184, 154, 94, 0.1);
+	color: #9a7c42;
+	font-size: 9px;
+	font-style: normal;
+	font-weight: 850;
+}
+.reward-card-arrow {
+	color: #b7a67f;
+	font-size: 23px;
+}
+.reward-detail {
+	position: sticky;
+	top: 22px;
+	min-height: 520px;
+	overflow: hidden;
+	border: 1px solid var(--totk-border-strong);
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.9);
+	box-shadow: 0 20px 45px rgba(68, 74, 55, 0.12);
+}
+.reward-detail-visual {
+	position: relative;
+	display: grid;
+	height: 240px;
+	place-items: center;
+	overflow: hidden;
+	background:
+		radial-gradient(circle, rgba(103, 213, 177, 0.28), transparent 38%),
+		linear-gradient(145deg, #e8f5ef, #f7f2e4);
+}
+.reward-detail-visual::before {
+	content: '';
+	position: absolute;
+	width: 190px;
+	height: 190px;
+	border: 1px dashed rgba(47, 159, 120, 0.25);
+	border-radius: 50%;
+}
+.reward-detail-visual > span {
+	position: absolute;
+	top: 18px;
+	left: 20px;
+	z-index: 1;
+	color: var(--totk-green-deep);
+	font-size: 10px;
+	font-weight: 900;
+	letter-spacing: 0.12em;
+}
+.reward-detail-visual img {
+	position: relative;
+	z-index: 1;
+	max-width: 210px;
+	max-height: 215px;
+	object-fit: contain;
+	filter: drop-shadow(0 20px 14px rgba(55, 54, 42, 0.22));
+}
+.reward-detail-copy {
+	padding: 28px 30px 32px;
+}
+.reward-detail-copy > p:first-child {
+	margin: 0;
+	color: var(--totk-gold);
+	font-size: 10px;
+	font-weight: 850;
+	text-transform: uppercase;
+}
+.reward-detail-copy h2 {
+	margin: 7px 0 0;
+	color: #205f54;
+	font-size: 30px;
+	font-weight: 950;
+	line-height: 1.1;
+}
+.reward-detail-copy > small {
+	display: block;
+	margin-top: 5px;
+	color: #888980;
+	font-size: 11px;
+}
+.reward-announced {
+	margin-top: 18px;
+	padding: 9px 12px;
+	border: 1px solid rgba(184, 154, 94, 0.3);
+	border-radius: 8px;
+	background: #fff8e8;
+	color: #8a6a2e;
+	font-size: 11px;
+	font-weight: 850;
+}
+.reward-group {
+	margin-top: 27px;
+}
+.reward-group h3 {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0 0 12px;
+	color: #696d67;
+	font-size: 12px;
+	font-weight: 900;
+	letter-spacing: 0.04em;
+}
+.reward-group h3 span {
+	color: var(--totk-gold);
+}
+.reward-group ul {
+	display: flex;
+	gap: 7px;
+	margin: 0;
+	padding: 0;
+	flex-wrap: wrap;
+	list-style: none;
+}
+.reward-group li {
+	padding: 8px 11px;
+	border-radius: 7px;
+	background: #f3f0e6;
+	color: #5f625d;
+	font-size: 12px;
+	font-weight: 750;
+}
+.reward-group.rare li {
+	border: 1px solid rgba(184, 154, 94, 0.24);
+	background: linear-gradient(180deg, #fff9e9, #f6efdc);
+	color: #80652f;
+}
+.reward-note {
+	margin: 24px 0 0;
+	padding: 13px 14px;
+	border-left: 3px solid var(--totk-green);
+	background: rgba(47, 159, 120, 0.07);
+	color: #5e6a64;
+	font-size: 12px;
+	line-height: 1.7;
+}
+.reward-note b {
+	margin-right: 8px;
+	color: var(--totk-green-deep);
+}
+.reward-randomness {
+	margin: 25px 0 0;
+	padding-top: 18px;
+	border-top: 1px solid var(--totk-border);
+	color: #989287;
+	font-size: 10px;
+	line-height: 1.65;
+}
+.reward-detail-empty {
+	display: grid;
+	min-height: 520px;
+	place-items: center;
+	align-content: center;
+	padding: 35px;
+	color: #8b8b82;
+	text-align: center;
+}
+.reward-detail-empty span {
+	display: grid;
+	width: 84px;
+	height: 84px;
+	place-items: center;
+	border: 1px dashed var(--totk-border-strong);
+	border-radius: 50%;
+	color: var(--totk-gold);
+	font-size: 42px;
+}
+.reward-detail-empty h2 {
+	margin: 22px 0 0;
+	color: #356f64;
+	font-size: 24px;
+}
+.reward-detail-empty p {
+	margin: 10px 0 0;
+	font-size: 12px;
+}
+.reward-sources {
+	margin-top: 46px;
+	padding-top: 25px;
+	border-top: 1px solid var(--totk-border);
+}
+.reward-sources > strong {
+	color: #466d64;
+	font-size: 13px;
+}
+.reward-sources > p {
+	margin: 7px 0 14px;
+	color: #87877f;
+	font-size: 11px;
+}
+.reward-sources > div {
+	display: flex;
+	gap: 10px 20px;
+	flex-wrap: wrap;
+}
+.reward-sources a {
+	color: var(--totk-green-deep);
+	font-size: 11px;
+	font-weight: 750;
+	text-decoration: none;
+}
+.reward-sources a:hover {
+	text-decoration: underline;
+}
+.museum-nav-rewards.active .museum-nav-rewards-label {
+	text-decoration: underline;
+	text-decoration-color: var(--totk-green-deep);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 9px;
+}
+
+@media (max-width: 1400px) {
+	.rewards-card-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+@media (max-width: 1050px) {
+	.rewards-browser {
+		grid-template-columns: 1fr;
+	}
+	.reward-detail {
+		position: relative;
+		top: auto;
+	}
+}
+@media (max-width: 760px) {
+	.rewards-page {
+		padding: 30px 16px 46px;
+		border-radius: 16px;
+	}
+	.game-choice-grid {
+		grid-template-columns: 1fr;
+	}
+	.game-choice-grid > button {
+		min-height: 350px;
+		padding: 34px;
+	}
+	.rewards-browser-header {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+	.game-switcher {
+		align-self: stretch;
+	}
+	.game-switcher button {
+		flex: 1;
+	}
+	.rewards-card-grid {
+		grid-template-columns: 1fr;
+	}
+	.reward-amiibo-card {
+		min-height: 112px;
+	}
+	.rewards-scan-note {
+		align-items: flex-start;
+	}
+}
+
 .museum-main {
 	width: min(1840px, calc(100vw - 56px));
 	margin: 0 auto;

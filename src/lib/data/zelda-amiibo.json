@@ -356,7 +356,12 @@
 			"toy": "tulin-1.jpeg",
 			"box": "tulin-2.jpeg"
 		},
-		"detail": "https://www.nintendo.com/us/amiibo/detail/tulin-the-legend-of-zelda-tears-of-the-kingdom-series/"
+		"detail": "https://www.nintendo.com/us/amiibo/detail/tulin-the-legend-of-zelda-tears-of-the-kingdom-series/",
+		"status": "collected",
+		"collectedInfo": {
+			"collectDate": "2026.08.19",
+			"price": 75
+		}
 	},
 	{
 		"id": "urbosa",
